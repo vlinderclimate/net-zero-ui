@@ -7,9 +7,11 @@ export const borderSize: BorderSize = {
 }
 
 export const borderRadius: BorderRadius = {
-  primary: 12,
-  secondary: 16,
-  large: 20,
-  xlarge: 24,
-  rounded: 100
+  xs2: 6,
+  xs1: 8,
+  sm: 12,
+  md: 16,
+  lg: 20,
+  xl1: 24,
+  rounded: "100%"
 }
