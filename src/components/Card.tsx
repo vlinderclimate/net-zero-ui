@@ -1,0 +1,134 @@
+import React from "react"
+import { styled, Theme } from "@mui/material/styles"
+import MuiCard, { CardProps as MuiCardProps } from "@mui/material/Card"
+
+import colors from "../theme/colors"
+
+export enum CardSizeVariants {
+  Initial = "initial",
+  Small = "small",
+  Medium = "medium",
+  Large = "large"
+}
+
+export enum CardColorVariants {
+  Initial = "initial",
+  Muted = "muted",
+  Primary = "primary",
+  Secondary = "secondary",
+  Positive = "positive",
+  Negative = "negative"
+}
+
+export interface CardProps extends Omit<MuiCardProps, "color"> {
+  color?: CardColorVariants
+  selected?: boolean
+  $bubble?: boolean
+  $rounded?: boolean
+  size?: CardSizeVariants
+}
+
+interface StyledProps extends CardProps {
+  theme: Theme
+}
+
+export const sizeMap = new Map<CardSizeVariants, { x: number; y: number }>([
+  [CardSizeVariants.Initial, { y: 0, x: 0 }],
+  [CardSizeVariants.Small, { y: 2, x: 3 }],
+  [CardSizeVariants.Medium, { y: 3.75, x: 4 }],
+  [CardSizeVariants.Large, { y: 6, x: 7 }]
+])
+
+export const sizeMobileMap = new Map<CardSizeVariants, { x: number; y: number }>([
+  [CardSizeVariants.Initial, { y: 0, x: 0 }],
+  [CardSizeVariants.Small, { y: 1, x: 2 }],
+  [CardSizeVariants.Medium, { y: 2.5, x: 2.5 }],
+  [CardSizeVariants.Large, { y: 3, x: 4 }]
+])
+
+export const colorMap = new Map<CardColorVariants, string>([
+  [CardColorVariants.Initial, colors.text.primary],
+  [CardColorVariants.Muted, colors.text.primary],
+  [CardColorVariants.Primary, colors.text.primary],
+  [CardColorVariants.Secondary, colors.text.inversePrimary],
+  [CardColorVariants.Positive, colors.text.primary],
+  [CardColorVariants.Negative, colors.text.primary]
+])
+
+export const backgroundMap = new Map<CardColorVariants, string>([
+  [CardColorVariants.Initial, colors.gray.white],
+  [CardColorVariants.Muted, colors.gray[100]],
+  [CardColorVariants.Primary, colors.primary.main],
+  [CardColorVariants.Secondary, colors.secondary.main],
+  [CardColorVariants.Positive, colors.green.light],
+  [CardColorVariants.Negative, colors.red.light]
+])
+
+const StyledCard = styled(MuiCard)<CardProps>(
+  ({
+    color = CardColorVariants.Initial,
+    size = CardSizeVariants.Medium,
+    selected,
+    $bubble,
+    $rounded,
+    theme
+  }: StyledProps) => {
+    const padding = sizeMap.get(size)
+    const paddingMobile = sizeMobileMap.get(size)
+    const bg = backgroundMap.get(color)
+
+    return {
+      padding: padding ? theme.spacing(padding.y, padding.x) : "0",
+      marginBottom: theme.spacing(0.8),
+      color: colorMap.get(color),
+      backgroundColor: backgroundMap.get(color),
+      position: "relative",
+      overflow: "visible",
+      boxShadow: selected ? `inset 0 0 0 3px ${theme.palette.primary.main}` : "none",
+      borderRadius: $rounded ? theme.borders.radius.m : 0,
+      zIndex: 1,
+
+      "&:after": {
+        content: "''",
+        top: -1,
+        left: -24,
+        position: "absolute",
+        border: "0px solid",
+        width: "38px",
+        height: "26px",
+        backgroundColor: "transparent",
+        borderBottomLeftRadius: "50%",
+        borderBottomRightRadius: "50%",
+        boxShadow: bg ? `-14px 9px 0px 3px ${bg}` : "none",
+        transform: "rotateY(180deg)",
+        zIndex: 0,
+        display: $bubble ? "block" : "none"
+      },
+
+      [theme.breakpoints.down("sm")]: {
+        padding: paddingMobile ? theme.spacing(paddingMobile.y, paddingMobile.x) : "0",
+        borderRadius: $rounded ? theme.borders.radius.s : 0
+      }
+    }
+  }
+)
+
+const Card: React.FC<CardProps> = ({
+  children,
+  color,
+  size,
+  selected,
+  $rounded = false,
+  $bubble = false,
+  ...props
+}) => {
+  const styleProps = { color, size, selected, $rounded, $bubble }
+
+  return (
+    <StyledCard {...styleProps} {...props}>
+      {children}
+    </StyledCard>
+  )
+}
+
+export default Card
