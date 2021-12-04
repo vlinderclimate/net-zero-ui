@@ -21,7 +21,6 @@
   "scripts": {
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier --config .prettierrc --write 'src/**/*.{ts,tsx}'",
-    "build": "rollup -c",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
