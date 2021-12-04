@@ -15,10 +15,6 @@ const argTypes = {
     defaultValue: false,
     control: { type: "boolean" }
   },
-  scrollable: {
-    defaultValue: false,
-    control: { type: "boolean" }
-  },
   titleId: { table: { disable: true } },
   descriptionId: { table: { disable: true } },
   ref: { table: { disable: true } },
@@ -56,7 +52,6 @@ const Template: Story = ({ size, closeButton, scrollable }) => {
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        scrollable={scrollable}
         size={size}
         closeButton={closeButton}
         titleId="transition-modal-title"
