@@ -1,7 +1,10 @@
 name: Build and deploy
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - "main"
 jobs:
-  build-and-deploy:
+  build-and-deploy-github-pages:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,7 +33,7 @@ jobs:
           NODE_ENV: production
 
       - name: Deploy to GitHub page
-        if: success() && startsWith(github.ref, 'refs/tags/')
+        if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
