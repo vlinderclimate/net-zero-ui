@@ -5,9 +5,11 @@ export interface BorderSize {
 }
 
 export interface BorderRadius {
-  primary: number
-  secondary: number
-  large: number
-  xlarge: number
-  rounded: number
+  xs2: number
+  xs1: number
+  sm: number
+  md: number
+  lg: number
+  xl1: number
+  rounded: string
 }

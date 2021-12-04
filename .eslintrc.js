@@ -15,4 +15,4 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/member-delimiter-style": "off"
   }
-};
+}
