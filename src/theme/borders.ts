@@ -13,5 +13,5 @@ export const borderRadius: BorderRadius = {
   md: 16,
   lg: 20,
   xl1: 24,
-  rounded: "100%"
+  rounded: "100px"
 }
