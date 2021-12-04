@@ -118,5 +118,9 @@
   },
   "publishConfig": {
     "@vlinderclimate:registry": "https://npm.pkg.github.com"
+  },
+  "description": "<h1 align=\"center\">Net Zero UI kit</h1>",
+  "directories": {
+    "doc": "docs"
   }
 }
