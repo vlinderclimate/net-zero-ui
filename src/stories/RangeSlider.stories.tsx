@@ -14,13 +14,6 @@ const argTypes = {
       defaultValue: { summary: false }
     }
   },
-  color: {
-    name: "color",
-    description: "Set color",
-    defaultValue: "secondary",
-    control: { type: "select" },
-    options: ["primary", "secondary"]
-  },
   isRtl: { table: { disable: true } },
   disableSwap: { table: { disable: true } },
   componentsProps: { table: { disable: true } },
@@ -55,7 +48,7 @@ const argTypes = {
 }
 
 const Template: Story<RangeSliderProps> = (args) => {
-  return <RangeSlider defaultValue={20} {...args} />
+  return <RangeSlider color="primary" defaultValue={20} {...args} />
 }
 
 export const Default = Template.bind({})
