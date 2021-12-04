@@ -14,7 +14,7 @@ const MuiSelect = {
       paddingRight: 44,
       "&:focus": {
         backgroundColor: colors.gray.white,
-        borderRadius: borderRadius.primary
+        borderRadius: borderRadius.sm
       }
     }
   },

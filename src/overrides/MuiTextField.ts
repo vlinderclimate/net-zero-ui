@@ -6,7 +6,7 @@ import { fontSize } from "../theme/typography"
 const MuiTextField = {
   root: {
     "& .MuiInputBase-root": {
-      borderRadius: borderRadius.primary,
+      borderRadius: borderRadius.sm,
 
       // size
       fontSize: fontSize.l,

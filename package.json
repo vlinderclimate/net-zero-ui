@@ -22,7 +22,8 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier --config .prettierrc --write 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "test": "exit 0"
   },
   "peerDependencies": {
     "@mui/material": "5.0.2",
