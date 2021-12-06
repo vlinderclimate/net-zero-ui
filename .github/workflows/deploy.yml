@@ -32,6 +32,13 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Semantic Release
+        run: yarn semantic-release-publish
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Deploy to GitHub page
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
