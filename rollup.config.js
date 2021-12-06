@@ -7,6 +7,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import typescript from "rollup-plugin-typescript2"
 import remove from "rollup-plugin-delete"
 import multi from "rollup-plugin-multi-input"
+import image from "@rollup/plugin-image"
 
 const config = {
   input: ["./src/**/*.ts(x)?"],
@@ -17,6 +18,7 @@ const config = {
     resolve(),
     commonjs(),
     typescript(),
+    image(),
     generatePackage({
       baseContents: (pkg) => ({
         name: pkg.name,
