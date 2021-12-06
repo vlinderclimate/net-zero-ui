@@ -29,13 +29,13 @@ jobs:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
       - run: yarn
-      - run: npm publish --access public
+      - run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: actions/setup-node@v2
         with:
           registry-url: "https://npm.pkg.github.com"
           scope: "@vlinderclimate"
-      - run: npm publish
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
