@@ -1,6 +1,6 @@
 {
   "name": "@vlinderclimate/net-zero-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "vlinderclimate",
   "license": "MIT",
   "keywords": [
@@ -10,10 +10,7 @@
     "vlinderclimate",
     "net-zero-ui"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/vlinderclimate/net-zero-ui.git"
-  },
+  "repository": "git://github.com/vlinderclimate/net-zero-ui.git",
   "bugs": {
     "url": "https://github.com/vlinderclimate/net-zero-ui/issues"
   },
@@ -151,5 +148,6 @@
   "description": "<h1 align=\"center\">Net Zero UI kit</h1>",
   "directories": {
     "doc": "docs"
-  }
+  },
+  "private": false
 }
