@@ -1,10 +1,7 @@
 name: Build and deploy
-on:
-  push:
-    branches:
-      - "main"
+on: [push, pull_request]
 jobs:
-  build-and-deploy-github-pages:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,7 +37,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Deploy to GitHub page
-        if: success()
+        if: success() && startsWith(github.ref, 'refs/tags/')
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
