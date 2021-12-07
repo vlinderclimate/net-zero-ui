@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React from "react"
 import MuiBox from "@mui/material/Box"
 
 import Typography from "../Typography"
@@ -69,4 +69,4 @@ const SectionTitleComponent: React.FC<SectionTitleProps> = ({
   )
 }
 
-export default memo(SectionTitleComponent)
+export default SectionTitleComponent

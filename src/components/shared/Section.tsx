@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React from "react"
 import { styled } from "@mui/material/styles"
 import MuiBox from "@mui/material/Box"
 
@@ -40,4 +40,4 @@ const SectionComponent: React.FC<SectionProps> = ({
   )
 }
 
-export default memo(SectionComponent)
+export default SectionComponent
