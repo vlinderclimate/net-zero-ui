@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React from "react"
 import { styled } from "@mui/material/styles"
 
 import Button from "../Button"
@@ -148,4 +148,4 @@ const CardSliderComponent: React.FC<CardSliderProps> = ({ children, ...props }) 
   return <SliderBox {...props}>{children}</SliderBox>
 }
 
-export default memo(CardSliderComponent)
+export default CardSliderComponent
