@@ -22,6 +22,8 @@ export { default as SocialIcon, SocialIconProps } from "./components/SocialIcon"
 export { default as TextField, TextFieldProps } from "./components/TextField"
 export { default as Tooltip, TooltipProps } from "./components/Tooltip"
 export { default as Typography, TypographyProps } from "./components/Typography"
+export { default as List, ListProps } from "./components/List"
+export { default as ListItem, ListItemProps } from "./components/ListItem"
 
 export { default as Account, AccountProps } from "./components/shared/Account"
 export { default as CardSlider, CardSliderProps } from "./components/shared/CardSlider"
