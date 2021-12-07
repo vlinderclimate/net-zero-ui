@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React from "react"
 import { styled } from "@mui/material/styles"
 import MuiBox from "@mui/material/Box"
 
@@ -33,4 +33,4 @@ const Account: React.FC<AccountProps> = ({ children }) => {
   return <AccountBox>{children}</AccountBox>
 }
 
-export default memo(Account)
+export default Account

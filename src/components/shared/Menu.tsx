@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React from "react"
 import { styled } from "@mui/material/styles"
 import MuiBox from "@mui/material/Box"
 import MuiLink from "@mui/material/Link"
@@ -63,4 +63,4 @@ const MenuComponent: React.FC<MenuProps> = ({ list }) => {
   )
 }
 
-export default memo(MenuComponent)
+export default MenuComponent

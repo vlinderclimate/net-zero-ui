@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React from "react"
 import { styled } from "@mui/material/styles"
 import MuiBox from "@mui/material/Box"
 
@@ -74,4 +74,4 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, imageWidth = 12
   )
 }
 
-export default memo(InnerHeader)
+export default InnerHeader
