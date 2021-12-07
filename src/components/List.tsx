@@ -2,11 +2,7 @@ import React from "react"
 import { styled, Theme } from "@mui/material/styles"
 import MuiList, { ListProps as MuiListProps } from "@mui/material/List"
 
-export interface SwitchProps {
-  disabled?: boolean
-}
-
-export interface ListProps extends Omit<MuiListProps, "disabled">, SwitchProps {}
+export interface ListProps extends Omit<MuiListProps, "disabled"> {}
 
 interface StyledProps extends ListProps {
   theme?: Theme
