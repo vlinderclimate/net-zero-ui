@@ -1,8 +1,8 @@
 import React from "react"
 import useMediaQuery from "@mui/material/useMediaQuery"
-import { useTheme, styled, Theme } from "@mui/material/styles"
-import Box from "@mui/material/Box"
-import Fade from "@mui/material/Fade"
+import { useTheme, styled } from "@mui/material/styles"
+import MuiBox from "@mui/material/Box"
+import MuiFade from "@mui/material/Fade"
 import MuiModal, { ModalProps as MuiModalProps } from "@mui/material/Modal"
 import Backdrop from "@mui/material/Backdrop"
 
@@ -12,7 +12,7 @@ import IconButton from "./IconButton"
 
 import boxShadow from "../theme/boxShadow"
 
-export type ModalSize = "sm" | "md" | "safeArea" | "fullScreen"
+export type ModalSize = "xs" | "sm" | "md" | "safeArea" | "fullScreen"
 
 interface StyledModalProps {
   size: ModalSize
@@ -41,9 +41,18 @@ export interface ModalProps extends MuiModalProps {
    * Or changing the icon with iconKey.
    */
   closeButton?: boolean | IconProps["iconKey"]
+  /**
+   * Is scrollable?
+   */
+  scrollable?: boolean
+  /**
+   * Make backdrop color transparent
+   */
+  transparentBackdrop?: boolean
 }
 
 const sizeMap = {
+  xs: 440,
   sm: 590,
   md: 700,
   safeArea: "100%",
@@ -54,6 +63,7 @@ enum SizeLevel {
   Large
 }
 const sizeLevelMap = {
+  xs: SizeLevel.Regular,
   sm: SizeLevel.Regular,
   md: SizeLevel.Regular,
   safeArea: SizeLevel.Large,
@@ -61,14 +71,10 @@ const sizeLevelMap = {
 }
 const defaultSize = "md"
 
-interface StyledProps {
-  theme: Theme
-  size: ModalSize
-}
-
-const Paper = styled(Box)<StyledModalProps>(({ theme, size }: StyledProps) => ({
+const Paper = styled(MuiBox)<StyledModalProps>(({ theme, size }) => ({
   position: "relative",
   width: sizeMap[size],
+  maxWidth: "100%",
   backgroundColor: theme.palette.gray.white,
   boxShadow: boxShadow.md,
   borderRadius: theme.borders.radius.xlarge,
@@ -82,7 +88,7 @@ const Paper = styled(Box)<StyledModalProps>(({ theme, size }: StyledProps) => ({
   }
 }))
 
-const CloseButton = styled(Box)<StyledModalProps>(({ theme, size }: StyledProps) => ({
+const CloseButton = styled(MuiBox)<StyledModalProps>(({ theme, size }) => ({
   position: "absolute",
   top: theme.spacing(sizeLevelMap[size] === SizeLevel.Large ? 2.5 : 1),
   right: theme.spacing(sizeLevelMap[size] === SizeLevel.Large ? 2.5 : 1),
@@ -93,15 +99,36 @@ const CloseButton = styled(Box)<StyledModalProps>(({ theme, size }: StyledProps)
   }
 }))
 
-const StyledModal = styled(MuiModal)({
+const StyledModal = styled(MuiModal)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  position: "relative",
-  height: "100vh"
+
+  [theme.breakpoints.down("sm")]: {
+    alignItems: "flex-end",
+    width: "100vw"
+  }
+}))
+
+const Fade = styled(MuiFade)({
+  // We disable the focus ring for mouse, touch and keyboard users.
+  // At some point, it would be better to keep it for keyboard users.
+  // :focus-ring CSS pseudo-class will help.
+  outline: "none !important"
 })
 
-const BoxWrapper: React.FC<Partial<ModalProps>> = ({ size = defaultSize, closeButton = false, onClose, children }) => {
+const Content = styled(MuiBox)<{ $scrollable: boolean }>(({ theme, $scrollable }) => ({
+  overflow: $scrollable ? "auto" : "unset",
+  maxHeight: `calc(100vh - ${theme.spacing(10)})`
+}))
+
+const BoxWrapper: React.FC<Partial<ModalProps>> = ({
+  size = defaultSize,
+  closeButton = false,
+  scrollable = false,
+  onClose,
+  children
+}) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
 
@@ -121,7 +148,7 @@ const BoxWrapper: React.FC<Partial<ModalProps>> = ({ size = defaultSize, closeBu
           />
         </CloseButton>
       )}
-      <Box>{children}</Box>
+      <Content $scrollable={scrollable}>{children}</Content>
     </Paper>
   )
 
@@ -134,10 +161,20 @@ const BoxWrapper: React.FC<Partial<ModalProps>> = ({ size = defaultSize, closeBu
   )
 }
 
-const Modal: React.FC<ModalProps> = ({ open, onClose, titleId, descriptionId, size = defaultSize, ...props }) => {
+const Modal: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  titleId,
+  descriptionId,
+  size = defaultSize,
+  scrollable = false,
+  transparentBackdrop,
+  ...props
+}) => {
   const handleClose: MuiModalProps["onClose"] = (event, reason) => {
     if (onClose) onClose(event, reason)
   }
+  const backdrop = transparentBackdrop ? { sx: { background: "transparent" } } : undefined
 
   return (
     <StyledModal
@@ -147,11 +184,11 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, titleId, descriptionId, si
       onClose={handleClose}
       closeAfterTransition
       BackdropComponent={Backdrop}
-      BackdropProps={{ timeout: 500 }}
+      BackdropProps={{ timeout: 500, ...backdrop }}
     >
       <Fade in={open}>
         <div>
-          <BoxWrapper size={size} onClose={handleClose} {...props} />
+          <BoxWrapper size={size} scrollable={scrollable} onClose={handleClose} {...props} />
         </div>
       </Fade>
     </StyledModal>
