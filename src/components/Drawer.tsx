@@ -1,7 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { useTheme, styled } from "@mui/material/styles"
-import MuiListItem, { ListItemProps as MuiListItemProps } from "@mui/material/ListItem"
 import MuiSwipeableDrawer, { SwipeableDrawerProps as MuiSwipeableDrawerProps } from "@mui/material/SwipeableDrawer"
 import MuiBox from "@mui/material/Box"
 import Icon, { IconProps } from "./Icon"
@@ -13,7 +12,7 @@ interface StyledDrawerProps {
   size: DrawerSize
 }
 
-export interface SwipeableDrawerProps extends MuiSwipeableDrawerProps {
+export interface DrawerProps extends MuiSwipeableDrawerProps {
   /**
    * Make backdrop color transparent
    */
@@ -91,7 +90,7 @@ const Content = styled(MuiBox)<{ scrollable: boolean }>(({ theme, scrollable }) 
   maxHeight: `calc(100vh - ${theme.spacing(10)})`
 }))
 
-const Drawer: React.FC<SwipeableDrawerProps> = ({
+const Drawer: React.FC<DrawerProps> = ({
   children,
   transparentBackdrop = false,
   size = defaultSize,
@@ -100,7 +99,7 @@ const Drawer: React.FC<SwipeableDrawerProps> = ({
   closeButton,
   ...props
 }) => {
-  const handleClose: SwipeableDrawerProps["onClose"] = (event) => {
+  const handleClose: DrawerProps["onClose"] = (event) => {
     if (onClose) onClose(event)
   }
   const backdrop = { sx: { background: transparentBackdrop ? "transparent" : "rgba(235, 235, 235, 0.56)" } }
