@@ -17,7 +17,7 @@ export const AccountImage = styled("img")(({ theme }) => ({
   margin: "-5px -11px -7px",
 
   [theme.breakpoints.down("lg")]: {
-    margin: "-5px -13px -7px"
+    margin: "-4px -12px -6px"
   }
 }))
 

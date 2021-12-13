@@ -35,6 +35,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ variant, size = "sm", color = "
       size={size}
       startIcon={<Icon color={color} iconKey={variant} rotate={0} size={iconSizeMap[size]} />}
       variant="outlined"
+      color="secondary"
       href={url}
       {...props}
     />

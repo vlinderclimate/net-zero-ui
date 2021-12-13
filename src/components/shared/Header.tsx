@@ -85,7 +85,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({
                   <>
                     {userName && (
                       <Account>
-                        <Button variant="outlined" size="sm" onClick={userHandler}>
+                        <Button variant="outlined" color="secondary" size="sm" onClick={userHandler}>
                           {userAvatar && <AccountImage src={userAvatar} />}
                           <AccountName>{userName}</AccountName>
                         </Button>
@@ -95,6 +95,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({
                       <Button
                         variant="outlined"
                         size="sm"
+                        color="secondary"
                         endIcon={<Icon iconKey="chevronRight" size="sm" />}
                         href={actionButton.url}
                         linkProps={{ target: "_blank", rel: "noopener noreferrer" }}

@@ -258,7 +258,7 @@ const Button: React.FC<ButtonProps> = ({
   placeholder,
   color = "primary",
   variant = "contained",
-  size,
+  size = "sm",
   disabled = false,
   startIcon,
   endIcon,
