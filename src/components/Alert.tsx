@@ -40,7 +40,7 @@ export const colorMap: Record<AlertColor, string> = {
 const StyledAlert = styled(MuiAlert)<AlertProps>(({ color, icon, rounded, align, theme }) => ({
   fontSize: theme.typography.fontSizeXs2,
   lineHeight: theme.typography.lineHeightS,
-  fontWeight: theme.typography.fontWeightBold,
+  fontWeight: theme.typography.fontWeightMedium,
   padding: theme.spacing(1.5, 2),
   alignItems: "flex-start",
   justifyContent: align ?? "flex-start",
