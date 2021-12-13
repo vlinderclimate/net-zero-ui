@@ -51,17 +51,21 @@ const description = [
 const Template: Story<InnerHeaderProps> = (args) => {
   return (
     <InnerHeader {...args}>
-      <GridContainer spacing={5}>
+      <GridContainer spacing={1} alignItems="baseline">
         {description.map((item: DescriptionItem, i: number) => (
           <GridItem xs sm="auto" key={i}>
             <MuiBox display="flex" alignItems="baseline" position="relative">
-              <Typography variant="h3" mr={1} color={i < 1 ? "brand" : "primary"}>
+              {i > 0 && (
+                <Typography color="secondary" variant="title5">
+                  /
+                </Typography>
+              )}
+              <Typography variant={i < 1 ? "h3" : "title5"} mr={0.5} color={i < 1 ? "primary" : "secondary"}>
                 {item.value}
               </Typography>
-              <Typography variant="title5" color={i < 1 ? "brand" : "primary"}>
+              <Typography variant="title5" color={i < 1 ? "primary" : "secondary"}>
                 {item.title}
               </Typography>
-              {i > 0 && <Divider />}
             </MuiBox>
           </GridItem>
         ))}

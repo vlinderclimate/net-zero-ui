@@ -61,7 +61,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, imageWidth = 12
                 </Item>
               )}
               <Item pl={{ xs: 2, sm: 5 }} sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
-                <Typography variant="h2" marginBottom={{ xs: 1, md: 2 }}>
+                <Typography variant="h2" component="div" marginBottom={{ xs: 1, md: 2 }}>
                   {title}
                 </Typography>
                 {children}
