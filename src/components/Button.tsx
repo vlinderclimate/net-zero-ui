@@ -13,6 +13,7 @@ export const ButtonColorVariants = [
   "primary",
   "primaryAlt",
   "secondary",
+  "secondaryAlt",
   "inverse",
   "positive",
   "negative",
@@ -53,6 +54,7 @@ const colorMap: ColorMap = {
     primary: colors.primary.main,
     primaryAlt: colors.primary.main,
     secondary: colors.gray[300],
+    secondaryAlt: colors.text.primary,
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
@@ -62,6 +64,7 @@ const colorMap: ColorMap = {
     primary: colors.text.inversePrimary,
     primaryAlt: colors.text.inversePrimary,
     secondary: colors.gray[900],
+    secondaryAlt: colors.text.primary,
     inverse: colors.text.primary,
     positive: colors.text.inversePrimary,
     negative: colors.text.inversePrimary,
@@ -71,6 +74,7 @@ const colorMap: ColorMap = {
     primary: colors.text.primary,
     primaryAlt: colors.primary.main,
     secondary: colors.gray[500],
+    secondaryAlt: colors.gray[700],
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
@@ -172,14 +176,17 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       border: 0,
       color: colorMap.background[color],
       backgroundColor: "transparent",
-      boxShadow: `inset 0 0 0 ${theme?.borders.size.secondary as number}px ${colorMap.background[color]}`,
+      boxShadow: `inset 0 0 0 1px ${colorMap.background[color]}`,
 
       [`&.${PREFIX}-primaryAlt`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.gray[300]}`
+        boxShadow: "inset 0 0 0 1px rgba(0, 0, 0, 0.15)"
       },
       [`&.${PREFIX}-secondary`]: {
-        boxShadow: `inset 0 0 0 1px ${colorMap.background[color]}`,
+        boxShadow: "inset 0 0 0 1px rgba(0, 0, 0, 0.15)",
         color: theme.palette.gray[900]
+      },
+      [`&.${PREFIX}-primary`]: {
+        boxShadow: `inset 0 0 0 ${theme?.borders.size.secondary as number}px ${colorMap.background[color]}`
       }
     },
     "&.MuiButton-text": {
@@ -258,7 +265,7 @@ const Button: React.FC<ButtonProps> = ({
   placeholder,
   color = "primary",
   variant = "contained",
-  size = "sm",
+  size = "md",
   disabled = false,
   startIcon,
   endIcon,

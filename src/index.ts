@@ -25,6 +25,7 @@ export { default as Typography, TypographyProps } from "./components/Typography"
 export { default as List, ListProps } from "./components/List"
 export { default as ListItem, ListItemProps } from "./components/ListItem"
 export { default as Drawer, DrawerProps } from "./components/Drawer"
+export { default as Breadcrumbs, BreadcrumbsProps } from "./components/Breadcrumbs"
 
 export { default as Account, AccountProps } from "./components/shared/Account"
 export { default as CardSlider, CardSliderProps } from "./components/shared/CardSlider"
