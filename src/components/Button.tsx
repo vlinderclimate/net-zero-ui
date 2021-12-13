@@ -14,7 +14,6 @@ export const ButtonColorVariants = [
   "primaryAlt",
   "secondary",
   "inverse",
-  "info",
   "positive",
   "negative",
   "disabled"
@@ -52,10 +51,9 @@ interface ColorMap {
 const colorMap: ColorMap = {
   background: {
     primary: colors.primary.main,
-    primaryAlt: colors.blue.main,
-    secondary: colors.secondary.main,
+    primaryAlt: colors.primary.main,
+    secondary: colors.gray[300],
     inverse: colors.gray.white,
-    info: colors.gray[100],
     positive: colors.positive.main,
     negative: colors.negative.main,
     disabled: colors.gray[300]
@@ -63,9 +61,8 @@ const colorMap: ColorMap = {
   color: {
     primary: colors.text.inversePrimary,
     primaryAlt: colors.text.inversePrimary,
-    secondary: colors.text.inversePrimary,
+    secondary: colors.gray[900],
     inverse: colors.text.primary,
-    info: colors.text.primary,
     positive: colors.text.inversePrimary,
     negative: colors.text.inversePrimary,
     disabled: colors.text.secondary
@@ -75,7 +72,6 @@ const colorMap: ColorMap = {
     primaryAlt: colors.primary.main,
     secondary: colors.gray[500],
     inverse: colors.gray.white,
-    info: colors.gray[500],
     positive: colors.positive.main,
     negative: colors.negative.main,
     disabled: colors.gray[300]
@@ -174,9 +170,17 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
     },
     "&.MuiButton-outlined": {
       border: 0,
-      color: colors.text.primary,
+      color: colorMap.background[color],
       backgroundColor: "transparent",
-      boxShadow: `inset 0 0 0 ${theme?.borders.size.small as number}px rgba(0, 0, 0, 0.15)`
+      boxShadow: `inset 0 0 0 ${theme?.borders.size.secondary as number}px ${colorMap.background[color]}`,
+
+      [`&.${PREFIX}-primaryAlt`]: {
+        boxShadow: `inset 0 0 0 1px ${theme.palette.gray[300]}`
+      },
+      [`&.${PREFIX}-secondary`]: {
+        boxShadow: `inset 0 0 0 1px ${colorMap.background[color]}`,
+        color: theme.palette.gray[900]
+      }
     },
     "&.MuiButton-text": {
       color: colorMap.text[color],
@@ -236,7 +240,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         bottom: -1,
         width: "100%",
         margin: "auto",
-        borderBottom: `3px solid ${colors.primary.main}`,
+        borderBottom: `${theme?.borders.size.secondary as number}px solid ${colors.primary.main}`,
         transition: theme?.transitions.create(["width"])
       },
       "&:active, &:hover, &:focus": {
@@ -244,9 +248,6 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
           width: 0
         }
       }
-    },
-    [`&.${PREFIX}-info`]: {
-      boxShadow: "none !important"
     }
   }
 })
@@ -257,7 +258,7 @@ const Button: React.FC<ButtonProps> = ({
   placeholder,
   color = "primary",
   variant = "contained",
-  size,
+  size = "sm",
   disabled = false,
   startIcon,
   endIcon,

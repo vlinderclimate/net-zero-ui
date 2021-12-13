@@ -5,7 +5,7 @@ import colors from "../theme/colors"
 import EndAdornment, { EndAdornmentProps } from "./EndAdornment"
 import { InputProps, formCommonStyles, getPadding, getFontSize, getLineHeight } from "./Input"
 
-export interface TextFieldProps extends Omit<MuiTextFieldProps, "color" | "size" | "InputProps"> {
+export interface TextFieldProps extends Omit<MuiTextFieldProps, "color" | "variant" | "size" | "InputProps"> {
   /**
    * The color of the component. The prop defaults to the value (`'secondary'`)
    */
@@ -22,6 +22,10 @@ export interface TextFieldProps extends Omit<MuiTextFieldProps, "color" | "size"
    * If not undefined, an action button is rendered as part of end adornment.
    */
   actionButtonProps?: EndAdornmentProps["actionButtonProps"]
+  /**
+   * The variant of the component. The prop defaults to the value (`'filled'`)
+   */
+  variant?: "filled" | "outlined" | "standard"
 }
 
 interface StyledTextFieldProps extends Omit<TextFieldProps, "color" | "InputProps"> {
@@ -78,14 +82,16 @@ const TextField: React.FC<TextFieldProps> = forwardRef(
           error,
           color,
           disabled,
-          className: `Input-${variant}`,
-          endAdornment: (
+          className: `Input-${variant as string}`,
+          endAdornment: inputProps?.endAdornment ? (
             <EndAdornment
               size={size}
               error={error}
               actionButtonProps={actionButtonProps}
               endAdornment={inputProps?.endAdornment}
             />
+          ) : (
+            false
           )
         }}
         {...props}
