@@ -63,11 +63,6 @@ declare module "@mui/material/styles" {
     fontSizeM: 23
     fontSizeL: 27
     fontSizeXl1: 28
-    fontSizeXl2: 30
-    fontSizeXl3: 32
-    fontSizeXl4: 40
-    fontSizeXl5: 64
-    fontSizeXl6: 120
 
     fontWeightLight: 300
     fontWeightNormal: 400
@@ -85,10 +80,6 @@ declare module "@mui/material/styles" {
     lineHeightM: "32px"
     lineHeightL: "36px"
     lineHeightXl1: "40px"
-    lineHeightXl2: "44px"
-    lineHeightXl3: "60px"
-    lineHeightXl4: "68px"
-    lineHeightXl5: "100px"
   }
   interface TypographyVariantsOptions {
     fontFamilyHeadline?: string
@@ -111,22 +102,15 @@ declare module "@mui/material/styles" {
     button2?: React.CSSProperties
     button3?: React.CSSProperties
     button4?: React.CSSProperties
+    button1Mobile?: React.CSSProperties
+    button2Mobile?: React.CSSProperties
+    button3Mobile?: React.CSSProperties
+    button4Mobile?: React.CSSProperties
     supporting?: React.CSSProperties
     supportingBold?: React.CSSProperties
-    subtitle1?: React.CSSProperties
-    subtitle1Bold?: React.CSSProperties
-    subtitle2?: React.CSSProperties
-    subtitle2Bold?: React.CSSProperties
-    subtitle3?: React.CSSProperties
-    subtitle3Bold?: React.CSSProperties
-    subtitle4?: React.CSSProperties
-    subtitle4Bold?: React.CSSProperties
     description?: React.CSSProperties
-    descriptionBold?: React.CSSProperties
     callout?: React.CSSProperties
-    calloutBold?: React.CSSProperties
     caption?: React.CSSProperties
-    captionBold?: React.CSSProperties
 
     fontSizeXs5?: number
     fontSizeXs4?: number
@@ -137,11 +121,14 @@ declare module "@mui/material/styles" {
     fontSizeM?: number
     fontSizeL?: number
     fontSizeXl1?: number
-    fontSizeXl2?: number
-    fontSizeXl3?: number
-    fontSizeXl4?: number
-    fontSizeXl5?: number
-    fontSizeXl6?: number
+    fontSizeXs4Mobile?: number
+    fontSizeXs3Mobile?: number
+    fontSizeXs2Mobile?: number
+    fontSizeXs1Mobile?: number
+    fontSizeSMobile?: number
+    fontSizeMMobile?: number
+    fontSizeLMobile?: number
+    fontSizeXl1Mobile?: number
 
     fontWeightLight?: number
     fontWeightNormal?: number
@@ -158,10 +145,14 @@ declare module "@mui/material/styles" {
     lineHeightM?: string
     lineHeightL?: string
     lineHeightXl1?: string
-    lineHeightXl2?: string
-    lineHeightXl3?: string
-    lineHeightXl4?: string
-    lineHeightXl5?: string
+    lineHeightXs4Mobile?: string
+    lineHeightXs3Mobile?: string
+    lineHeightXs2Mobile?: string
+    lineHeightXs1Mobile?: string
+    lineHeightSMobile?: string
+    lineHeightMMobile?: string
+    lineHeightLMobile?: string
+    lineHeightXl1Mobile?: string
   }
 }
 
@@ -187,16 +178,12 @@ declare module "@mui/material/Typography" {
     button2: true
     button3: true
     button4: true
+    button1Mobile: true
+    button2Mobile: true
+    button3Mobile: true
+    button4Mobile: true
     supporting: true
     supportingBold: true
-    subtitle1: true
-    subtitle1Bold: true
-    subtitle2: true
-    subtitle2Bold: true
-    subtitle3: true
-    subtitle3Bold: true
-    subtitle4: true
-    subtitle4Bold: true
     description: true
     descriptionBold: true
     callout: true

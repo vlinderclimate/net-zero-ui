@@ -10,35 +10,28 @@ export const TypographyVariants = [
   "h1",
   "h2",
   "h3",
+  "h3Medium",
+  "h3Bold",
   "h4",
   "h5",
   "h6",
   "heroParagraph",
-  "title1",
-  "title2",
-  "title3",
-  "title4",
-  "title5",
+  "heroParagraphBold",
+  "heroParagraphMedium",
+  "caption",
+  "captionMedium",
+  "captionBold",
   "button1",
   "button2",
   "button3",
   "button4",
-  "supporting",
-  "supportingBold",
-  "subtitle1",
-  "subtitle1Bold",
-  "subtitle2",
-  "subtitle2Bold",
-  "subtitle3",
-  "subtitle3Bold",
-  "subtitle4",
-  "subtitle4Bold",
   "description",
   "descriptionBold",
   "callout",
   "calloutBold",
-  "caption",
-  "captionBold"
+
+  "supporting",
+  "supportingUppercase"
 ] as const
 type TypographyVariant = typeof TypographyVariants[number]
 
@@ -88,6 +81,26 @@ const customizedVariants = {
       }
     })
   },
+  h3Medium: {
+    element: "h3",
+    styles: (theme: Theme) => ({
+      ...typography.h3.main,
+      fontWeight: theme.typography.fontWeightMedium,
+      [theme.breakpoints.down("md")]: {
+        ...typography.h3.mobile
+      }
+    })
+  },
+  h3Bold: {
+    element: "h3",
+    styles: (theme: Theme) => ({
+      ...typography.h3.main,
+      fontWeight: theme.typography.fontWeightBold,
+      [theme.breakpoints.down("md")]: {
+        ...typography.h3.mobile
+      }
+    })
+  },
   h4: {
     element: "h4",
     styles: (theme: Theme) => ({
@@ -119,6 +132,26 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.heroParagraph.main,
+      [theme.breakpoints.down("md")]: {
+        ...typography.heroParagraph.mobile
+      }
+    })
+  },
+  heroParagraphBold: {
+    element: "p",
+    styles: (theme: Theme) => ({
+      ...typography.heroParagraph.main,
+      fontWeight: theme.typography.fontWeightBold,
+      [theme.breakpoints.down("md")]: {
+        ...typography.heroParagraph.mobile
+      }
+    })
+  },
+  heroParagraphMedium: {
+    element: "p",
+    styles: (theme: Theme) => ({
+      ...typography.heroParagraph.main,
+      fontWeight: theme.typography.fontWeightMedium,
       [theme.breakpoints.down("md")]: {
         ...typography.heroParagraph.mobile
       }
@@ -205,101 +238,6 @@ const customizedVariants = {
       }
     })
   },
-  supporting: {
-    element: "p",
-    styles: (theme: Theme) => ({
-      ...typography.supporting.main,
-      [theme.breakpoints.down("md")]: {
-        ...typography.supporting.mobile
-      }
-    })
-  },
-  supportingBold: {
-    element: "p",
-    styles: (theme: Theme) => ({
-      ...typography.supporting.main,
-      fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
-        ...typography.supporting.mobile
-      }
-    })
-  },
-  subtitle1: {
-    element: "h3",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle1.main,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle1.mobile
-      }
-    })
-  },
-  subtitle1Bold: {
-    element: "h3",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle1.main,
-      fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle1.mobile
-      }
-    })
-  },
-  subtitle2: {
-    element: "h4",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle2.main,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle2.mobile
-      }
-    })
-  },
-  subtitle2Bold: {
-    element: "h4",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle2.main,
-      fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle2.mobile
-      }
-    })
-  },
-  subtitle3: {
-    element: "h5",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle3.main,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle3.mobile
-      }
-    })
-  },
-  subtitle3Bold: {
-    element: "h5",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle3.main,
-      fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle3.mobile
-      }
-    })
-  },
-  subtitle4: {
-    element: "h6",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle4.main,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle4.mobile
-      }
-    })
-  },
-  subtitle4Bold: {
-    element: "h6",
-    styles: (theme: Theme) => ({
-      ...typography.subtitle4.main,
-      fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
-        ...typography.subtitle4.mobile
-      }
-    })
-  },
   description: {
     element: "p",
     styles: (theme: Theme) => ({
@@ -316,6 +254,35 @@ const customizedVariants = {
       fontWeight: theme.typography.fontWeightBold,
       [theme.breakpoints.down("md")]: {
         ...typography.description.mobile
+      }
+    })
+  },
+  caption: {
+    element: "p",
+    styles: (theme: Theme) => ({
+      ...typography.caption.main,
+      [theme.breakpoints.down("md")]: {
+        ...typography.caption.mobile
+      }
+    })
+  },
+  captionMedium: {
+    element: "p",
+    styles: (theme: Theme) => ({
+      ...typography.caption.main,
+      fontWeight: theme.typography.fontWeightMedium,
+      [theme.breakpoints.down("md")]: {
+        ...typography.caption.mobile
+      }
+    })
+  },
+  captionBold: {
+    element: "p",
+    styles: (theme: Theme) => ({
+      ...typography.caption.main,
+      fontWeight: theme.typography.fontWeightBold,
+      [theme.breakpoints.down("md")]: {
+        ...typography.caption.mobile
       }
     })
   },
@@ -338,22 +305,23 @@ const customizedVariants = {
       }
     })
   },
-  caption: {
-    element: "span",
+  supporting: {
+    element: "p",
     styles: (theme: Theme) => ({
-      ...typography.caption.main,
+      ...typography.supporting.main,
       [theme.breakpoints.down("md")]: {
-        ...typography.caption.mobile
+        ...typography.supporting.mobile
       }
     })
   },
-  captionBold: {
-    element: "span",
+  supportingUppercase: {
+    element: "p",
     styles: (theme: Theme) => ({
-      ...typography.caption.main,
-      fontWeight: theme.typography.fontWeightBold,
+      ...typography.supporting.main,
+      letterSpacing: 0.6,
+      textTransform: "uppercase",
       [theme.breakpoints.down("md")]: {
-        ...typography.caption.mobile
+        ...typography.supporting.mobile
       }
     })
   }

@@ -10,6 +10,7 @@ declare module "@mui/material/styles/createPalette" {
     negative: PaletteColor
     text: TypeText
     icon: TypeText
+    gradient: Gradients
 
     // Unnecessary properties
     action?: undefined
@@ -70,6 +71,17 @@ declare module "@mui/material/styles/createPalette" {
     contrastText?: undefined
   }
 
+  interface Gradients {
+    violetToRed: string
+    orangeToViolet: string
+    violetToBlue: string
+    violetToTurquoise: string
+    blueToTurquoise: string
+    yellowToTurquoise: string
+    greenToOrange: string
+    yellowToPink: string
+  }
+
   interface TypeText {
     primary: string
     secondary: string
@@ -105,8 +117,13 @@ declare module "@mui/material/styles/createPalette" {
 
   interface BaseColors {
     violet: {
+      light: string
       main: string
     }
+    turquoise: {
+      light: string
+      main: string
+    },
     green: {
       light: string
       main: string
@@ -119,18 +136,31 @@ declare module "@mui/material/styles/createPalette" {
       light: string
       main: string
     }
-    yellow: {
+    pink: {
       light: string
       main: string
     }
+    yellow: {
+      light: string
+      main: string
+    },
+    orange: {
+      light: string,
+      main: string
+    },
     gray: {
       white: string
-      100: string
+      200: string
       300: string
+      400: string
       500: string
-      700: string
-      900: string
-      950: string
+      a500: string
+      600: string
+      a600: string
+      700: string,
+      a700: string
+      800: string,
+      black: string
     }
   }
 }

@@ -24,10 +24,10 @@ export interface AlertProps extends Omit<MuiAlertProps, "color"> {
 }
 
 export const backgroundMap: Record<AlertColor, string> = {
-  warning: colors.yellow.light,
-  success: colors.green.light,
-  error: colors.red.light,
-  info: colors.blue.light
+  warning: `${colors.yellow.light}55`,
+  success: `${colors.green.light}55`,
+  error: `${colors.red.light}55`,
+  info: `${colors.blue.light}55`
 }
 
 export const colorMap: Record<AlertColor, string> = {
@@ -41,7 +41,7 @@ const StyledAlert = styled(MuiAlert)<AlertProps>(({ color, icon, rounded, align,
   fontSize: theme.typography.fontSizeXs2,
   lineHeight: theme.typography.lineHeightS,
   fontWeight: theme.typography.fontWeightMedium,
-  padding: theme.spacing(1.5, 2),
+  padding: theme.spacing(1.4, 2.5, 1.5),
   alignItems: "flex-start",
   justifyContent: align ?? "flex-start",
   backgroundColor: backgroundMap[color ?? "info"],

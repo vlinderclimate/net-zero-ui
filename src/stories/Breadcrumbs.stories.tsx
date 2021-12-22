@@ -7,14 +7,14 @@ import Breadcrumbs, { BreadcrumbsProps } from "../components/Breadcrumbs"
 
 const links = [
   <Link href="/">
-    <Typography variant="description" color="primary">
+    <Typography variant="caption" color="primary">
       Home
     </Typography>
   </Link>,
-  <Typography variant="description" color="secondary">
+  <Typography variant="caption" color="secondary">
     Projects
   </Typography>,
-  <Typography variant="description" color="secondary">
+  <Typography variant="caption" color="secondary">
     Sri Lanka
   </Typography>
 ]

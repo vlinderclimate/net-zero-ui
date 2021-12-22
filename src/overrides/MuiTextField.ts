@@ -19,7 +19,7 @@ const MuiTextField = {
       // color
       backgroundColor: `${colors.gray.white} !important`,
       "&.MuiInputBase-colorSecondary": {
-        backgroundColor: `${colors.gray[100]} !important`
+        backgroundColor: `${colors.gray[200]} !important`
       },
       "&.Mui-focused": {
         boxShadow: `0 0 0 3px ${colors.primary.main}`

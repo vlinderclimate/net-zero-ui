@@ -57,7 +57,7 @@ export const colorMap = new Map<CardColorVariants, string>([
 
 export const backgroundMap = new Map<CardColorVariants, string>([
   [CardColorVariants.Initial, colors.gray.white],
-  [CardColorVariants.Muted, colors.gray[100]],
+  [CardColorVariants.Muted, colors.gray[200]],
   [CardColorVariants.Primary, colors.primary.main],
   [CardColorVariants.Secondary, colors.secondary.main],
   [CardColorVariants.Positive, colors.green.light],

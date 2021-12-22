@@ -49,12 +49,17 @@ export const IconKeyVariants = [
   "update",
   "facebook",
   "cart",
-  "menu"
+  "menu",
+  "verify",
+  "showPassword",
+  "hidePassword",
+  "sprout",
+  "collection"
 ] as const
 
 export type IconKeyVariant = typeof IconKeyVariants[number]
 
-export const IconSizeVariants = ["xxs", "xs", "sm", "md", "lg", "xlg", "xxlg"] as const
+export const IconSizeVariants = ["xs", "sm", "md", "lg"] as const
 
 export type IconSizeVariant = typeof IconSizeVariants[number]
 export interface IconProps {
@@ -116,27 +121,26 @@ export const iconMap: Record<IconKeyVariant, ReactNode> = {
   update: <I.Update />,
   facebook: <I.Facebook />,
   cart: <I.Cart />,
-  menu: <I.Menu />
+  menu: <I.Menu />,
+  verify: <I.Verify />,
+  sprout: <I.Sprout />,
+  showPassword: <I.ShowPassword />,
+  hidePassword: <I.HidePassword />,
+  collection: <I.Collection />
 }
 
 export const iconSizeMap: Record<IconSizeVariant, number> = {
-  xxs: 16,
   xs: 16,
   sm: 20,
   md: 24,
-  lg: 32,
-  xlg: 72,
-  xxlg: 80
+  lg: 32
 }
 
 export const iconMobileSizeMap: Record<IconSizeVariant, number> = {
-  xxs: 10,
   xs: 16,
   sm: 16,
   md: 20,
-  lg: 24,
-  xlg: 32,
-  xxlg: 72
+  lg: 24
 }
 
 /**

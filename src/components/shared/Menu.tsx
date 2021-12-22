@@ -30,9 +30,10 @@ const MenuItem = styled(MuiMenuItem)(({ theme }) => ({
   },
   "& .MuiLink-root": {
     padding: theme.spacing(1, 2.5),
-    fontSize: theme.typography.fontSizeXs2,
+    fontSize: theme.typography.fontSizeXs1,
     fontWeight: theme.typography.fontWeightMedium,
     transition: theme.transitions.create(["color"]),
+    color: theme.palette.text.primary,
 
     "&:hover": {
       color: theme.palette.primary.main,

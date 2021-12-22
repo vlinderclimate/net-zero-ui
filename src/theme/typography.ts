@@ -12,35 +12,87 @@ export const fontFamily = {
 }
 
 export const fontSize: {
-  xs5: 10
-  xs4: 11
-  xs3: 15
-  xs2: 18
-  xs1: 19
+  xs5: 11
+  xs4: 12
+  xs3: 13
+  xs2: 15
+  xs1: 18
   s: 21
-  m: 24
-  l: 27
-  xl1: 28
-  xl2: 30
-  xl3: 32
-  xl4: 40
-  xl5: 64
-  xl6: 120
+  m: 32
+  l: 40
+  xl1: 64
 } = {
-  xs5: 10,
-  xs4: 11,
-  xs3: 15,
-  xs2: 18,
-  xs1: 19,
+  xs5: 11,
+  xs4: 12,
+  xs3: 13,
+  xs2: 15,
+  xs1: 18,
   s: 21,
-  m: 24,
-  l: 27,
-  xl1: 28,
-  xl2: 30,
-  xl3: 32,
-  xl4: 40,
-  xl5: 64,
-  xl6: 120
+  m: 32,
+  l: 40,
+  xl1: 64
+}
+
+export const lineHeight: {
+  xs5: "16px",
+  xs4: "18px"
+  xs3: "20px"
+  xs2: "24px"
+  xs1: "28px"
+  s: "30px"
+  m: "38px"
+  l: "44px"
+  xl1: "64px"
+} = {
+  xs5: "16px",
+  xs4: "18px",
+  xs3: "20px",
+  xs2: "24px",
+  xs1: "28px",
+  s: "30px",
+  m: "38px",
+  l: "44px",
+  xl1: "64px"
+}
+
+export const fontSizeMobile: {
+  xs4: 9
+  xs3: 10
+  xs2: 12
+  xs1: 14
+  s: 16
+  m: 20
+  l: 24
+  xl1: 40
+} = {
+  xs4: 9,
+  xs3: 10,
+  xs2: 12,
+  xs1: 14,
+  s: 16,
+  m: 20,
+  l: 24,
+  xl1: 40
+}
+
+export const lineHeightMobile: {
+  xs4: "10px"
+  xs3: "14px"
+  xs2: "16px"
+  xs1: "20px"
+  s: "21px"
+  m: "24px"
+  l: "28px"
+  xl1: "40px"
+} = {
+  xs4: "10px",
+  xs3: "14px",
+  xs2: "16px",
+  xs1: "20px",
+  s: "21px",
+  m: "24px",
+  l: "28px",
+  xl1: "40px"
 }
 
 export const fontWeight: { light: 300; normal: 400; medium: 500; semi: 600; bold: 700; black: 800 } = {
@@ -52,107 +104,123 @@ export const fontWeight: { light: 300; normal: 400; medium: 500; semi: 600; bold
   black: 800
 }
 
-export const lineHeight: {
-  xs5: "12px"
-  xs4: "16px"
-  xs3: "20px"
-  xs2: "22px"
-  xs1: "25px"
-  s: "28px"
-  m: "32px"
-  l: "36px"
-  xl1: "38px"
-  xl2: "48px"
-  xl3: "60px"
-  xl4: "68px"
-  xl5: "100px"
-} = {
-  xs5: "12px",
-  xs4: "16px",
-  xs3: "20px",
-  xs2: "22px",
-  xs1: "25px",
-  s: "28px",
-  m: "32px",
-  l: "36px",
-  xl1: "38px",
-  xl2: "48px",
-  xl3: "60px",
-  xl4: "68px",
-  xl5: "100px"
-}
-
 const typography = {
   hero: {
     main: {
       fontFamily: fontFamily.headline,
       fontWeight: fontWeight.bold,
-      fontSize: fontSize.xl5,
-      lineHeight: lineHeight.xl4,
-      letterSpacing: -5
+      fontSize: fontSize.xl1,
+      lineHeight: lineHeight.xl1,
+      letterSpacing: -0.5
     },
     mobile: {
-      fontSize: fontSize.m,
-      lineHeight: lineHeight.s,
-      letterSpacing: "normal"
+      fontSize: fontSizeMobile.xl1,
+      lineHeight: lineHeightMobile.xl1
     }
   },
   h1: {
     main: {
       fontFamily: fontFamily.headline,
       fontWeight: fontWeight.bold,
-      fontSize: fontSize.xl5,
-      lineHeight: lineHeight.xl4,
-      letterSpacing: -2
+      fontSize: fontSize.l,
+      lineHeight: lineHeight.l,
+      letterSpacing: -0.5
     },
     mobile: {
-      fontSize: fontSize.xl4,
-      lineHeight: lineHeight.xl3,
-      letterSpacing: "normal"
+      fontSize: fontSizeMobile.l,
+      lineHeight: lineHeightMobile.l
     }
   },
   h2: {
     main: {
       fontFamily: fontFamily.headline,
       fontWeight: fontWeight.bold,
-      fontSize: fontSize.xl4,
-      lineHeight: lineHeight.xl2,
-      letterSpacing: -1
-    },
-    mobile: {
       fontSize: fontSize.m,
       lineHeight: lineHeight.m,
       letterSpacing: -0.5
+    },
+    mobile: {
+      fontSize: fontSizeMobile.m,
+      lineHeight: lineHeightMobile.m
     }
   },
   h3: {
     main: {
       fontFamily: fontFamily.headline,
-      fontWeight: fontWeight.bold,
-      fontSize: fontSize.xl3,
-      lineHeight: lineHeight.xl1,
-      letterSpacing: -1
+      fontWeight: fontWeight.normal,
+      fontSize: fontSize.s,
+      lineHeight: lineHeight.xs1,
+      letterSpacing: -0.25
     },
     mobile: {
-      fontSize: fontSize.s,
-      lineHeight: lineHeight.s,
-      letterSpacing: "normal"
+      fontSize: fontSizeMobile.s,
+      lineHeight: lineHeightMobile.m
     }
   },
   heroParagraph: {
     main: {
       fontFamily: fontFamily.headline,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.xl1,
-      lineHeight: lineHeight.l,
-      letterSpacing: -1
+      fontWeight: fontWeight.medium,
+      fontSize: fontSize.xs1,
+      lineHeight: lineHeight.s,
+      letterSpacing: 0.25
     },
     mobile: {
-      fontSize: fontSize.s,
-      lineHeight: lineHeight.s,
-      letterSpacing: "normal"
+      fontSize: fontSizeMobile.xs1,
+      lineHeight: lineHeightMobile.s
     }
   },
+  caption: {
+    main: {
+      fontFamily: fontFamily.headline,
+      fontWeight: fontWeight.normal,
+      fontSize: fontSize.xs2,
+      lineHeight: lineHeight.xs2
+    },
+    mobile: {
+      fontSize: fontSizeMobile.xs2,
+      lineHeight: lineHeightMobile.xs1
+    }
+  },
+  description: {
+    main: {
+      fontFamily: fontFamily.body,
+      fontWeight: fontWeight.normal,
+      fontSize: fontSize.xs3,
+      lineHeight: lineHeight.xs3
+    },
+    mobile: {
+      fontSize: fontSizeMobile.xs3,
+      lineHeight: lineHeightMobile.xs2
+    }
+  },
+  callout: {
+    main: {
+      fontFamily: fontFamily.body,
+      fontWeight: fontWeight.normal,
+      fontSize: fontSize.xs4,
+      lineHeight: lineHeight.xs5
+    },
+    mobile: {
+      fontSize: fontSizeMobile.xs3,
+      lineHeight: lineHeightMobile.xs2
+    }
+  },
+  supporting: {
+    main: {
+      fontFamily: fontFamily.headline,
+      fontWeight: fontWeight.medium,
+      fontSize: fontSize.xs5,
+      lineHeight: lineHeight.xs5,
+      letterSpacing: 0.6
+    },
+    mobile: {
+      fontSize: fontSizeMobile.xs3,
+      lineHeight: lineHeightMobile.xs3
+    }
+  },
+
+  // ????
   title1: {
     main: {
       fontFamily: fontFamily.headline,
@@ -193,8 +261,8 @@ const typography = {
     main: {
       fontFamily: fontFamily.headline,
       fontWeight: fontWeight.medium,
-      fontSize: fontSize.xs1,
-      lineHeight: lineHeight.xs1
+      fontSize: fontSize.xs2,
+      lineHeight: lineHeight.xs4
     },
     mobile: {
       fontSize: fontSize.xs2,
@@ -207,104 +275,6 @@ const typography = {
       fontWeight: fontWeight.medium,
       fontSize: fontSize.xs2,
       lineHeight: lineHeight.xs1
-    },
-    mobile: {
-      fontSize: fontSize.xs3,
-      lineHeight: lineHeight.xs2
-    }
-  },
-  supporting: {
-    main: {
-      fontFamily: fontFamily.headline,
-      fontWeight: fontWeight.medium,
-      fontSize: fontSize.xs4,
-      lineHeight: lineHeight.xs4,
-      letterSpacing: "0.03em"
-    },
-    mobile: {
-      fontSize: 9,
-      lineHeight: "11px"
-    }
-  },
-  subtitle1: {
-    main: {
-      fontFamily: fontFamily.body,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.xl2,
-      lineHeight: lineHeight.xl2
-    },
-    mobile: {
-      fontSize: fontSize.xl1,
-      lineHeight: lineHeight.l
-    }
-  },
-  subtitle2: {
-    main: {
-      fontFamily: fontFamily.body,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.xl1,
-      lineHeight: lineHeight.l
-    },
-    mobile: {
-      fontSize: fontSize.l,
-      lineHeight: lineHeight.l
-    }
-  },
-  subtitle3: {
-    main: {
-      fontFamily: fontFamily.body,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.l,
-      lineHeight: lineHeight.l
-    },
-    mobile: {
-      fontSize: fontSize.m,
-      lineHeight: lineHeight.l
-    }
-  },
-  subtitle4: {
-    main: {
-      fontFamily: fontFamily.body,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.m,
-      lineHeight: lineHeight.l
-    },
-    mobile: {
-      fontSize: fontSize.s,
-      lineHeight: lineHeight.m
-    }
-  },
-  description: {
-    main: {
-      fontFamily: fontFamily.body,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.xs3,
-      lineHeight: lineHeight.xs1
-    },
-    mobile: {
-      fontSize: fontSize.xs5,
-      lineHeight: lineHeight.xs4
-    }
-  },
-  callout: {
-    main: {
-      fontFamily: fontFamily.body,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.xs1,
-      lineHeight: lineHeight.s
-    },
-    mobile: {
-      fontSize: fontSize.xs2,
-      lineHeight: lineHeight.xs1
-    }
-  },
-  caption: {
-    main: {
-      fontFamily: fontFamily.body,
-      fontWeight: fontWeight.normal,
-      fontSize: fontSize.xs2,
-      lineHeight: lineHeight.xs2,
-      letterSpacing: "0.25px"
     },
     mobile: {
       fontSize: fontSize.xs3,
@@ -330,55 +300,18 @@ export const typographyTheme = {
   h5: typography.title3.main,
   h6: typography.title4.main,
   heroParagraph: typography.heroParagraph.main,
-  title1: typography.title1.main,
-  title2: typography.title2.main,
-  title3: typography.title3.main,
-  title4: typography.title4.main,
-  title5: typography.title5.main,
   button1: typography.title1.main,
   button2: typography.title3.main,
   button3: typography.title4.main,
   button4: typography.title5.main,
+  button1Mobile: typography.title1.mobile,
+  button2Mobile: typography.title3.mobile,
+  button3Mobile: typography.title4.mobile,
+  button4Mobile: typography.title5.mobile,
   supporting: typography.supporting.main,
-  supportingBold: {
-    ...typography.supporting.main,
-    fontWeight: fontWeight.bold
-  },
-  subtitle1: typography.subtitle1.main,
-  subtitle1Bold: {
-    ...typography.subtitle1.main,
-    fontWeight: fontWeight.bold
-  },
-  subtitle2: typography.subtitle2.main,
-  subtitle2Bold: {
-    ...typography.subtitle2.main,
-    fontWeight: fontWeight.bold
-  },
-  subtitle3: typography.subtitle3.main,
-  subtitle3Bold: {
-    ...typography.subtitle3.main,
-    fontWeight: fontWeight.bold
-  },
-  subtitle4: typography.subtitle4.main,
-  subtitle4Bold: {
-    ...typography.subtitle4.main,
-    fontWeight: fontWeight.bold
-  },
   description: typography.description.main,
-  descriptionBold: {
-    ...typography.description.main,
-    fontWeight: fontWeight.bold
-  },
   callout: typography.callout.main,
-  calloutBold: {
-    ...typography.callout.main,
-    fontWeight: fontWeight.bold
-  },
   caption: typography.caption.main,
-  captionBold: {
-    ...typography.caption.main,
-    fontWeight: fontWeight.bold
-  },
 
   // customized values
   fontSizeXs5: fontSize.xs5,
@@ -390,17 +323,14 @@ export const typographyTheme = {
   fontSizeM: fontSize.m,
   fontSizeL: fontSize.l,
   fontSizeXl1: fontSize.xl1,
-  fontSizeXl2: fontSize.xl2,
-  fontSizeXl3: fontSize.xl3,
-  fontSizeXl4: fontSize.xl4,
-  fontSizeXl5: fontSize.xl5,
-  fontSizeXl6: fontSize.xl6,
-
-  fontWeightLight: fontWeight.light,
-  fontWeightNormal: fontWeight.normal,
-  fontWeightMedium: fontWeight.medium,
-  fontWeightSemi: fontWeight.semi,
-  fontWeightBold: fontWeight.bold,
+  fontSizeXs4Mobile: fontSizeMobile.xs4,
+  fontSizeXs3Mobile: fontSizeMobile.xs3,
+  fontSizeXs2Mobile: fontSizeMobile.xs2,
+  fontSizeXs1Mobile: fontSizeMobile.xs1,
+  fontSizeSMobile: fontSizeMobile.s,
+  fontSizeMMobile: fontSizeMobile.m,
+  fontSizeLMobile: fontSizeMobile.l,
+  fontSizeXl1Mobile: fontSizeMobile.xl1,
 
   lineHeightXs5: lineHeight.xs5,
   lineHeightXs4: lineHeight.xs4,
@@ -409,12 +339,22 @@ export const typographyTheme = {
   lineHeightXs1: lineHeight.xs1,
   lineHeightS: lineHeight.s,
   lineHeightM: lineHeight.m,
-  lineHeightL: lineHeight.m,
+  lineHeightL: lineHeight.l,
   lineHeightXl1: lineHeight.xl1,
-  lineHeightXl2: lineHeight.xl3,
-  lineHeightXl3: lineHeight.xl4,
-  lineHeightXl4: lineHeight.xl4,
-  lineHeightXl5: lineHeight.xl5
+  lineHeightXs4Mobile: lineHeightMobile.xs4,
+  lineHeightXs3Mobile: lineHeightMobile.xs3,
+  lineHeightXs2Mobile: lineHeightMobile.xs2,
+  lineHeightXs1Mobile: lineHeightMobile.xs1,
+  lineHeightSMobile: lineHeightMobile.s,
+  lineHeightMMobile: lineHeightMobile.m,
+  lineHeightLMobile: lineHeightMobile.l,
+  lineHeightXl1Mobile: lineHeightMobile.xl1,
+
+  fontWeightLight: fontWeight.light,
+  fontWeightNormal: fontWeight.normal,
+  fontWeightMedium: fontWeight.medium,
+  fontWeightSemi: fontWeight.semi,
+  fontWeightBold: fontWeight.bold
 }
 
 export default typography

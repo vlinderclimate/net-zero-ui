@@ -115,7 +115,7 @@ export const formCommonStyles = (theme: Theme) => ({
     display: "none"
   },
   "&.MuiInputBase-colorSecondary": {
-    backgroundColor: theme.palette.gray[100]
+    backgroundColor: theme.palette.gray[200]
   },
   "& input": {
     height: "auto"

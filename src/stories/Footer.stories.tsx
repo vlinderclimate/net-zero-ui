@@ -107,7 +107,7 @@ const Template: Story<FooterProps> = (args) => {
       <>
         {list?.map((item: any, i: number) => (
           <GridItem key={i} xs={6} sm={4}>
-            <Typography variant="title5" component="div" marginBottom={{ xs: 1, md: 2 }}>
+            <Typography variant="heroParagraph" component="div" marginBottom={{ xs: 1, md: 2 }}>
               {item.subtitle}
             </Typography>
 
@@ -124,7 +124,7 @@ const Template: Story<FooterProps> = (args) => {
                       "&:hover": { color: "brand" }
                     }}
                   >
-                    {item.iconKey && <Icon color="secondary" iconKey={item.iconKey} rotate={0} size="xs" />}
+                    {item.iconKey && <Icon color="supporting" iconKey={item.iconKey} rotate={0} size="sm" />}
                     {item.title}
                   </MuiLink>
                 </ListItem>
