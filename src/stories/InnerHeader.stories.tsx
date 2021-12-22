@@ -56,14 +56,14 @@ const Template: Story<InnerHeaderProps> = (args) => {
           <GridItem xs sm="auto" key={i}>
             <MuiBox display="flex" alignItems="baseline" position="relative">
               {i > 0 && (
-                <Typography color="secondary" variant="title5">
+                <Typography color="secondary" variant="heroParagraph">
                   /
                 </Typography>
               )}
-              <Typography variant={i < 1 ? "h3" : "title5"} mr={0.5} color={i < 1 ? "primary" : "secondary"}>
+              <Typography variant={i < 1 ? "h2" : "heroParagraph"} mr={0.5} color={i < 1 ? "primary" : "supporting"}>
                 {item.value}
               </Typography>
-              <Typography variant="title5" color={i < 1 ? "primary" : "secondary"}>
+              <Typography variant="heroParagraph" color={i < 1 ? "primary" : "supporting"}>
                 {item.title}
               </Typography>
             </MuiBox>

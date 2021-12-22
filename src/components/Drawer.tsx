@@ -10,6 +10,7 @@ export type DrawerSize = "xs" | "sm" | "md" | "safeArea" | "fullScreen"
 
 interface StyledDrawerProps {
   size: DrawerSize
+  scrollable?: boolean
 }
 
 export interface DrawerProps extends MuiSwipeableDrawerProps {
@@ -53,8 +54,8 @@ const sizeLevelMap = {
 }
 const defaultSize = "md"
 
-const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ theme, size }) => ({
-  "& .MuiPaper-root": {
+const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ theme, scrollable, size }) => ({
+  "& > .MuiPaper-root": {
     backgroundColor: theme.palette.gray.white,
     width: sizeMap[size],
     maxWidth: "100%",
@@ -63,6 +64,7 @@ const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ t
       sizeLevelMap[size] === SizeLevel.Large ? 10 : 4
     ),
     boxShadow: "none",
+    overflow: "auto",
 
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing(2),
@@ -85,8 +87,7 @@ const CloseButton = styled(MuiBox)<StyledDrawerProps>(({ theme, size }) => ({
   }
 }))
 
-const Content = styled(MuiBox)<{ scrollable: boolean }>(({ theme, scrollable }) => ({
-  overflow: scrollable ? "auto" : "unset",
+const Content = styled(MuiBox)<{ scrollable?: boolean }>(({ theme, scrollable }) => ({
   maxHeight: `calc(100vh - ${theme.spacing(10)})`
 }))
 
@@ -112,6 +113,7 @@ const Drawer: React.FC<DrawerProps> = ({
       size={size}
       anchor="right"
       BackdropProps={{ timeout: 500, ...backdrop }}
+      scrollable={scrollable}
       {...props}
     >
       {closeButton && (
@@ -121,6 +123,7 @@ const Drawer: React.FC<DrawerProps> = ({
               <Icon
                 iconKey={typeof closeButton !== "string" ? "close" : closeButton}
                 size={sizeLevelMap[size] === SizeLevel.Large && !isMobile ? "md" : "md"}
+                color="secondary"
               />
             }
             variant="outlined"
@@ -132,7 +135,7 @@ const Drawer: React.FC<DrawerProps> = ({
           />
         </CloseButton>
       )}
-      <Content scrollable={scrollable}>{children}</Content>
+      <Content>{children}</Content>
     </StyledSwipeableDrawer>
   )
 }

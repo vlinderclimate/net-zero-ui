@@ -58,13 +58,13 @@ const colorMap: ColorMap = {
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray[300]
+    disabled: colors.gray[400]
   },
   color: {
     primary: colors.text.inversePrimary,
     primaryAlt: colors.text.inversePrimary,
-    secondary: colors.gray[900],
-    secondaryAlt: colors.text.primary,
+    secondary: colors.gray[800],
+    secondaryAlt: colors.text.inversePrimary,
     inverse: colors.text.primary,
     positive: colors.text.inversePrimary,
     negative: colors.text.inversePrimary,
@@ -78,29 +78,29 @@ const colorMap: ColorMap = {
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray[300]
+    disabled: colors.gray[400]
   }
 }
 
 const getFontSize = ({ size, theme }: ExtendedStyledButtonProps) => {
   if (size === "xs") return theme.typography.fontSizeXs3
-  if (size === "sm") return theme.typography.fontSizeXs2
-  if (size === "lg") return theme.typography.fontSizeXs2
-  return theme.typography.fontSizeXs3
+  if (size === "sm") return theme.typography.fontSizeXs1
+  if (size === "lg") return theme.typography.fontSizeXs1
+  return theme.typography.fontSizeXs2
 }
 
 const getFontSizeMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
   if (size === "xs") return 13
   if (size === "sm") return 13
   if (size === "lg") return theme.typography.fontSizeXs1
-  return theme.typography.fontSizeXs3
+  return theme.typography.fontSizeXs2
 }
 
 const getLineHeight = ({ size, theme }: ExtendedStyledButtonProps) => {
   if (size === "xs") return theme.typography.lineHeightXs5
-  if (size === "sm") return theme.typography.lineHeightXs2
-  if (size === "lg") return theme.typography.lineHeightS
-  return theme.typography.lineHeightXs1
+  if (size === "sm") return theme.typography.lineHeightXs3
+  if (size === "lg") return theme.typography.lineHeightXs2
+  return theme.typography.lineHeightXs2
 }
 
 const getLineHeightMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
@@ -112,9 +112,9 @@ const getLineHeightMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
 
 const getPadding = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
   if (size === "xs") return theme.spacing(0.75, onlyIcon ? 0.7 : 1.5, onlyIcon ? 0.7 : 1, onlyIcon ? 0.7 : 1.5)
-  if (size === "sm") return theme.spacing(1, onlyIcon ? 1 : 2, onlyIcon ? 1 : 1.25, onlyIcon ? 1 : 2)
-  if (size === "lg") return theme.spacing(onlyIcon ? 2 : 1.75, onlyIcon ? 2 : 4)
-  return theme.spacing(1.4, onlyIcon ? 1.4 : 4, 1.5)
+  if (size === "sm") return theme.spacing(1.1, onlyIcon ? 1 : 2, onlyIcon ? 1 : 1.45, onlyIcon ? 1 : 2)
+  if (size === "lg") return theme.spacing(onlyIcon ? 2 : 1.9, onlyIcon ? 2 : 5, onlyIcon ? 2 : 2.1, onlyIcon ? 2 : 5)
+  return theme.spacing(1.4, onlyIcon ? 1.4 : 5, 1.6)
 }
 
 const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
@@ -179,11 +179,11 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       boxShadow: `inset 0 0 0 1px ${colorMap.background[color]}`,
 
       [`&.${PREFIX}-primaryAlt`]: {
-        boxShadow: "inset 0 0 0 1px rgba(0, 0, 0, 0.15)"
+        boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`
       },
       [`&.${PREFIX}-secondary`]: {
-        boxShadow: "inset 0 0 0 1px rgba(0, 0, 0, 0.15)",
-        color: theme.palette.gray[900]
+        boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
+        color: theme.palette.gray[800]
       },
       [`&.${PREFIX}-primary`]: {
         boxShadow: `inset 0 0 0 ${theme?.borders.size.secondary as number}px ${colorMap.background[color]}`
@@ -199,7 +199,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         position: "relative",
         transform: "translate(0, 0)",
         display: "inline-blok",
-        top: "2px",
+        top: "3px",
         transition: theme.transitions.create(["transform"])
       },
       "&:hover": {

@@ -6,10 +6,11 @@ export interface ListItemProps extends MuiListItemProps {}
 
 const StyledListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
   marginBottom: theme?.spacing(1),
-  fontSize: theme?.typography.fontSizeXs3,
+  fontSize: theme?.typography.fontSizeXs2,
+  lineHeight: theme?.typography.lineHeightXs4,
 
   ".MuiLink-root": {
-    color: theme.palette.gray[500],
+    color: theme.palette.gray.a700,
     display: "flex",
     alignItems: "center",
     gap: theme.spacing(1),

@@ -72,7 +72,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({
                       variant="text"
                       color="primary"
                       size="sm"
-                      startIcon={<Icon iconKey="cart" size="sm" />}
+                      startIcon={<Icon iconKey="cart" size="md" />}
                       onClick={cartHandler}
                     />
                   </MuiBadge>
