@@ -25,7 +25,7 @@ const SectionTitleComponent: React.FC<SectionTitleProps> = ({
     <MuiBox {...props}>
       {subtitle && (
         <Typography
-          variant="title5"
+          variant="heroParagraph"
           sx={{ fontWeight: "bold" }}
           marginBottom={{ xs: 1, md: 2 }}
           textAlign={align || "left"}
