@@ -2,7 +2,9 @@ import React from "react"
 import { styled } from "@mui/material/styles"
 import MuiListItem, { ListItemProps as MuiListItemProps } from "@mui/material/ListItem"
 
-export interface ListItemProps extends MuiListItemProps {}
+export interface ListItemProps extends MuiListItemProps {
+  as?: any
+}
 
 const StyledListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
   marginBottom: theme?.spacing(1),
@@ -23,12 +25,12 @@ const StyledListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
     }
   },
   [theme?.breakpoints.down("md")]: {
-    fontSize: theme?.typography.fontSizeXs5
+    fontSize: theme?.typography.fontSizeXs4
   }
 }))
 
-const ListItem: React.FC<ListItemProps> = ({ ...props }) => {
-  return <StyledListItem {...props} />
+const ListItem: React.FC<ListItemProps> = ({ as, ...props }) => {
+  return <StyledListItem as={as} {...props} />
 }
 
 export default ListItem

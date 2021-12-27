@@ -13,7 +13,9 @@ export interface FooterProps {
   children?: JSX.Element | JSX.Element[] | string
   logo?: JSX.Element | JSX.Element[] | string
   copyright?: string
+  description?: string
   list?: any
+  security?: JSX.Element | JSX.Element[] | string
   $footerBg?: string
 }
 
@@ -34,6 +36,10 @@ export const FooterBox = styled("footer")<FooterProps>(({ theme, $footerBg = foo
     background: $footerBg ? `url(${$footerBg as string}) no-repeat center bottom / contain` : "none"
   },
 
+  ".inline-list": {
+    display: "flex"
+  },
+
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(5, 0)
   }
@@ -46,27 +52,41 @@ export const LogoColumn = styled(MuiBox)(({ theme }) => ({
   height: "100%",
 
   [theme.breakpoints.down("md")]: {
-    display: "grid",
-    gridAutoFlow: "column",
-    alignItems: "center",
     marginTop: theme.spacing(2)
   }
 }))
 
-const FooterComponent: React.FC<FooterProps> = ({ children, logo, copyright, $footerBg, list, ...props }) => {
+const FooterComponent: React.FC<FooterProps> = ({
+  children,
+  logo,
+  copyright,
+  description,
+  $footerBg,
+  list,
+  security,
+  ...props
+}) => {
   return (
     <FooterBox $footerBg={$footerBg} {...props}>
       <Container>
         <GridContainer justifyContent="space-between" direction={{ xs: "column-reverse", md: "row" }}>
-          <GridItem xs={12} sm={3}>
+          <GridItem xs={12} sm={6} lg={5}>
             <LogoColumn>
               {logo}
-              <Typography variant="description" color="secondary" component="div">
-                {copyright}
+              <Typography variant="caption" component="div" mt={{ xs: 2, md: 0 }}>
+                {description}
               </Typography>
+              <MuiBox display="flex" alignItems="center" mt={{ xs: 2, md: 0 }}>
+                <MuiBox pr={{ xs: 3, md: 5 }}>
+                  <Typography variant="caption" component="div">
+                    {copyright}
+                  </Typography>
+                </MuiBox>
+                <MuiBox>{security}</MuiBox>
+              </MuiBox>
             </LogoColumn>
           </GridItem>
-          <GridItem xs={12} sm={6}>
+          <GridItem xs={12} sm={6} lg={4}>
             <GridContainer>{children}</GridContainer>
           </GridItem>
         </GridContainer>
