@@ -11,7 +11,7 @@ import multi from "rollup-plugin-multi-input"
 const config = {
   input: [
     "src/index.ts",
-    "src/components/*.ts(x)?",
+    "src/components/**/*.ts(x)?",
     "src/core/*.ts(x)?",
     "src/icons/*.ts(x)?",
     "src/theme/*.ts(x)?",

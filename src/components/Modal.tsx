@@ -138,7 +138,7 @@ const BoxWrapper: React.FC<Partial<ModalProps>> = ({
         <CloseButton size={size}>
           <IconButton
             iconProps={{
-              iconKey: typeof closeButton !== "string" ? "closeCircle" : closeButton,
+              iconKey: typeof closeButton !== "string" ? "close" : closeButton,
               size: sizeLevelMap[size] === SizeLevel.Large && !isMobile ? "md" : "sm",
               color: "secondary"
             }}

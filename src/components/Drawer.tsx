@@ -37,7 +37,7 @@ export interface DrawerProps extends MuiSwipeableDrawerProps {
 const sizeMap = {
   xs: 440,
   sm: 580,
-  md: 720,
+  md: 640,
   safeArea: "100%",
   fullScreen: "100%"
 }
@@ -60,8 +60,8 @@ const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ t
     width: sizeMap[size],
     maxWidth: "100%",
     padding: theme.spacing(
-      sizeLevelMap[size] === SizeLevel.Large ? 5.25 : 2,
-      sizeLevelMap[size] === SizeLevel.Large ? 10 : 4
+      sizeLevelMap[size] === SizeLevel.Large ? 3.75 : 2,
+      sizeLevelMap[size] === SizeLevel.Large ? 5 : 3
     ),
     boxShadow: "none",
     overflow: "auto",
@@ -126,8 +126,8 @@ const Drawer: React.FC<DrawerProps> = ({
                 color="secondary"
               />
             }
-            variant="outlined"
-            color="secondary"
+            variant="contained"
+            color="inverse"
             size="md"
             onClick={(event) => {
               if (onClose) onClose(event)

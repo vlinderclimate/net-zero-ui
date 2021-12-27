@@ -120,15 +120,15 @@ const getLineHeightMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
 const getPadding = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
   if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
   if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
-  if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1 : 4.5, 1.4)
-  return theme.spacing(0.75, onlyIcon ? 0.75 : 4.5, 1)
+  if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1.25 : 4.5, onlyIcon ? 1.25 : 1.4)
+  return theme.spacing(0.75, onlyIcon ? 0.75 : 4.5, onlyIcon ? 0.75 : 1)
 }
 
 const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
   if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
   if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
   if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1 : 2.5, 1.4)
-  return theme.spacing(0.75, onlyIcon ? 0.75 : 2.5, 1)
+  return theme.spacing(0.75, onlyIcon ? 0.75 : 2.5, onlyIcon ? 0.75 : 1)
 }
 
 const PREFIX = "Button"
@@ -183,21 +183,20 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         fill: "currentColor !important"
       }
     },
-    "&.MuiButton-contained, &.MuiButton-text": {
-      "& .MuiButton-endIcon": {
-        width: 0,
-        opacity: 0,
-        transform: "translate(-12px, 0)",
-        transition: theme.transitions.create(["all"])
-      },
-      [theme.breakpoints.up("md")]: {
-        "&:hover": {
-          "& .Button-innerText": {
-            transform: "translate(-8px, 0)"
-          },
-          "& .MuiButton-endIcon": {
-            opacity: 1,
-            transform: "translate(-8px, 0)"
+    [`&.${classes.withIcon}`]: {
+      "&.MuiButton-contained, &.MuiButton-text": {
+        "& .MuiButton-endIcon": {
+          width: 0,
+          opacity: 0,
+          transform: "translate(-12px, 0)",
+          transition: theme.transitions.create(["all"])
+        },
+        [theme.breakpoints.up("md")]: {
+          "&:hover": {
+            "& .Button-innerText, & .MuiButton-endIcon": {
+              opacity: 1,
+              transform: "translate(-8px, 0)"
+            }
           }
         }
       }
@@ -216,11 +215,13 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       color: colorMap.outlined[color],
       backgroundColor: "transparent",
       boxShadow: `inset 0 0 0 1px ${colorMap.outlined[color]}`,
-      paddingLeft:
-        size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2),
-      paddingRight:
-        size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2),
 
+      [`&:not(.${classes.withIcon})`]: {
+        paddingLeft:
+          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2),
+        paddingRight:
+          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2)
+      },
       [`&.${PREFIX}-primary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
         color: theme.palette.gray[800],
@@ -240,10 +241,12 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         color: theme.palette.blue.main
       },
       [theme.breakpoints.down("sm")]: {
-        paddingLeft:
-          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2),
-        paddingRight:
-          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2)
+        [`&:not(.${classes.withIcon})`]: {
+          paddingLeft:
+            size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2),
+          paddingRight:
+            size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2)
+        }
       }
     },
     "&.MuiButton-text": {
