@@ -23,9 +23,11 @@ export interface HeaderProps {
 export const HeaderBox = styled("header")(({ theme }) => ({
   margin: "0 auto 2px auto",
   padding: theme.spacing(4, 0),
-  position: "absolute",
+  position: "fixed",
   zIndex: 100,
   width: "100%",
+  background: "rgba(255,255,255,0.2)",
+  backdropFilter: "blur(1rem)",
 
   [theme.breakpoints.down("lg")]: {
     padding: "12px 0",

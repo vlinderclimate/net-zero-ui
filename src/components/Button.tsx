@@ -215,13 +215,6 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       color: colorMap.outlined[color],
       backgroundColor: "transparent",
       boxShadow: `inset 0 0 0 1px ${colorMap.outlined[color]}`,
-
-      [`&:not(.${classes.withIcon})`]: {
-        paddingLeft:
-          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2),
-        paddingRight:
-          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2)
-      },
       [`&.${PREFIX}-primary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
         color: theme.palette.gray[800],
@@ -239,14 +232,6 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       [`&.${PREFIX}-secondaryAlt`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.blue.main}`,
         color: theme.palette.blue.main
-      },
-      [theme.breakpoints.down("sm")]: {
-        [`&:not(.${classes.withIcon})`]: {
-          paddingLeft:
-            size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2),
-          paddingRight:
-            size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2)
-        }
       }
     },
     "&.MuiButton-text": {
