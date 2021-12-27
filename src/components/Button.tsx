@@ -5,13 +5,13 @@ import { Theme, styled } from "@mui/material/styles"
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button"
 
 import colors from "../theme/colors"
+import { fontWeight, lineHeightMobile, fontSizeMobile } from "../theme/typography"
 
 /**
  * Types
  */
 export const ButtonColorVariants = [
   "primary",
-  "primaryAlt",
   "secondary",
   "secondaryAlt",
   "inverse",
@@ -42,6 +42,7 @@ interface StyledButtonProps extends Omit<ButtonProps, "color"> {
 
 interface ColorMap {
   background: Record<ButtonColorVariant, string>
+  outlined: Record<ButtonColorVariant, string>
   color: Record<ButtonColorVariant, string>
   text: Record<ButtonColorVariant, string>
 }
@@ -52,9 +53,8 @@ interface ColorMap {
 const colorMap: ColorMap = {
   background: {
     primary: colors.primary.main,
-    primaryAlt: colors.primary.main,
-    secondary: colors.gray[300],
-    secondaryAlt: colors.text.primary,
+    secondary: colors.text.primary,
+    secondaryAlt: colors.gray[300],
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
@@ -62,74 +62,91 @@ const colorMap: ColorMap = {
   },
   color: {
     primary: colors.text.inversePrimary,
-    primaryAlt: colors.text.inversePrimary,
-    secondary: colors.gray[800],
-    secondaryAlt: colors.text.inversePrimary,
+    secondary: colors.text.inversePrimary,
+    secondaryAlt: colors.gray[800],
     inverse: colors.text.primary,
     positive: colors.text.inversePrimary,
     negative: colors.text.inversePrimary,
-    disabled: colors.text.secondary
+    disabled: colors.gray[600]
   },
-  text: {
+  outlined: {
     primary: colors.text.primary,
-    primaryAlt: colors.primary.main,
     secondary: colors.gray[500],
     secondaryAlt: colors.gray[700],
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray[400]
+    disabled: colors.gray.a500
+  },
+  text: {
+    primary: colors.text.primary,
+    secondary: colors.text.brand,
+    secondaryAlt: colors.gray[700],
+    inverse: colors.gray.white,
+    positive: colors.positive.main,
+    negative: colors.negative.main,
+    disabled: colors.gray.a500
   }
 }
 
 const getFontSize = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.typography.fontSizeXs3
-  if (size === "sm") return theme.typography.fontSizeXs1
+  if (size === "xs") return theme.typography.fontSizeXs2
+  if (size === "sm") return theme.typography.fontSizeXs2
   if (size === "lg") return theme.typography.fontSizeXs1
-  return theme.typography.fontSizeXs2
+  return theme.typography.fontSizeXs1
 }
 
 const getFontSizeMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return 13
-  if (size === "sm") return 13
-  if (size === "lg") return theme.typography.fontSizeXs1
-  return theme.typography.fontSizeXs2
+  if (size === "xs") return fontSizeMobile.xs2
+  if (size === "sm") return fontSizeMobile.xs1
+  if (size === "lg") return fontSizeMobile.xs1
+  return fontSizeMobile.xs1
 }
 
 const getLineHeight = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.typography.lineHeightXs5
-  if (size === "sm") return theme.typography.lineHeightXs3
-  if (size === "lg") return theme.typography.lineHeightXs2
-  return theme.typography.lineHeightXs2
+  if (size === "xs") return theme.typography.lineHeightXs2
+  if (size === "sm") return theme.typography.lineHeightXs2
+  if (size === "lg") return theme.typography.lineHeightS
+  return theme.typography.lineHeightS
 }
 
 const getLineHeightMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.typography.lineHeightXs4
-  if (size === "sm") return theme.typography.lineHeightXs4
-  if (size === "lg") return theme.typography.lineHeightS
-  return theme.typography.lineHeightXs3
+  if (size === "xs") return lineHeightMobile.xs1
+  if (size === "sm") return lineHeightMobile.s
+  if (size === "lg") return lineHeightMobile.s
+  return lineHeightMobile.s
 }
 
 const getPadding = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.spacing(0.75, onlyIcon ? 0.7 : 1.5, onlyIcon ? 0.7 : 1, onlyIcon ? 0.7 : 1.5)
-  if (size === "sm") return theme.spacing(1.1, onlyIcon ? 1 : 2, onlyIcon ? 1 : 1.45, onlyIcon ? 1 : 2)
-  if (size === "lg") return theme.spacing(onlyIcon ? 2 : 1.9, onlyIcon ? 2 : 5, onlyIcon ? 2 : 2.1, onlyIcon ? 2 : 5)
-  return theme.spacing(1.4, onlyIcon ? 1.4 : 5, 1.6)
+  if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
+  if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
+  if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1 : 4.5, 1.4)
+  return theme.spacing(0.75, onlyIcon ? 0.75 : 4.5, 1)
 }
 
 const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.spacing(0.75, onlyIcon ? 0.75 : 1.5, onlyIcon ? 0.75 : 1, onlyIcon ? 0.75 : 1.5)
-  if (size === "sm") return theme.spacing(1, onlyIcon ? 1 : 2, onlyIcon ? 1 : 1.25, onlyIcon ? 1 : 2)
-  if (size === "lg") return theme.spacing(onlyIcon ? 2 : 1.75, onlyIcon ? 2 : 4)
-  return theme.spacing(1.3, onlyIcon ? 1.3 : 3)
+  if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
+  if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
+  if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1 : 2.5, 1.4)
+  return theme.spacing(0.75, onlyIcon ? 0.75 : 2.5, 1)
 }
 
 const PREFIX = "Button"
 
 const classes = {
   root: `${PREFIX}-root`,
+  withIcon: `${PREFIX}-widthIcon`,
   underline: `${PREFIX}-underline`
 }
+
+const ButtonText = styled("span")(({ theme, ...props }) => {
+  return {
+    transitionProperty: "transform",
+    display: "block",
+    position: "relative",
+    transition: theme.transitions.create(["transform"])
+  }
+})
 
 const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) => {
   const { size, $align: align, $color, $onlyIcon: onlyIcon } = props
@@ -138,6 +155,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
   return {
     fontSize: getFontSize({ size, theme }),
     lineHeight: getLineHeight({ size, theme }),
+    fontWeight: fontWeight.normal,
     padding: getPadding({ size, theme, onlyIcon }),
     borderRadius: theme?.borders.radius.rounded,
     justifyContent: align === "left" ? "flex-start" : align === "right" ? "flex-end" : "center",
@@ -145,94 +163,114 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
     position: "relative",
     textTransform: "none",
     whiteSpace: "nowrap",
+    willChange: "transform",
+    fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
     [theme.breakpoints.down("md")]: {
       fontSize: getFontSizeMobile({ size, theme }),
       lineHeight: getLineHeightMobile({ size, theme }),
       padding: getPaddingMobile({ size, theme, onlyIcon })
     },
-
     "&:active, &:hover, &:focus": {
       outline: "none"
     },
     "&.MuiButton-contained": {
       color: colorMap.color[color],
       backgroundColor: colorMap.background[color],
-      boxShadow: size === "lg" ? theme?.boxShadow.lg : theme?.boxShadow.md,
+      boxShadow: "none",
       willChange: "transform",
 
-      "&:hover": {
-        boxShadow: theme?.boxShadow.md,
-        transform: "scale(1.02)"
-      },
-      "&:active": {
-        boxShadow: size === "lg" ? theme?.boxShadow.lg : theme?.boxShadow.md,
-        transform: "scale(0.99)"
-      },
       "& .icon svg path": {
         fill: "currentColor !important"
       }
     },
+    "&.MuiButton-contained, &.MuiButton-text": {
+      "& .MuiButton-endIcon": {
+        width: 0,
+        opacity: 0,
+        transform: "translate(-12px, 0)",
+        transition: theme.transitions.create(["all"])
+      },
+      [theme.breakpoints.up("md")]: {
+        "&:hover": {
+          "& .Button-innerText": {
+            transform: "translate(-8px, 0)"
+          },
+          "& .MuiButton-endIcon": {
+            opacity: 1,
+            transform: "translate(-8px, 0)"
+          }
+        }
+      }
+    },
+    "&.MuiButton-contained, &.MuiButton-outlined": {
+      "&:hover": {
+        boxShadow: "none"
+      },
+      "&:active": {
+        boxShadow: "none",
+        transform: "scale(0.98)"
+      }
+    },
     "&.MuiButton-outlined": {
       border: 0,
-      color: colorMap.background[color],
+      color: colorMap.outlined[color],
       backgroundColor: "transparent",
-      boxShadow: `inset 0 0 0 1px ${colorMap.background[color]}`,
+      boxShadow: `inset 0 0 0 1px ${colorMap.outlined[color]}`,
+      paddingLeft:
+        size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2),
+      paddingRight:
+        size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 3) : theme.spacing(onlyIcon ? 1.3 : 2),
 
-      [`&.${PREFIX}-primaryAlt`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`
+      [`&.${PREFIX}-primary`]: {
+        boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
+        color: theme.palette.gray[800],
+        "&:hover": {
+          color: theme.palette.gray[700]
+        }
       },
       [`&.${PREFIX}-secondary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
-        color: theme.palette.gray[800]
+        color: theme.palette.gray.a700,
+        "&:hover": {
+          color: theme.palette.gray.a600
+        }
       },
-      [`&.${PREFIX}-primary`]: {
-        boxShadow: `inset 0 0 0 ${theme?.borders.size.secondary as number}px ${colorMap.background[color]}`
+      [`&.${PREFIX}-secondaryAlt`]: {
+        boxShadow: `inset 0 0 0 1px ${theme.palette.blue.main}`,
+        color: theme.palette.blue.main
+      },
+      [theme.breakpoints.down("sm")]: {
+        paddingLeft:
+          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2),
+        paddingRight:
+          size === "md" || size === "lg" ? theme.spacing(onlyIcon ? 1.3 : 2.5) : theme.spacing(onlyIcon ? 1.3 : 2)
       }
     },
     "&.MuiButton-text": {
       color: colorMap.text[color],
       backgroundColor: "transparent !important",
       boxShadow: "none !important",
-      padding: 0,
-
-      "& .MuiButton-endIcon": {
-        position: "relative",
-        transform: "translate(0, 0)",
-        display: "inline-blok",
-        top: "3px",
-        transition: theme.transitions.create(["transform"])
-      },
-      "&:hover": {
-        "& .MuiButton-endIcon": {
-          transform: "translate(4px, 0)"
-        }
-      }
+      padding: theme.spacing(0, 2)
     },
     "&.Mui-disabled": {
       transform: "none !important"
     },
-    "&.MuiButton-fullWidth": {
-      "& .MuiButton-endIcon": {
-        position: onlyIcon ? "static" : "absolute",
-        right: theme?.spacing(3),
-        top: "50%",
-        transform: onlyIcon ? "none" : "translate(0, -50%)"
-      }
-    },
     "& .MuiButton-startIcon": {
       marginLeft: onlyIcon ? 0 : theme?.spacing(-1),
-      marginRight: onlyIcon ? 0 : theme?.spacing(0.5),
+      marginRight: onlyIcon ? 0 : theme?.spacing(1),
+      marginTop: onlyIcon ? 0 : 1,
       [theme.breakpoints.down("sm")]: {
-        marginRight: onlyIcon ? 0 : theme?.spacing(0.5),
-        marginLeft: onlyIcon ? 0 : theme?.spacing(-0.5)
+        marginRight: onlyIcon ? 0 : theme?.spacing(1),
+        marginLeft: onlyIcon ? 0 : theme?.spacing(-1)
       }
     },
     "& .MuiButton-endIcon": {
-      marginLeft: onlyIcon ? 0 : theme?.spacing(0.5),
-      marginRight: onlyIcon ? 0 : theme?.spacing(-0.5),
+      marginLeft: onlyIcon ? 0 : theme?.spacing(1),
+      marginRight: onlyIcon ? 0 : theme?.spacing(-1),
+      marginTop: onlyIcon ? 0 : 1,
       [theme.breakpoints.down("sm")]: {
-        marginLeft: onlyIcon ? 0 : theme?.spacing(0.5),
-        marginRight: onlyIcon ? 0 : theme?.spacing(-0.5)
+        marginLeft: onlyIcon ? 0 : theme?.spacing(1),
+        marginRight: onlyIcon ? 0 : theme?.spacing(-1)
       }
     },
     [`&.${classes.underline}`]: {
@@ -272,10 +310,16 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   href,
   linkProps,
+  children,
   ...props
 }) => {
-  const onlyIcon = Boolean(!props.children) && (Boolean(startIcon) ?? Boolean(endIcon))
-  const className = clsx([classes.root, variant === "underline" && classes.underline, `${PREFIX}-${color}`])
+  const onlyIcon = Boolean(!children) && (Boolean(startIcon) ?? Boolean(endIcon))
+  const className = clsx([
+    classes.root,
+    variant === "underline" && classes.underline,
+    `${PREFIX}-${color}`,
+    (endIcon ?? startIcon) && classes.withIcon
+  ])
   const stylingProps = { $onlyIcon: onlyIcon, $color: color, size, $align: align }
 
   return (
@@ -290,7 +334,9 @@ const Button: React.FC<ButtonProps> = ({
       {...stylingProps}
       {...(href && { href, ...linkProps })}
       {...props}
-    />
+    >
+      <ButtonText className={`${PREFIX}-innerText`}>{children}</ButtonText>
+    </StyledButton>
   )
 }
 export default Button
