@@ -6,7 +6,7 @@ export interface LogoProps {
 }
 
 const Logo = styled("div")(({ theme }) => ({
-  display: "inline-block",
+  display: "flex",
   fontSize: 0,
   lineHeight: 0
 }))

@@ -11,13 +11,13 @@ export const AccountBox = styled(MuiBox)(({ theme }) => ({
 }))
 
 export const AccountImage = styled("img")(({ theme }) => ({
-  width: theme.spacing(4),
-  height: theme.spacing(4),
+  width: theme.spacing(3.5),
+  height: theme.spacing(3.5),
   borderRadius: "100%",
-  margin: "-5px -11px -7px",
+  margin: "-2px -12px -9px",
 
   [theme.breakpoints.down("lg")]: {
-    margin: "-4px -12px -6px"
+    margin: "-2px -12px -9px"
   }
 }))
 

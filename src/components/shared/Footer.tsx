@@ -73,10 +73,10 @@ const FooterComponent: React.FC<FooterProps> = ({
           <GridItem xs={12} sm={6} lg={5}>
             <LogoColumn>
               {logo}
-              <Typography variant="caption" component="div" mt={{ xs: 2, md: 0 }}>
+              <Typography variant="caption" component="div" mt={{ xs: 1, md: 2 }}>
                 {description}
               </Typography>
-              <MuiBox display="flex" alignItems="center" mt={{ xs: 2, md: 0 }}>
+              <MuiBox display="flex" alignItems="center" mt={{ xs: 1, md: 3 }}>
                 <MuiBox pr={{ xs: 3, md: 5 }}>
                   <Typography variant="caption" component="div">
                     {copyright}
@@ -86,7 +86,7 @@ const FooterComponent: React.FC<FooterProps> = ({
               </MuiBox>
             </LogoColumn>
           </GridItem>
-          <GridItem xs={12} sm={6} lg={4}>
+          <GridItem xs={12} sm={5}>
             <GridContainer>{children}</GridContainer>
           </GridItem>
         </GridContainer>
