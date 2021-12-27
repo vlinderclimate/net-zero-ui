@@ -7,18 +7,27 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import typescript from "rollup-plugin-typescript2"
 import remove from "rollup-plugin-delete"
 import multi from "rollup-plugin-multi-input"
-import image from "@rollup/plugin-image"
 
 const config = {
-  input: ["./src/**/*.ts(x)?"],
+  input: [
+    "src/index.ts",
+    "src/components/*.ts(x)?",
+    "src/core/*.ts(x)?",
+    "src/icons/*.ts(x)?",
+    "src/theme/*.ts(x)?",
+    "src/overrides/*.ts(x)?"
+  ],
   output: [{ dir: "lib", format: "esm", exports: "named" }],
   plugins: [
     multi(),
     peerDepsExternal(),
     resolve(),
     commonjs(),
-    typescript(),
-    image(),
+    typescript({
+      tsconfigOverride: {
+        exclude: ["src/stories"]
+      }
+    }),
     generatePackage({
       baseContents: (pkg) => ({
         name: pkg.name,
@@ -32,6 +41,7 @@ const config = {
     }),
     copy({
       targets: [
+        { src: "definitions/", dest: "lib/" },
         { src: "README.md", dest: "lib/" },
         { src: "LICENSE.md", dest: "lib/" }
       ]
@@ -41,7 +51,7 @@ const config = {
     }),
     url({
       // by default, rollup-plugin-url will not handle font files
-      include: ["**/*.woff", "**/*.woff2", "**/*.eot", "**/*.ttf"],
+      include: ["**/*.woff", "**/*.woff2", "**/*.eot", "**/*.ttf", "**/*.png", "**/*.svg", "**/*.jpg"],
       // setting infinite limit will ensure that the files
       // are always bundled with the code, not copied to /dist
       limit: Infinity
