@@ -26,7 +26,7 @@ export const HeaderBox = styled("header")(({ theme }) => ({
   position: "fixed",
   zIndex: 100,
   width: "100%",
-  background: "rgba(255,255,255,0.2)",
+  // background: "rgba(255,255,255,0.2)",
   backdropFilter: "blur(1rem)",
 
   [theme.breakpoints.down("lg")]: {
