@@ -22,7 +22,7 @@ const MuiTableCell = {
   },
   head: {
     ...typography.supporting.main,
-    color: colors.gray[500],
+    color: colors.gray.a700,
     paddingTop: "16px",
     paddingBottom: "16px",
     backgroundColor: "transparent"

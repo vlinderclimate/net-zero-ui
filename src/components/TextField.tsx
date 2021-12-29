@@ -42,8 +42,16 @@ const StyledTextField = styled(MuiTextField)<StyledTextFieldProps>(({ size, erro
     },
     "& .MuiFormHelperText-root": {
       fontSize: theme.typography.fontSizeXs3,
-      fontWeight: theme.typography.fontWeightMedium,
+      fontWeight: theme.typography.fontWeightNormal,
       color: error ? colors.text.negative : colors.text.secondary
+    },
+    "& .MuiFormLabel-root": {
+      display: "block",
+      color: theme.palette.gray[700],
+      fontSize: theme.typography.fontSizeXs2,
+      fontWeight: theme.typography.fontWeightNormal,
+      lineHeight: theme.typography.lineHeightXs2,
+      marginBottom: theme.spacing(1)
     },
     [theme.breakpoints.down("sm")]: {
       "& .MuiInputBase-root": {
@@ -69,6 +77,8 @@ const TextField: React.FC<TextFieldProps> = forwardRef(
       return undefined
     })()
 
+    const append = Boolean(error ?? inputProps?.endAdornment ?? actionButtonProps)
+
     return (
       <StyledTextField
         ref={ref}
@@ -83,7 +93,7 @@ const TextField: React.FC<TextFieldProps> = forwardRef(
           color,
           disabled,
           className: `Input-${variant as string}`,
-          endAdornment: inputProps?.endAdornment ? (
+          endAdornment: append ? (
             <EndAdornment
               size={size}
               error={error}

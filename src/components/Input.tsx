@@ -61,12 +61,12 @@ export const getPadding = ({ size, theme, $append: append }: ExtendedStyledInput
   switch (size) {
     case "xs":
       return {
-        main: theme.spacing(1, append ? 0.35 : 1, 1, 1),
+        main: theme.spacing(1, append ? 1 : 2, 1, 2),
         mobile: theme.spacing(1.25, append ? 0.5 : 1.5, 1.25, 1.5)
       }
     case "sm":
       return {
-        main: theme.spacing(1.5, append ? 0.5 : 2, 1.5, 2),
+        main: theme.spacing(1.5, append ? 1 : 2, 1.5, 2),
         mobile: theme.spacing(1.25, append ? 0.5 : 1.5, 1.25, 1.5)
       }
     case "md":
@@ -121,21 +121,21 @@ export const formCommonStyles = (theme: Theme) => ({
     height: "auto"
   },
   "&.Input-outlined": {
-    boxShadow: `inset 0 0 0 2px ${theme.palette.gray[300]}`
+    boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`
   },
   "&.Mui-focused": {
-    boxShadow: `inset 0 0 0 2px ${theme.palette.primary.main}`
+    boxShadow: `inset 0 0 0 1px ${theme.palette.primary.main}`
   },
   "&.Mui-error": {
-    boxShadow: `inset 0 0 0 2px ${theme.palette.negative.main}`
+    boxShadow: `inset 0 0 0 1px ${theme.palette.negative.main}`
   },
   "&.Mui-disabled": {
-    backgroundColor: theme.palette.gray[300]
+    backgroundColor: theme.palette.gray[500]
   },
   "&.Input-standard": {
     backgroundColor: "transparent !important",
     borderRadius: 0,
-    borderBottom: `1px solid ${theme.palette.gray[300]}`,
+    borderBottom: `1px solid ${theme.palette.gray[500]}`,
     boxShadow: "none !important",
     fontSize: theme.typography.fontSizeXs3,
     lineHeight: theme.typography.lineHeightXs3,
