@@ -35,7 +35,7 @@ export interface ExtendedStyledButtonProps {
 }
 interface StyledButtonProps extends Omit<ButtonProps, "color"> {
   $align: ButtonProps["align"]
-  $onlyIcon?: boolean
+  onlyIcon?: boolean
   $color: ButtonProps["color"]
   theme?: Theme
 }
@@ -149,7 +149,7 @@ const ButtonText = styled("span")(({ theme, ...props }) => {
 })
 
 const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) => {
-  const { size, $align: align, $color, $onlyIcon: onlyIcon } = props
+  const { size, $align: align, $color, onlyIcon } = props
   const color = $color ?? "primary"
 
   return {
@@ -308,7 +308,7 @@ const Button: React.FC<ButtonProps> = ({
     `${PREFIX}-${color}`,
     (endIcon ?? startIcon) && classes.withIcon
   ])
-  const stylingProps = { $onlyIcon: onlyIcon, $color: color, size, $align: align }
+  const stylingProps = { onlyIcon: onlyIcon, $color: color, size, $align: align }
 
   return (
     <StyledButton

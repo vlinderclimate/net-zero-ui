@@ -71,7 +71,7 @@ const FooterComponent: React.FC<FooterProps> = ({
     <FooterBox $footerBg={$footerBg} {...props}>
       <Container>
         <GridContainer justifyContent="space-between" direction={{ xs: "column-reverse", md: "row" }}>
-          <GridItem xs={12} sm={6} lg={5}>
+          <GridItem xs={12} sm={6} lg={6}>
             <LogoColumn>
               {logo}
               <Typography variant="caption" component="div" mt={{ xs: 1, md: 2 }}>

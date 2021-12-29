@@ -3,7 +3,7 @@ import typography from "../theme/typography"
 
 const MuiTableCell = {
   root: {
-    ...typography.description.main,
+    ...typography.caption.main,
     paddingTop: "11px",
     paddingBottom: "11px",
     paddingRight: "24px",
