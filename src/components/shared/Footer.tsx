@@ -23,6 +23,7 @@ export const FooterBox = styled("footer")<FooterProps>(({ theme, $footerBg = foo
   margin: "0 auto",
   padding: theme.spacing(10, 0, 4),
   position: "relative",
+  fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
 
   "&:before": {
     content: "''",
