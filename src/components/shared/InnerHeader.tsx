@@ -7,9 +7,6 @@ import GridContainer from "../GridContainer"
 import GridItem from "../GridItem"
 import Typography from "../Typography"
 
-import headerBgBlue from "../../assets/images/inner-header-bg-blue.png"
-import headerBgGreen from "../../assets/images/inner-header-bg-green.png"
-
 export interface InnerHeaderProps {
   title?: string
   image?: string
@@ -18,13 +15,8 @@ export interface InnerHeaderProps {
   headerBg?: "green" | "blue"
 }
 
-const bgMap = {
-  green: headerBgGreen,
-  blue: headerBgBlue
-}
-
 export const HeaderBox = styled(MuiBox)<InnerHeaderProps>(({ theme, headerBg }) => ({
-  background: headerBg ? `url(${bgMap[headerBg] as string}) no-repeat center bottom / cover` : "none",
+  background: headerBg ? `url(${headerBg}) no-repeat center bottom / cover` : "none",
   paddingTop: theme.spacing(7),
 
   [theme.breakpoints.down("md")]: {

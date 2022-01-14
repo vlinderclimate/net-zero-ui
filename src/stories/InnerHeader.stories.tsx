@@ -1,6 +1,6 @@
 import { Story, Meta } from "@storybook/react"
 
-import InnerHeader, { InnerHeaderProps, Divider } from "../components/shared/InnerHeader"
+import InnerHeader, { InnerHeaderProps } from "../components/shared/InnerHeader"
 import MuiBox from "@mui/material/Box"
 import GridItem from "../components/GridItem"
 import Typography from "../components/Typography"
