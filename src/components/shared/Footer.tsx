@@ -7,8 +7,6 @@ import GridContainer from "../GridContainer"
 import GridItem from "../GridItem"
 import Typography from "../Typography"
 
-import footerBg from "../../assets/images/footer-bg.jpg"
-
 export interface FooterProps {
   children?: JSX.Element | JSX.Element[] | string
   logo?: JSX.Element | JSX.Element[] | string
@@ -16,10 +14,10 @@ export interface FooterProps {
   description?: string
   list?: any
   security?: JSX.Element | JSX.Element[] | string
-  $footerBg?: string
+  footerBg?: string
 }
 
-export const FooterBox = styled("footer")<FooterProps>(({ theme, $footerBg = footerBg }) => ({
+export const FooterBox = styled("footer")<FooterProps>(({ theme, footerBg }) => ({
   margin: "0 auto",
   padding: theme.spacing(10, 0, 4),
   position: "relative",
@@ -34,7 +32,7 @@ export const FooterBox = styled("footer")<FooterProps>(({ theme, $footerBg = foo
     height: "300vh",
     pointerEvents: "none",
     zIndex: "-1",
-    background: $footerBg ? `url(${$footerBg as string}) no-repeat center bottom / contain` : "none"
+    background: footerBg ? `url(${footerBg}) no-repeat center bottom / contain` : "none"
   },
 
   ".inline-list": {
@@ -62,13 +60,13 @@ const FooterComponent: React.FC<FooterProps> = ({
   logo,
   copyright,
   description,
-  $footerBg,
+  footerBg,
   list,
   security,
   ...props
 }) => {
   return (
-    <FooterBox $footerBg={$footerBg} {...props}>
+    <FooterBox footerBg={footerBg} {...props}>
       <Container>
         <GridContainer justifyContent="space-between" direction={{ xs: "column-reverse", md: "row" }}>
           <GridItem xs={12} sm={6} lg={6}>
