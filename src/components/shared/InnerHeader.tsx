@@ -7,9 +7,6 @@ import GridContainer from "../GridContainer"
 import GridItem from "../GridItem"
 import Typography from "../Typography"
 
-import headerBgBlue from "../../assets/images/inner-header-bg-blue.png"
-import headerBgGreen from "../../assets/images/inner-header-bg-green.png"
-
 export interface InnerHeaderProps {
   title?: string
   image?: string
@@ -18,13 +15,8 @@ export interface InnerHeaderProps {
   headerBg?: "green" | "blue"
 }
 
-const bgMap = {
-  green: headerBgGreen,
-  blue: headerBgBlue
-}
-
 export const HeaderBox = styled(MuiBox)<InnerHeaderProps>(({ theme, headerBg }) => ({
-  background: headerBg ? `url(${bgMap[headerBg] as string}) no-repeat center bottom / cover` : "none",
+  background: headerBg ? `url(${headerBg}) no-repeat center bottom / cover` : "none",
   paddingTop: theme.spacing(7),
 
   [theme.breakpoints.down("md")]: {
@@ -61,7 +53,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, imageWidth = 12
                 </Item>
               )}
               <Item pl={{ xs: 2, sm: 5 }} sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
-                <Typography variant="h2" component="div" marginBottom={{ xs: 1, md: 2 }}>
+                <Typography variant="h1" component="div" marginBottom={{ xs: 1, md: 2 }}>
                   {title}
                 </Typography>
                 {children}

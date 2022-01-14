@@ -49,19 +49,6 @@ const LogoVlinder: React.FC<LogoProps> = ({
 
 const list = [
   {
-    subtitle: "Carbon",
-    list: [
-      {
-        title: "Sell carbon",
-        link: "#"
-      },
-      {
-        title: "Buy carbon",
-        link: "#"
-      }
-    ]
-  },
-  {
     subtitle: "Follow us",
     list: [
       {
@@ -87,14 +74,16 @@ const list = [
     ]
   },
   {
-    subtitle: "Company",
+    subtitle: "Contacts",
+    modifier: "inline-list",
+    text: "Vlinder Austria GmbH Wichtelhuberstraße 16/Top 15400 Hallein, Austria",
     list: [
       {
-        title: "About",
+        title: "Support",
         link: "#"
       },
       {
-        title: "FAQ",
+        title: "Email us",
         link: "#"
       }
     ]
@@ -103,15 +92,41 @@ const list = [
 
 const Template: Story<FooterProps> = (args) => {
   return (
-    <Footer logo={<LogoVlinder width="95px" height="26px" />} copyright="Copyright © 2021 Vlinder AG">
+    <Footer
+      logo={<LogoVlinder width="82px" height="23px" />}
+      description="Vlinder is a marketplace for carbon offsets and impact investing that empowers people to act on climate. Our goal is to enable carbon mitigation of 10 million tonnes of CO2 every month, the combined footprint of Switzerland and Austria."
+      copyright="© 2022 Vlinder Austria GmbH"
+      security={
+        <ListItem as="div" sx={{ marginBottom: 0 }}>
+          <MuiLink
+            href="#"
+            sx={{
+              color: "rgba(0, 0, 0, 0.56)",
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              "&:hover": { color: "brand" }
+            }}
+          >
+            Security & Privacy
+          </MuiLink>
+        </ListItem>
+      }
+    >
       <>
         {list?.map((item: any, i: number) => (
-          <GridItem key={i} xs={6} sm={4}>
-            <Typography variant="title5" component="div" marginBottom={{ xs: 1, md: 2 }}>
+          <GridItem key={i} xs={6}>
+            <Typography variant="heroParagraph" component="div" marginBottom={{ xs: 1, md: 2 }}>
               {item.subtitle}
             </Typography>
 
-            <List>
+            {item.text && (
+              <Typography variant="caption" component="div" marginBottom={{ xs: 1, md: 2 }}>
+                {item.text}
+              </Typography>
+            )}
+
+            <List className={item.modifier}>
               {item?.list?.map((item: any, i: number) => (
                 <ListItem key={i}>
                   <MuiLink
@@ -124,7 +139,7 @@ const Template: Story<FooterProps> = (args) => {
                       "&:hover": { color: "brand" }
                     }}
                   >
-                    {item.iconKey && <Icon color="secondary" iconKey={item.iconKey} rotate={0} size="xs" />}
+                    {item.iconKey && <Icon color="supporting" iconKey={item.iconKey} rotate={0} size="sm" />}
                     {item.title}
                   </MuiLink>
                 </ListItem>

@@ -2,8 +2,11 @@ import { Story, Meta } from "@storybook/react"
 import { useTheme } from "@mui/material/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 
+import Account, { AccountImage, AccountName } from "../components/shared/Account"
 import Header, { HeaderProps } from "../components/shared/Header"
 import Logo from "../components/shared/Logo"
+import Button from "../components/Button"
+import Typography from "../components/Typography"
 
 const links = [
   {
@@ -30,8 +33,8 @@ interface LogoProps {
 
 // should be as reusable component in your project components folder
 const LogoVlinder: React.FC<LogoProps> = ({
-  width = "228px",
-  height = "64px",
+  width = "143px",
+  height = "40px",
   mobileWidth = "86px",
   mobileHeight = "24px"
 }) => {
@@ -51,6 +54,9 @@ const LogoVlinder: React.FC<LogoProps> = ({
           src="https://atomasolutions.gitlab.io/atoma.cash/vlinder-marketplace/_next/static/image/src/assets/images/logo.ba8fa0f21fb5a90529ca06864dce4433.svg"
         />
       </a>
+      <Typography variant="heroParagraphMedium" color="secondary" pl={1} pt={0.4}>
+        Store
+      </Typography>
     </Logo>
   )
 }
@@ -59,13 +65,25 @@ const Template: Story<HeaderProps> = (args) => {
   return (
     <Header
       logo={<LogoVlinder />}
-      links={links}
-      userAvatar="https://atomasolutions.gitlab.io/atoma.cash/vlinder-marketplace/_next/static/image/src/assets/images/user-empty.76b16152d61cce930535836c8292c293.svg"
-      userName="valerii@atoma.at"
-      actionButton={{ title: "Exchange", url: "" }}
+      // links={links}
       cartHandler={() => console.log(">> open cart")}
       userHandler={() => console.log(">> open user menu")}
-    />
+    >
+      <>
+        <Account>
+          <Button
+            sx={{ display: "block" }}
+            variant="outlined"
+            color="primary"
+            size="sm"
+            onClick={() => console.log(">> open user menu")}
+          >
+            <AccountImage src="https://atomasolutions.gitlab.io/atoma.cash/vlinder-marketplace/_next/static/image/src/assets/images/user-empty.76b16152d61cce930535836c8292c293.svg" />
+            <AccountName>valerii@atoma.at</AccountName>
+          </Button>
+        </Account>
+      </>
+    </Header>
   )
 }
 

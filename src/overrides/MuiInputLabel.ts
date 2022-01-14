@@ -1,15 +1,16 @@
 import colors from "../theme/colors"
-import { fontSize, fontWeight, fontFamily } from "../theme/typography"
+import { fontSize, fontWeight, lineHeight, fontFamily } from "../theme/typography"
 
 const MuiInputLabel = {
   root: {
     "&.MuiInputLabel-formControl": {
       position: "relative",
       fontFamily: fontFamily.headline,
-      fontSize: fontSize.s,
-      fontWeight: fontWeight.medium,
-      color: colors.text.primary,
-      marginBottom: 6
+      color: colors.gray[700],
+      fontSize: fontSize.xs2,
+      fontWeight: fontWeight.normal,
+      lineHeight: lineHeight.xs2,
+      marginBottom: 8
     }
   },
   animated: {

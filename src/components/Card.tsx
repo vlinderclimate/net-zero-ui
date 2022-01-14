@@ -36,13 +36,13 @@ export const sizeMap = new Map<CardSizeVariants, { x: number; y: number }>([
   [CardSizeVariants.Initial, { y: 0, x: 0 }],
   [CardSizeVariants.Small, { y: 2, x: 3 }],
   [CardSizeVariants.Medium, { y: 3.75, x: 4 }],
-  [CardSizeVariants.Large, { y: 6, x: 7 }]
+  [CardSizeVariants.Large, { y: 10, x: 15 }]
 ])
 
 export const sizeMobileMap = new Map<CardSizeVariants, { x: number; y: number }>([
   [CardSizeVariants.Initial, { y: 0, x: 0 }],
   [CardSizeVariants.Small, { y: 1, x: 2 }],
-  [CardSizeVariants.Medium, { y: 2.5, x: 2.5 }],
+  [CardSizeVariants.Medium, { y: 4, x: 5 }],
   [CardSizeVariants.Large, { y: 3, x: 4 }]
 ])
 
@@ -57,7 +57,7 @@ export const colorMap = new Map<CardColorVariants, string>([
 
 export const backgroundMap = new Map<CardColorVariants, string>([
   [CardColorVariants.Initial, colors.gray.white],
-  [CardColorVariants.Muted, colors.gray[100]],
+  [CardColorVariants.Muted, colors.gray[200]],
   [CardColorVariants.Primary, colors.primary.main],
   [CardColorVariants.Secondary, colors.secondary.main],
   [CardColorVariants.Positive, colors.green.light],

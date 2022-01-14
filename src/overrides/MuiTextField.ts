@@ -1,4 +1,3 @@
-import { borderRadius } from "../theme/borders"
 import colors from "../theme/colors"
 import { fontSize } from "../theme/typography"
 
@@ -6,7 +5,7 @@ import { fontSize } from "../theme/typography"
 const MuiTextField = {
   root: {
     "& .MuiInputBase-root": {
-      borderRadius: borderRadius.sm,
+      borderRadius: 0,
 
       // size
       fontSize: fontSize.l,
@@ -19,7 +18,7 @@ const MuiTextField = {
       // color
       backgroundColor: `${colors.gray.white} !important`,
       "&.MuiInputBase-colorSecondary": {
-        backgroundColor: `${colors.gray[100]} !important`
+        backgroundColor: `${colors.gray[200]} !important`
       },
       "&.Mui-focused": {
         boxShadow: `0 0 0 3px ${colors.primary.main}`

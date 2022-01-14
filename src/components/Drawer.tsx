@@ -10,6 +10,7 @@ export type DrawerSize = "xs" | "sm" | "md" | "safeArea" | "fullScreen"
 
 interface StyledDrawerProps {
   size: DrawerSize
+  scrollable?: boolean
 }
 
 export interface DrawerProps extends MuiSwipeableDrawerProps {
@@ -36,7 +37,7 @@ export interface DrawerProps extends MuiSwipeableDrawerProps {
 const sizeMap = {
   xs: 440,
   sm: 580,
-  md: 720,
+  md: 640,
   safeArea: "100%",
   fullScreen: "100%"
 }
@@ -53,16 +54,17 @@ const sizeLevelMap = {
 }
 const defaultSize = "md"
 
-const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ theme, size }) => ({
-  "& .MuiPaper-root": {
+const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ theme, scrollable, size }) => ({
+  "& > .MuiPaper-root": {
     backgroundColor: theme.palette.gray.white,
     width: sizeMap[size],
     maxWidth: "100%",
     padding: theme.spacing(
-      sizeLevelMap[size] === SizeLevel.Large ? 5.25 : 2,
-      sizeLevelMap[size] === SizeLevel.Large ? 10 : 4
+      sizeLevelMap[size] === SizeLevel.Large ? 3.75 : 2,
+      sizeLevelMap[size] === SizeLevel.Large ? 5 : 3
     ),
     boxShadow: "none",
+    overflow: "auto",
 
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing(2),
@@ -85,8 +87,7 @@ const CloseButton = styled(MuiBox)<StyledDrawerProps>(({ theme, size }) => ({
   }
 }))
 
-const Content = styled(MuiBox)<{ scrollable: boolean }>(({ theme, scrollable }) => ({
-  overflow: scrollable ? "auto" : "unset",
+const Content = styled(MuiBox)<{ scrollable?: boolean }>(({ theme, scrollable }) => ({
   maxHeight: `calc(100vh - ${theme.spacing(10)})`
 }))
 
@@ -112,6 +113,7 @@ const Drawer: React.FC<DrawerProps> = ({
       size={size}
       anchor="right"
       BackdropProps={{ timeout: 500, ...backdrop }}
+      scrollable={scrollable}
       {...props}
     >
       {closeButton && (
@@ -121,10 +123,11 @@ const Drawer: React.FC<DrawerProps> = ({
               <Icon
                 iconKey={typeof closeButton !== "string" ? "close" : closeButton}
                 size={sizeLevelMap[size] === SizeLevel.Large && !isMobile ? "md" : "md"}
+                color="secondary"
               />
             }
-            variant="outlined"
-            color="secondary"
+            variant="contained"
+            color="inverse"
             size="md"
             onClick={(event) => {
               if (onClose) onClose(event)
@@ -132,7 +135,7 @@ const Drawer: React.FC<DrawerProps> = ({
           />
         </CloseButton>
       )}
-      <Content scrollable={scrollable}>{children}</Content>
+      <Content>{children}</Content>
     </StyledSwipeableDrawer>
   )
 }

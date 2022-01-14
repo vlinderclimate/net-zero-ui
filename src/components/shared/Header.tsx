@@ -6,25 +6,16 @@ import MuiBadge from "@mui/material/Badge"
 import useMediaQuery from "@mui/material/useMediaQuery"
 
 import Menu, { MenuItemProps } from "./Menu"
-import Account, { AccountImage, AccountName } from "./Account"
 import Container from "../Container"
 import GridContainer from "../GridContainer"
 import GridItem from "../GridItem"
 import Button from "../Button"
 import Icon from "../Icon"
 
-export interface ActionButton {
-  url: string
-  title: string
-}
-
 export interface HeaderProps {
   children?: JSX.Element | JSX.Element[] | string
   logo: JSX.Element | JSX.Element[] | string
-  userName?: string
-  userAvatar?: string
   links?: MenuItemProps[]
-  actionButton?: ActionButton
   cartHandler?: () => void
   userHandler?: () => void
 }
@@ -32,9 +23,10 @@ export interface HeaderProps {
 export const HeaderBox = styled("header")(({ theme }) => ({
   margin: "0 auto 2px auto",
   padding: theme.spacing(4, 0),
-  position: "absolute",
+  position: "fixed",
   zIndex: 100,
   width: "100%",
+  backdropFilter: "blur(1rem)",
 
   [theme.breakpoints.down("lg")]: {
     padding: "12px 0",
@@ -42,16 +34,7 @@ export const HeaderBox = styled("header")(({ theme }) => ({
   }
 }))
 
-const HeaderComponent: React.FC<HeaderProps> = ({
-  children,
-  logo,
-  links,
-  userName,
-  userAvatar,
-  actionButton,
-  cartHandler,
-  userHandler
-}) => {
+const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHandler, userHandler }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
@@ -72,7 +55,8 @@ const HeaderComponent: React.FC<HeaderProps> = ({
                       variant="text"
                       color="primary"
                       size="sm"
-                      startIcon={<Icon iconKey="cart" size="sm" />}
+                      sx={{ padding: "0 !important" }}
+                      startIcon={<Icon iconKey="cart" size="md" />}
                       onClick={cartHandler}
                     />
                   </MuiBadge>
@@ -82,29 +66,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({
                 {isMobile ? (
                   <Button variant="text" color="primary" size="sm" startIcon={<Icon iconKey="menu" size="md" />} />
                 ) : (
-                  <>
-                    {userName && (
-                      <Account>
-                        <Button variant="outlined" color="secondary" size="sm" onClick={userHandler}>
-                          {userAvatar && <AccountImage src={userAvatar} />}
-                          <AccountName>{userName}</AccountName>
-                        </Button>
-                      </Account>
-                    )}
-                    {actionButton && (
-                      <Button
-                        variant="outlined"
-                        size="sm"
-                        color="secondary"
-                        endIcon={<Icon iconKey="chevronRight" size="sm" />}
-                        href={actionButton.url}
-                        linkProps={{ target: "_blank", rel: "noopener noreferrer" }}
-                      >
-                        {actionButton.title}
-                      </Button>
-                    )}
-                    {children}
-                  </>
+                  <>{children}</>
                 )}
               </MuiBox>
             </MuiBox>

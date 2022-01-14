@@ -3,7 +3,7 @@ import typography from "../theme/typography"
 
 const MuiTableCell = {
   root: {
-    ...typography.description.main,
+    ...typography.caption.main,
     paddingTop: "11px",
     paddingBottom: "11px",
     paddingRight: "24px",
@@ -14,15 +14,11 @@ const MuiTableCell = {
     fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
     "&:not(:first-child)": {
       paddingLeft: 0
-    },
-    "&:first-child": {
-    },
-    "&:last-child": {
     }
   },
   head: {
     ...typography.supporting.main,
-    color: colors.gray[500],
+    color: colors.gray.a700,
     paddingTop: "16px",
     paddingBottom: "16px",
     backgroundColor: "transparent"

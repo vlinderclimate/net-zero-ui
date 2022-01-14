@@ -30,7 +30,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   "&.MuiSlider-colorPrimary": {
     color: theme.palette.gray.white,
     "& .MuiSlider-rail": {
-      backgroundColor: theme.palette.gray[300]
+      backgroundColor: theme.palette.gray[500]
     },
     "& .MuiSlider-track": {
       backgroundColor: theme.palette.primary.main
@@ -45,7 +45,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   "&.MuiSlider-root .MuiSlider-markLabel": {
     ...typography.supporting.main,
     textTransform: "uppercase",
-    color: theme.palette.gray[500],
+    color: theme.palette.gray.a700,
     transform: "none",
     "&[data-index='1']": {
       transform: "translate(-100%, 0)"
@@ -54,7 +54,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   "& .MuiSlider-thumb": {
     height: 20,
     width: 20,
-    border: `1px solid ${theme.palette.grey[300]}`,
+    border: `1px solid ${theme.palette.gray[500]}`,
     cursor: "ew-resize",
     boxShadow: "none !important",
     "&:before": {
