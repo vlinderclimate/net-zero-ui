@@ -11,6 +11,7 @@ export interface InnerHeaderProps {
   title?: string
   image?: string
   imageWidth?: string | number
+  backButton?: JSX.Element | JSX.Element[] | string
   rightItem?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
   headerBg?: "string"
@@ -41,12 +42,21 @@ export const Image = styled("img")(({ theme }) => ({
   display: "block"
 }))
 
-const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, rightItem, imageWidth = 120, children, headerBg }) => {
+const InnerHeader: React.FC<InnerHeaderProps> = ({
+  title,
+  image,
+  rightItem,
+  backButton,
+  imageWidth = 120,
+  children,
+  headerBg
+}) => {
   return (
     <HeaderBox headerBg={headerBg}>
       <Section topIndent>
-        <GridContainer alignItems="center" spacing={1}>
-          <GridItem xs={12} md={rightItem ? 7 : 9}>
+        <GridContainer alignItems="center" justifyContent={rightItem ? "flex-start" : "center"} spacing={1}>
+          {backButton}
+          <GridItem xs={12} md={rightItem ? 7 : 11}>
             <MuiBox display="flex" alignItems="center" flexWrap="nowrap">
               {image && (
                 <Item pr={{ xs: 2, sm: 5 }}>
