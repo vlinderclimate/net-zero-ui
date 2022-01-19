@@ -11,8 +11,9 @@ export interface InnerHeaderProps {
   title?: string
   image?: string
   imageWidth?: string | number
+  rightItem?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
-  headerBg?: "green" | "blue"
+  headerBg?: "string"
 }
 
 export const HeaderBox = styled(MuiBox)<InnerHeaderProps>(({ theme, headerBg }) => ({
@@ -40,19 +41,19 @@ export const Image = styled("img")(({ theme }) => ({
   display: "block"
 }))
 
-const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, imageWidth = 120, children, headerBg }) => {
+const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, rightItem, imageWidth = 120, children, headerBg }) => {
   return (
     <HeaderBox headerBg={headerBg}>
       <Section topIndent>
-        <GridContainer justifyContent="center">
-          <GridItem xs={12} md={11}>
+        <GridContainer alignItems="center" spacing={1}>
+          <GridItem xs={12} md={rightItem ? 7 : 9}>
             <MuiBox display="flex" alignItems="center" flexWrap="nowrap">
               {image && (
-                <Item>
+                <Item pr={{ xs: 2, sm: 5 }}>
                   <Image src={image} alt={title} width={imageWidth} />
                 </Item>
               )}
-              <Item pl={{ xs: 2, sm: 5 }} sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
+              <Item sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
                 <Typography variant="h1" component="div" marginBottom={{ xs: 1, md: 2 }}>
                   {title}
                 </Typography>
@@ -60,6 +61,11 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, imageWidth = 12
               </Item>
             </MuiBox>
           </GridItem>
+          {rightItem && (
+            <GridItem xs={12} md={5}>
+              {rightItem}
+            </GridItem>
+          )}
         </GridContainer>
       </Section>
     </HeaderBox>
