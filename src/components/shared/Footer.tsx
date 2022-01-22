@@ -19,6 +19,7 @@ export interface FooterProps {
 
 export const FooterBox = styled("footer")<FooterProps>(({ theme, footerBg }) => ({
   margin: "0 auto",
+  width: "100%",
   padding: theme.spacing(10, 0, 4),
   position: "relative",
   fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",

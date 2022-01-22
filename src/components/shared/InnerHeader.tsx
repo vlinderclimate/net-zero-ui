@@ -19,7 +19,6 @@ export interface InnerHeaderProps {
 
 export const HeaderBox = styled(MuiBox)<InnerHeaderProps>(({ theme, headerBg }) => ({
   background: headerBg ? `url(${headerBg}) no-repeat center bottom / cover` : "none",
-  paddingTop: theme.spacing(7),
 
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(2, 0)
@@ -54,7 +53,12 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
   return (
     <HeaderBox headerBg={headerBg}>
       <Section topIndent>
-        <GridContainer alignItems="center" justifyContent={rightItem ? "flex-start" : "center"} spacing={1}>
+        <GridContainer
+          alignItems="center"
+          justifyContent={rightItem ? "flex-start" : "center"}
+          spacing={1}
+          mt={rightItem ? 0 : 7}
+        >
           {backButton}
           <GridItem xs={12} md={rightItem ? 7 : 11}>
             <MuiBox display="flex" alignItems="center" flexWrap="nowrap">

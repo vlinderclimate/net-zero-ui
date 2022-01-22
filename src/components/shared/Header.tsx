@@ -21,8 +21,8 @@ export interface HeaderProps {
 }
 
 export const HeaderBox = styled("header")(({ theme }) => ({
-  margin: "0 auto 2px auto",
-  padding: theme.spacing(4, 0),
+  margin: "0 auto",
+  padding: theme.spacing(2.5, 0),
   position: "fixed",
   zIndex: 100,
   width: "100%",
