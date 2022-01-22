@@ -25,7 +25,7 @@ export const HeaderBox = styled(MuiBox)<InnerHeaderProps>(({ theme, headerBg }) 
   }
 }))
 
-export const Item = styled(MuiBox)(({ theme }) => ({}))
+export const Item = styled(MuiBox)(() => ({}))
 
 export const Divider = styled(GridItem)(({ theme }) => ({
   borderLeft: "1px solid rgba(0, 0, 0, 0.15)",
@@ -36,7 +36,7 @@ export const Divider = styled(GridItem)(({ theme }) => ({
   left: theme.spacing(-2)
 }))
 
-export const Image = styled("img")(({ theme }) => ({
+export const Image = styled("img")(() => ({
   maxWidth: "100%",
   display: "block"
 }))
