@@ -57,7 +57,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
           alignItems="center"
           justifyContent={rightItem ? "flex-start" : "center"}
           spacing={1}
-          mt={rightItem ? 0 : 1}
+          mt={rightItem ? -6 : 1}
         >
           {backButton}
           <GridItem xs={12} md={rightItem ? 7 : 11}>
