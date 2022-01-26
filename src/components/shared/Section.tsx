@@ -21,11 +21,11 @@ export const SectionBox = styled(MuiBox)<SectionProps>(({ theme, noPadding, topI
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
 
-  [theme.breakpoints.down("lg")]: {
-    padding: noPadding ? 0 : topIndent ? theme.spacing(11, 0, 4) : theme.spacing(4, 0)
+  [theme.breakpoints.down("md")]: {
+    padding: noPadding ? 0 : topIndent ? theme.spacing(11, 0, 4) : theme.spacing(10, 0)
   },
   [theme.breakpoints.down("sm")]: {
-    padding: noPadding ? 0 : topIndent ? theme.spacing(6, 0, 2) : theme.spacing(2, 0)
+    padding: noPadding ? 0 : topIndent ? theme.spacing(6, 0, 2) : theme.spacing(7, 0)
   }
 }))
 
