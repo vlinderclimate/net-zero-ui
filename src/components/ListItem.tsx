@@ -24,7 +24,7 @@ const StyledListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
       }
     }
   },
-  [theme?.breakpoints.down("md")]: {
+  [theme?.breakpoints.down("sm")]: {
     fontSize: theme?.typography.fontSizeXs4
   }
 }))

@@ -16,7 +16,7 @@ const StyledContainer = styled(MuiBox)(({ theme }) => ({
     maxWidth: `calc(1400px + ${theme.spacing(10)})`
   },
 
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     paddingLeft: "20px",
     paddingRight: "20px"
   }

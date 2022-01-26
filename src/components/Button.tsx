@@ -165,7 +165,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
     whiteSpace: "nowrap",
     willChange: "transform",
     fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: getFontSizeMobile({ size, theme }),
       lineHeight: getLineHeightMobile({ size, theme }),
       padding: getPaddingMobile({ size, theme, onlyIcon })
@@ -238,7 +238,10 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       color: colorMap.text[color],
       backgroundColor: "transparent !important",
       boxShadow: "none !important",
-      padding: theme.spacing(0, 2)
+      padding: theme.spacing(0, 2),
+      [theme.breakpoints.down("sm")]: {
+        padding: 0
+      }
     },
     "&.Mui-disabled": {
       transform: "none !important"

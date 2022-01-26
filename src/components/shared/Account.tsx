@@ -16,7 +16,7 @@ export const AccountImage = styled("img")(({ theme }) => ({
   borderRadius: "100%",
   margin: "-2px -12px -9px",
 
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("md")]: {
     margin: "-2px -12px -9px"
   }
 }))
@@ -24,7 +24,7 @@ export const AccountImage = styled("img")(({ theme }) => ({
 export const AccountName = styled("span")(({ theme }) => ({
   marginLeft: theme.spacing(3),
 
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("md")]: {
     display: "none"
   }
 }))

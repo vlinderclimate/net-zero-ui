@@ -167,7 +167,7 @@ const StyledInput = styled(MuiInput)<StyledInputProps>(({ theme, ...props }) => 
     fontSize: getFontSize({ size, theme })?.main,
     lineHeight: getLineHeight({ size, theme })?.main,
 
-    [theme.breakpoints.down(601)]: {
+    [theme.breakpoints.down("sm")]: {
       padding: getPadding({ size, theme, $append })?.mobile,
       fontSize: getFontSize({ size, theme })?.mobile,
       lineHeight: getLineHeight({ size, theme })?.mobile

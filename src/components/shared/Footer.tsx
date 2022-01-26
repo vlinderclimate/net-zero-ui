@@ -41,7 +41,7 @@ export const FooterBox = styled("footer")<FooterProps>(({ theme, footerBg }) => 
     display: "flex"
   },
 
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     padding: theme.spacing(5, 0)
   }
 }))

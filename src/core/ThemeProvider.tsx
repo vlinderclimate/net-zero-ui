@@ -45,6 +45,15 @@ export const theme = createTheme({
     radius: borderRadius
   },
   boxShadow: boxShadow,
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 427,
+      md: 900,
+      lg: 1200,
+      xl: 1536
+    }
+  },
   components: {
     MuiInput: {
       defaultProps: {
