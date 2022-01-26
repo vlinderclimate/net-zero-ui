@@ -1,5 +1,6 @@
 import React from "react"
-import { styled } from "@mui/material/styles"
+import { useTheme, styled } from "@mui/material/styles"
+import useMediaQuery from "@mui/material/useMediaQuery"
 import MuiBox from "@mui/material/Box"
 
 import Container from "../Container"
@@ -53,6 +54,10 @@ export const LogoColumn = styled(MuiBox)(({ theme }) => ({
 
   [theme.breakpoints.down("md")]: {
     marginTop: theme.spacing(2)
+  },
+
+  [theme.breakpoints.down("sm")]: {
+    marginTop: theme.spacing(0)
   }
 }))
 
@@ -66,23 +71,34 @@ const FooterComponent: React.FC<FooterProps> = ({
   security,
   ...props
 }) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+
   return (
     <FooterBox footerBg={footerBg} {...props}>
       <Container>
-        <GridContainer justifyContent="space-between" direction={{ xs: "column-reverse", md: "row" }}>
+        <GridContainer
+          justifyContent="space-between"
+          direction={{ xs: "column-reverse", md: "row" }}
+          spacing={{ xs: 0, sm: 2 }}
+        >
           <GridItem xs={12} sm={6} lg={6}>
             <LogoColumn>
-              {logo}
-              <Typography variant="caption" component="div" mt={{ xs: 1, md: 2 }}>
-                {description}
-              </Typography>
-              <MuiBox display="flex" alignItems="center" mt={{ xs: 1, md: 3 }}>
+              {!isMobile && (
+                <>
+                  {logo}
+                  <Typography variant="caption" component="div" mt={{ xs: 1, md: 2 }}>
+                    {description}
+                  </Typography>
+                </>
+              )}
+              <MuiBox display="flex" alignItems="center" mt={{ xs: 0, md: 3 }}>
                 <MuiBox pr={{ xs: 3, md: 5 }}>
-                  <Typography variant="caption" component="div">
+                  <Typography variant="caption" component="div" color={isMobile ? "secondary" : "primary"}>
                     {copyright}
                   </Typography>
                 </MuiBox>
-                <MuiBox>{security}</MuiBox>
+                {!isMobile && <MuiBox>{security}</MuiBox>}
               </MuiBox>
             </LogoColumn>
           </GridItem>

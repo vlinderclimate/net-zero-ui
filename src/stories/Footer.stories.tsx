@@ -91,6 +91,9 @@ const list = [
 ]
 
 const Template: Story<FooterProps> = (args) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+
   return (
     <Footer
       logo={<LogoVlinder width="82px" height="23px" />}
@@ -116,31 +119,34 @@ const Template: Story<FooterProps> = (args) => {
       <>
         {list?.map((item: any, i: number) => (
           <GridItem key={i} xs={6}>
-            <Typography variant="heroParagraph" component="div" marginBottom={{ xs: 1, md: 2 }}>
-              {item.subtitle}
-            </Typography>
+            {!isMobile && (
+              <Typography variant="heroParagraph" component="div" marginBottom={{ xs: 1, md: 2 }}>
+                {item.subtitle}
+              </Typography>
+            )}
 
-            {item.text && (
+            {!isMobile && item.text && (
               <Typography variant="caption" component="div" marginBottom={{ xs: 1, md: 2 }}>
                 {item.text}
               </Typography>
             )}
 
-            <List className={item.modifier}>
+            <List className={item.modifier} sx={isMobile ? { flexDirection: "row", display: "flex" } : undefined}>
               {item?.list?.map((item: any, i: number) => (
-                <ListItem key={i}>
+                <ListItem key={i} sx={isMobile ? { width: "auto", marginRight: theme.spacing(2) } : undefined}>
                   <MuiLink
                     href={item.link}
                     sx={{
                       color: "rgba(0, 0, 0, 0.56)",
                       display: "flex",
                       alignItems: "center",
+
                       gap: 1,
                       "&:hover": { color: "brand" }
                     }}
                   >
                     {item.iconKey && <Icon color="supporting" iconKey={item.iconKey} rotate={0} size="sm" />}
-                    {item.title}
+                    {!isMobile && item.title}
                   </MuiLink>
                 </ListItem>
               ))}
