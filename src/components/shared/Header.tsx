@@ -28,6 +28,10 @@ export const HeaderBox = styled("header")(({ theme }) => ({
   width: "100%",
   backdropFilter: "blur(1rem)",
 
+  ".Button-widthIcon.MuiButton-text": {
+    padding: 0
+  },
+
   [theme.breakpoints.down("lg")]: {
     padding: "12px 0",
     marginBottom: 0
