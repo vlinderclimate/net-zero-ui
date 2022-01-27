@@ -40,7 +40,7 @@ export const HeaderBox = styled("header")(({ theme }) => ({
 
 const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHandler, userHandler }) => {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
     <HeaderBox>

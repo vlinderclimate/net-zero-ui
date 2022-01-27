@@ -52,11 +52,11 @@ export const LogoColumn = styled(MuiBox)(({ theme }) => ({
   flexDirection: "column",
   height: "100%",
 
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("lg")]: {
     marginTop: theme.spacing(2)
   },
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     marginTop: theme.spacing(0)
   }
 }))
@@ -72,7 +72,7 @@ const FooterComponent: React.FC<FooterProps> = ({
   ...props
 }) => {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
     <FooterBox footerBg={footerBg} {...props}>
