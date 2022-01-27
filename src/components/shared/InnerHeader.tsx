@@ -17,8 +17,12 @@ export interface InnerHeaderProps {
   headerBg?: "string"
 }
 
-export const HeaderBox = styled(MuiBox)<InnerHeaderProps>(({ theme, headerBg }) => ({
-  background: headerBg ? `url(${headerBg}) no-repeat center bottom / cover` : "none",
+interface StyledInnerHeaderProps extends Omit<InnerHeaderProps, "headerBg"> {
+  $headerBg?: "string"
+}
+
+export const HeaderBox = styled(MuiBox)<StyledInnerHeaderProps>(({ theme, $headerBg }) => ({
+  background: $headerBg ? `url(${$headerBg}) no-repeat center bottom / cover` : "none",
 
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(2, 0)
@@ -51,7 +55,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
   headerBg
 }) => {
   return (
-    <HeaderBox headerBg={headerBg}>
+    <HeaderBox $headerBg={headerBg}>
       <Section topIndent>
         <GridContainer
           alignItems="center"
