@@ -50,14 +50,9 @@ export const LogoColumn = styled(MuiBox)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   flexDirection: "column",
-  height: "100%",
 
-  [theme.breakpoints.down("lg")]: {
-    marginTop: theme.spacing(2)
-  },
-
-  [theme.breakpoints.down("md")]: {
-    marginTop: theme.spacing(0)
+  [theme.breakpoints.up("lg")]: {
+    height: "100%"
   }
 }))
 
