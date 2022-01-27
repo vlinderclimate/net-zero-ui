@@ -60,7 +60,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
           mt={rightItem ? -6 : 1}
         >
           {backButton}
-          <GridItem xs={12} md={rightItem ? 7 : 11}>
+          <GridItem xs={12} md={rightItem ? 7 : 10}>
             <MuiBox display="flex" alignItems="center" flexWrap="nowrap">
               {image && (
                 <Item pr={{ xs: 2, sm: 5 }}>
