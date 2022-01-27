@@ -18,7 +18,11 @@ export interface FooterProps {
   footerBg?: string
 }
 
-export const FooterBox = styled("footer")<FooterProps>(({ theme, footerBg }) => ({
+interface StyledFooterProps extends Omit<FooterProps, "footerBg"> {
+  $footerBg?: string
+}
+
+export const FooterBox = styled("footer")<StyledFooterProps>(({ theme, $footerBg }) => ({
   margin: "0 auto",
   width: "100%",
   padding: theme.spacing(10, 0, 4),
@@ -34,7 +38,7 @@ export const FooterBox = styled("footer")<FooterProps>(({ theme, footerBg }) => 
     height: "300vh",
     pointerEvents: "none",
     zIndex: "-1",
-    background: footerBg ? `url(${footerBg}) no-repeat center bottom / contain` : "none"
+    background: $footerBg ? `url(${$footerBg}) no-repeat center bottom / contain` : "none"
   },
 
   ".inline-list": {
@@ -70,7 +74,7 @@ const FooterComponent: React.FC<FooterProps> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
-    <FooterBox footerBg={footerBg} {...props}>
+    <FooterBox $footerBg={footerBg} {...props}>
       <Container>
         <GridContainer
           justifyContent="space-between"
