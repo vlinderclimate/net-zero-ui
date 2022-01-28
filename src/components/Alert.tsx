@@ -23,6 +23,10 @@ export interface AlertProps extends Omit<MuiAlertProps, "color"> {
   align?: "flex-start" | "center" | "flex-end"
 }
 
+interface StyledAlertProps extends Omit<AlertProps, "rounded"> {
+  $rounded?: boolean
+}
+
 export const backgroundMap: Record<AlertColor, string> = {
   warning: `${colors.yellow.light}55`,
   success: `${colors.green.light}55`,
@@ -37,7 +41,7 @@ export const colorMap: Record<AlertColor, string> = {
   info: colors.blue.main
 }
 
-const StyledAlert = styled(MuiAlert)<AlertProps>(({ color, icon, rounded, align, theme }) => ({
+const StyledAlert = styled(MuiAlert)<StyledAlertProps>(({ color, icon, $rounded: rounded, align, theme }) => ({
   fontSize: theme.typography.fontSizeXs2,
   lineHeight: theme.typography.lineHeightS,
   fontWeight: theme.typography.fontWeightMedium,
@@ -99,7 +103,7 @@ const Alert: React.FC<AlertProps> = forwardRef(
         className={className}
         color={color}
         icon={icon}
-        rounded={rounded}
+        $rounded={rounded}
         align={align}
         {...props}
         elevation={0}
