@@ -49,7 +49,7 @@ const customizedVariants = {
     element: "h1",
     styles: (theme: Theme) => ({
       ...typography.hero.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.hero.mobile
       }
     })
@@ -58,7 +58,7 @@ const customizedVariants = {
     element: "h1",
     styles: (theme: Theme) => ({
       ...typography.h1.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.h1.mobile
       }
     })
@@ -67,7 +67,7 @@ const customizedVariants = {
     element: "h2",
     styles: (theme: Theme) => ({
       ...typography.h2.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.h2.mobile
       }
     })
@@ -76,7 +76,7 @@ const customizedVariants = {
     element: "h3",
     styles: (theme: Theme) => ({
       ...typography.h3.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.h3.mobile
       }
     })
@@ -86,7 +86,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.h3.main,
       fontWeight: theme.typography.fontWeightMedium,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.h3.mobile
       }
     })
@@ -96,7 +96,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.h3.main,
       fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.h3.mobile
       }
     })
@@ -105,7 +105,7 @@ const customizedVariants = {
     element: "h4",
     styles: (theme: Theme) => ({
       ...typography.title1.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title1.mobile
       }
     })
@@ -114,7 +114,7 @@ const customizedVariants = {
     element: "h5",
     styles: (theme: Theme) => ({
       ...typography.title3.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title3.mobile
       }
     })
@@ -123,7 +123,7 @@ const customizedVariants = {
     element: "h6",
     styles: (theme: Theme) => ({
       ...typography.title4.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title4.mobile
       }
     })
@@ -132,7 +132,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.heroParagraph.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.heroParagraph.mobile
       }
     })
@@ -142,7 +142,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.heroParagraph.main,
       fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.heroParagraph.mobile
       }
     })
@@ -152,7 +152,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.heroParagraph.main,
       fontWeight: theme.typography.fontWeightMedium,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.heroParagraph.mobile
       }
     })
@@ -161,7 +161,7 @@ const customizedVariants = {
     element: "h4",
     styles: (theme: Theme) => ({
       ...typography.title1.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title1.mobile
       }
     })
@@ -170,7 +170,7 @@ const customizedVariants = {
     element: "h4",
     styles: (theme: Theme) => ({
       ...typography.title2.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title2.mobile
       }
     })
@@ -179,7 +179,7 @@ const customizedVariants = {
     element: "h5",
     styles: (theme: Theme) => ({
       ...typography.title3.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title3.mobile
       }
     })
@@ -188,7 +188,7 @@ const customizedVariants = {
     element: "h6",
     styles: (theme: Theme) => ({
       ...typography.title4.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title4.mobile
       }
     })
@@ -197,7 +197,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.title5.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title5.mobile
       }
     })
@@ -206,7 +206,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.title1.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title1.mobile
       }
     })
@@ -215,7 +215,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.title3.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title3.mobile
       }
     })
@@ -224,7 +224,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.title4.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title4.mobile
       }
     })
@@ -233,7 +233,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.title5.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.title5.mobile
       }
     })
@@ -242,7 +242,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.description.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.description.mobile
       }
     })
@@ -252,7 +252,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.description.main,
       fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.description.mobile
       }
     })
@@ -261,7 +261,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.caption.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.caption.mobile
       }
     })
@@ -271,7 +271,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.caption.main,
       fontWeight: theme.typography.fontWeightMedium,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.caption.mobile
       }
     })
@@ -281,7 +281,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.caption.main,
       fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.caption.mobile
       }
     })
@@ -290,7 +290,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.callout.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.callout.mobile
       }
     })
@@ -300,7 +300,7 @@ const customizedVariants = {
     styles: (theme: Theme) => ({
       ...typography.callout.main,
       fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.callout.mobile
       }
     })
@@ -309,7 +309,7 @@ const customizedVariants = {
     element: "p",
     styles: (theme: Theme) => ({
       ...typography.supporting.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.supporting.mobile
       }
     })
@@ -320,7 +320,7 @@ const customizedVariants = {
       ...typography.supporting.main,
       letterSpacing: 0.6,
       textTransform: "uppercase",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("sm")]: {
         ...typography.supporting.mobile
       }
     })

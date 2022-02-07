@@ -1,5 +1,6 @@
 import React from "react"
-import { styled } from "@mui/material/styles"
+import { useTheme, styled } from "@mui/material/styles"
+import useMediaQuery from "@mui/material/useMediaQuery"
 import MuiBox from "@mui/material/Box"
 
 import Container from "../Container"
@@ -17,8 +18,13 @@ export interface FooterProps {
   footerBg?: string
 }
 
-export const FooterBox = styled("footer")<FooterProps>(({ theme, footerBg }) => ({
+interface StyledFooterProps extends Omit<FooterProps, "footerBg"> {
+  $footerBg?: string
+}
+
+export const FooterBox = styled("footer")<StyledFooterProps>(({ theme, $footerBg }) => ({
   margin: "0 auto",
+  width: "100%",
   padding: theme.spacing(10, 0, 4),
   position: "relative",
   fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
@@ -32,14 +38,14 @@ export const FooterBox = styled("footer")<FooterProps>(({ theme, footerBg }) => 
     height: "300vh",
     pointerEvents: "none",
     zIndex: "-1",
-    background: footerBg ? `url(${footerBg}) no-repeat center bottom / contain` : "none"
+    background: $footerBg ? `url(${$footerBg}) no-repeat center bottom / contain` : "none"
   },
 
   ".inline-list": {
     display: "flex"
   },
 
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     padding: theme.spacing(5, 0)
   }
 }))
@@ -48,10 +54,9 @@ export const LogoColumn = styled(MuiBox)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   flexDirection: "column",
-  height: "100%",
 
-  [theme.breakpoints.down("md")]: {
-    marginTop: theme.spacing(2)
+  [theme.breakpoints.up("lg")]: {
+    height: "100%"
   }
 }))
 
@@ -65,23 +70,34 @@ const FooterComponent: React.FC<FooterProps> = ({
   security,
   ...props
 }) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
+
   return (
-    <FooterBox footerBg={footerBg} {...props}>
+    <FooterBox $footerBg={footerBg} {...props}>
       <Container>
-        <GridContainer justifyContent="space-between" direction={{ xs: "column-reverse", md: "row" }}>
+        <GridContainer
+          justifyContent="space-between"
+          direction={{ xs: "column-reverse", md: "row" }}
+          spacing={{ xs: 0, sm: 2 }}
+        >
           <GridItem xs={12} sm={6} lg={6}>
             <LogoColumn>
-              {logo}
-              <Typography variant="caption" component="div" mt={{ xs: 1, md: 2 }}>
-                {description}
-              </Typography>
-              <MuiBox display="flex" alignItems="center" mt={{ xs: 1, md: 3 }}>
+              {!isMobile && (
+                <>
+                  {logo}
+                  <Typography variant="caption" component="div" mt={{ xs: 1, md: 2 }}>
+                    {description}
+                  </Typography>
+                </>
+              )}
+              <MuiBox display="flex" alignItems="center" mt={{ xs: 0, md: 3 }}>
                 <MuiBox pr={{ xs: 3, md: 5 }}>
-                  <Typography variant="caption" component="div">
+                  <Typography variant="caption" component="div" color={isMobile ? "secondary" : "primary"}>
                     {copyright}
                   </Typography>
                 </MuiBox>
-                <MuiBox>{security}</MuiBox>
+                {!isMobile && <MuiBox>{security}</MuiBox>}
               </MuiBox>
             </LogoColumn>
           </GridItem>

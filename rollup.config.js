@@ -17,7 +17,7 @@ const config = {
     "src/theme/*.ts(x)?",
     "src/overrides/*.ts(x)?"
   ],
-  output: [{ dir: "lib", format: "esm", exports: "named" }],
+  output: [{ dir: "lib", format: "cjs", exports: "named" }],
   plugins: [
     multi(),
     peerDepsExternal(),

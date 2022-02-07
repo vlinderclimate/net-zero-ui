@@ -154,7 +154,7 @@ const StyledIcon = styled("i")<IconStyleProps>(({ size, color, rotate, theme }: 
   color: "inherit",
   fontFamily: "inherit !important",
 
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     height: `${iconMobileSizeMap[size ?? "sm"]}px`
   },
 

@@ -33,9 +33,9 @@ export interface ExtendedStyledButtonProps {
   size?: string
   theme: Theme
 }
-interface StyledButtonProps extends Omit<ButtonProps, "color"> {
+interface StyledButtonProps extends Omit<ButtonProps, "color" | "onlyIcon"> {
   $align: ButtonProps["align"]
-  onlyIcon?: boolean
+  $onlyIcon?: boolean
   $color: ButtonProps["color"]
   theme?: Theme
 }
@@ -149,7 +149,7 @@ const ButtonText = styled("span")(({ theme, ...props }) => {
 })
 
 const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) => {
-  const { size, $align: align, $color, onlyIcon } = props
+  const { size, $align: align, $color, $onlyIcon: onlyIcon } = props
   const color = $color ?? "primary"
 
   return {
@@ -165,7 +165,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
     whiteSpace: "nowrap",
     willChange: "transform",
     fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: getFontSizeMobile({ size, theme }),
       lineHeight: getLineHeightMobile({ size, theme }),
       padding: getPaddingMobile({ size, theme, onlyIcon })
@@ -238,7 +238,10 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       color: colorMap.text[color],
       backgroundColor: "transparent !important",
       boxShadow: "none !important",
-      padding: theme.spacing(0, 2)
+      padding: theme.spacing(0, 2),
+      [theme.breakpoints.down("sm")]: {
+        padding: 0
+      }
     },
     "&.Mui-disabled": {
       transform: "none !important"
@@ -308,7 +311,7 @@ const Button: React.FC<ButtonProps> = ({
     `${PREFIX}-${color}`,
     (endIcon ?? startIcon) && classes.withIcon
   ])
-  const stylingProps = { onlyIcon: onlyIcon, $color: color, size, $align: align }
+  const stylingProps = { $onlyIcon: onlyIcon, $color: color, size, $align: align }
 
   return (
     <StyledButton

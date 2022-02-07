@@ -11,20 +11,25 @@ export interface InnerHeaderProps {
   title?: string
   image?: string
   imageWidth?: string | number
+  backButton?: JSX.Element | JSX.Element[] | string
+  rightItem?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
-  headerBg?: "green" | "blue"
+  headerBg?: "string"
 }
 
-export const HeaderBox = styled(MuiBox)<InnerHeaderProps>(({ theme, headerBg }) => ({
-  background: headerBg ? `url(${headerBg}) no-repeat center bottom / cover` : "none",
-  paddingTop: theme.spacing(7),
+interface StyledInnerHeaderProps extends Omit<InnerHeaderProps, "headerBg"> {
+  $headerBg?: "string"
+}
+
+export const HeaderBox = styled(MuiBox)<StyledInnerHeaderProps>(({ theme, $headerBg }) => ({
+  background: $headerBg ? `url(${$headerBg}) no-repeat center bottom / cover` : "none",
 
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(2, 0)
   }
 }))
 
-export const Item = styled(MuiBox)(({ theme }) => ({}))
+export const Item = styled(MuiBox)(() => ({}))
 
 export const Divider = styled(GridItem)(({ theme }) => ({
   borderLeft: "1px solid rgba(0, 0, 0, 0.15)",
@@ -35,24 +40,38 @@ export const Divider = styled(GridItem)(({ theme }) => ({
   left: theme.spacing(-2)
 }))
 
-export const Image = styled("img")(({ theme }) => ({
+export const Image = styled("img")(() => ({
   maxWidth: "100%",
   display: "block"
 }))
 
-const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, imageWidth = 120, children, headerBg }) => {
+const InnerHeader: React.FC<InnerHeaderProps> = ({
+  title,
+  image,
+  rightItem,
+  backButton,
+  imageWidth = 120,
+  children,
+  headerBg
+}) => {
   return (
-    <HeaderBox headerBg={headerBg}>
-      <Section topIndent>
-        <GridContainer justifyContent="center">
-          <GridItem xs={12} md={11}>
+    <HeaderBox $headerBg={headerBg}>
+      <Section topIndent sx={{ paddingBottom: "40px" }}>
+        <GridContainer
+          alignItems="center"
+          justifyContent={rightItem ? "flex-start" : "center"}
+          spacing={1}
+          mt={rightItem ? -6 : 1}
+        >
+          {backButton}
+          <GridItem xs={12} md={rightItem ? 7 : 10}>
             <MuiBox display="flex" alignItems="center" flexWrap="nowrap">
               {image && (
-                <Item>
+                <Item pr={{ xs: 2, sm: 5 }}>
                   <Image src={image} alt={title} width={imageWidth} />
                 </Item>
               )}
-              <Item pl={{ xs: 2, sm: 5 }} sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
+              <Item sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
                 <Typography variant="h1" component="div" marginBottom={{ xs: 1, md: 2 }}>
                   {title}
                 </Typography>
@@ -60,6 +79,11 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, imageWidth = 12
               </Item>
             </MuiBox>
           </GridItem>
+          {rightItem && (
+            <GridItem xs={12} md={5}>
+              {rightItem}
+            </GridItem>
+          )}
         </GridContainer>
       </Section>
     </HeaderBox>

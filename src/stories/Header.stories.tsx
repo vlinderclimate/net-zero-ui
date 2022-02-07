@@ -39,7 +39,7 @@ const LogoVlinder: React.FC<LogoProps> = ({
   mobileHeight = "24px"
 }) => {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
 
   const imageWidth = isMobile ? mobileWidth : width
   const imageHeight = isMobile ? mobileHeight : height

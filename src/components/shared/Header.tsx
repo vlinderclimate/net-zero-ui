@@ -21,12 +21,16 @@ export interface HeaderProps {
 }
 
 export const HeaderBox = styled("header")(({ theme }) => ({
-  margin: "0 auto 2px auto",
-  padding: theme.spacing(4, 0),
+  margin: "0 auto",
+  padding: theme.spacing(2.5, 0),
   position: "fixed",
   zIndex: 100,
   width: "100%",
   backdropFilter: "blur(1rem)",
+
+  ".Button-widthIcon.MuiButton-text": {
+    padding: 0
+  },
 
   [theme.breakpoints.down("lg")]: {
     padding: "12px 0",

@@ -29,7 +29,7 @@ export { default as Breadcrumbs, BreadcrumbsProps } from "./components/Breadcrum
 
 export { default as Account, AccountProps } from "./components/shared/Account"
 export { default as CardSlider, CardSliderProps } from "./components/shared/CardSlider"
-export { default as Footer, FooterProps } from "./components/shared/Footer"
+export { default as FooterComponent, FooterProps } from "./components/shared/Footer"
 export { default as Header, HeaderProps } from "./components/shared/Header"
 export { default as InnerHeader, InnerHeaderProps } from "./components/shared/InnerHeader"
 export { default as Logo, LogoProps } from "./components/shared/Logo"
