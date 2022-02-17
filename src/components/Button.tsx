@@ -128,7 +128,7 @@ const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) 
   if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
   if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
   if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1 : 2.5, 1.4)
-  return theme.spacing(0.75, onlyIcon ? 0.75 : 2.5, onlyIcon ? 0.75 : 1)
+  return theme.spacing(onlyIcon ? 1 : 0.75, onlyIcon ? 1 : 2.5, 1)
 }
 
 const PREFIX = "Button"
