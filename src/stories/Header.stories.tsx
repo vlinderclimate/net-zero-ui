@@ -6,22 +6,8 @@ import Account, { AccountImage, AccountName } from "../components/shared/Account
 import Header, { HeaderProps } from "../components/shared/Header"
 import Logo from "../components/shared/Logo"
 import Button from "../components/Button"
+import Icon from "../components/Icon"
 import Typography from "../components/Typography"
-
-const links = [
-  {
-    url: "#",
-    title: "Home"
-  },
-  {
-    url: "#",
-    title: "About"
-  },
-  {
-    url: "#",
-    title: "FAQ"
-  }
-]
 
 interface LogoProps {
   monochrome?: boolean
@@ -62,14 +48,25 @@ const LogoVlinder: React.FC<LogoProps> = ({
 }
 
 const Template: Story<HeaderProps> = (args) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
+
   return (
     <Header
       logo={<LogoVlinder />}
       // links={links}
       cartHandler={() => console.log(">> open cart")}
-      userHandler={() => console.log(">> open user menu")}
+      menuHandler={() => console.log(">> open menu")}
     >
-      <>
+      {isMobile ? (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="md"
+          startIcon={<Icon iconKey="user" size="xs" />}
+          onClick={() => console.log(">> open user menu")}
+        />
+      ) : (
         <Account>
           <Button
             sx={{ display: "block" }}
@@ -82,7 +79,7 @@ const Template: Story<HeaderProps> = (args) => {
             <AccountName>valerii@atoma.at</AccountName>
           </Button>
         </Account>
-      </>
+      )}
     </Header>
   )
 }

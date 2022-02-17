@@ -16,8 +16,9 @@ export interface HeaderProps {
   children?: JSX.Element | JSX.Element[] | string
   logo: JSX.Element | JSX.Element[] | string
   links?: MenuItemProps[]
+  isEmpty?: boolean
   cartHandler?: () => void
-  userHandler?: () => void
+  menuHandler?: () => void
 }
 
 export const HeaderBox = styled("header")(({ theme }) => ({
@@ -35,10 +36,23 @@ export const HeaderBox = styled("header")(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
     padding: "12px 0",
     marginBottom: 0
+  },
+  [theme.breakpoints.down("md")]: {
+    ".MuiBadge-badge": {
+      top: theme.spacing(0.5),
+      right: theme.spacing(0.5)
+    }
   }
 }))
 
-const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHandler, userHandler }) => {
+const HeaderComponent: React.FC<HeaderProps> = ({
+  children,
+  logo,
+  links,
+  cartHandler,
+  menuHandler,
+  isEmpty = false
+}) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
@@ -54,24 +68,31 @@ const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHan
               {!isMobile && <Menu list={links} />}
               {cartHandler && (
                 <MuiBox sx={{ display: "flex", alignItems: "center" }}>
-                  <MuiBadge color="error" variant="dot" sx={{ verticalAlign: "inherit" }}>
+                  <MuiBadge color="error" variant="dot" sx={{ verticalAlign: "inherit" }} invisible={isEmpty}>
                     <Button
-                      variant="text"
+                      variant={isMobile ? "outlined" : "text"}
                       color="primary"
-                      size="sm"
-                      sx={{ padding: "0 !important" }}
-                      startIcon={<Icon iconKey="cart" size="md" />}
+                      size={isMobile ? "md" : "sm"}
+                      startIcon={<Icon iconKey="cart" size={isMobile ? "xs" : "md"} />}
                       onClick={cartHandler}
+                      {...(!isMobile && { sx: { padding: "0 !important" } })}
                     />
                   </MuiBadge>
                 </MuiBox>
               )}
-              <MuiBox sx={{ display: "flex" }} ml={{ xs: 2, md: 1 }}>
-                {isMobile ? (
-                  <Button variant="text" color="primary" size="sm" startIcon={<Icon iconKey="menu" size="md" />} />
-                ) : (
-                  <>{children}</>
-                )}
+              <MuiBox sx={{ display: "flex" }} ml={{ xs: 1.5, md: 1 }} gap={{ xs: 1.5, md: 0 }}>
+                <>
+                  {children}
+                  {isMobile && (
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      size="md"
+                      startIcon={<Icon iconKey="menu" size="xs" />}
+                      onClick={menuHandler}
+                    />
+                  )}
+                </>
               </MuiBox>
             </MuiBox>
           </GridItem>

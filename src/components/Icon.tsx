@@ -54,7 +54,8 @@ export const IconKeyVariants = [
   "showPassword",
   "hidePassword",
   "sprout",
-  "collection"
+  "collection",
+  "user"
 ] as const
 
 export type IconKeyVariant = typeof IconKeyVariants[number]
@@ -126,7 +127,8 @@ export const iconMap: Record<IconKeyVariant, ReactNode> = {
   sprout: <I.Sprout />,
   showPassword: <I.ShowPassword />,
   hidePassword: <I.HidePassword />,
-  collection: <I.Collection />
+  collection: <I.Collection />,
+  user: <I.User />
 }
 
 export const iconSizeMap: Record<IconSizeVariant, number> = {

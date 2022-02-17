@@ -45,7 +45,7 @@ export const sizeMap = new Map<CardSizeVariants, { x: number; y: number }>([
 export const sizeMobileMap = new Map<CardSizeVariants, { x: number; y: number }>([
   [CardSizeVariants.Initial, { y: 0, x: 0 }],
   [CardSizeVariants.Small, { y: 1, x: 2 }],
-  [CardSizeVariants.Medium, { y: 4, x: 5 }],
+  [CardSizeVariants.Medium, { y: 2, x: 3 }],
   [CardSizeVariants.Large, { y: 3, x: 4 }]
 ])
 

@@ -51,9 +51,9 @@ const description = [
 const Template: Story<InnerHeaderProps> = (args) => {
   return (
     <InnerHeader {...args}>
-      <GridContainer spacing={1} alignItems="baseline">
+      <GridContainer spacing={1} alignItems="baseline" justifyContent={{ xs: "center", sm: "unset" }}>
         {description.map((item: DescriptionItem, i: number) => (
-          <GridItem xs sm="auto" key={i}>
+          <GridItem xs="auto" sm="auto" flexGrow={{ xs: 0, sm: 1 }} key={i}>
             <MuiBox display="flex" alignItems="baseline" position="relative">
               {i > 0 && (
                 <Typography color="secondary" variant="heroParagraph">
