@@ -66,12 +66,14 @@ const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ t
     boxShadow: "none",
     overflow: "auto",
 
-    [theme.breakpoints.down("sm")]: {
-      padding: theme.spacing(2),
-      width: `calc(100vw - ${theme.spacing(4)})`
+    [theme.breakpoints.down("md")]: {
+      padding: theme.spacing(2.5, 3.75),
+      width: `calc(100vw - ${theme.spacing(3.75)})`
     },
-    [theme?.breakpoints.down("sm")]: {
-      fontSize: theme.typography.fontSizeXs5
+    [theme.breakpoints.down("sm")]: {
+      width: "100vw",
+      fontSize: theme.typography.fontSizeXs5,
+      padding: theme.spacing(2, 2.5)
     }
   }
 }))
