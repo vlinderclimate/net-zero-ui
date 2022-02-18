@@ -50,14 +50,7 @@ export const HeaderBox = styled("header")(({ theme }) => ({
   }
 }))
 
-const HeaderComponent: React.FC<HeaderProps> = ({
-  children,
-  logo,
-  links,
-  cartHandler,
-  menuHandler,
-  isEmpty = false
-}) => {
+const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHandler, menuHandler, isEmpty }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
