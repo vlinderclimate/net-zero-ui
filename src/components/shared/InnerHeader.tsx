@@ -67,12 +67,12 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
               display="flex"
               alignItems="center"
               justifyContent={{ xs: "center", md: "flex-start" }}
-              flexDirection={{ xs: "row", md: "unset" }}
+              flexDirection={{ xs: "column", md: "unset" }}
               flexWrap={{ xs: "wrap", md: "nowrap" }}
               textAlign={{ xs: "center", md: "left" }}
             >
               {image && (
-                <Item pr={{ xs: 0, sm: 2, md: 5 }} mb={{ xs: 3, md: 0 }}>
+                <Item pr={{ xs: 0, md: 5 }} mb={{ xs: 3, sm: 4, md: 0 }}>
                   <Image src={image} alt={title} width={imageWidth} />
                 </Item>
               )}
