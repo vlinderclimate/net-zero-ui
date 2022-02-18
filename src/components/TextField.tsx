@@ -59,7 +59,7 @@ const StyledTextField = styled(MuiTextField)<StyledTextFieldProps>(({ size, erro
         fontSize: getFontSize({ size, theme })?.mobile,
         lineHeight: getLineHeight({ size, theme })?.mobile
       },
-      "& .MuiFormHelperText-root": {
+      "& .MuiFormHelperText-root, & .MuiFormLabel-root": {
         fontSize: theme.typography.fontSizeXs4,
         lineHeight: theme.typography.lineHeightXs4
       }

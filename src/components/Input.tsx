@@ -62,7 +62,7 @@ export const getPadding = ({ size, theme, $append: append }: ExtendedStyledInput
     case "xs":
       return {
         main: theme.spacing(1, append ? 1 : 2, 1, 2),
-        mobile: theme.spacing(1.25, append ? 0.5 : 1.5, 1.25, 1.5)
+        mobile: theme.spacing(1, append ? 0.5 : 1.5, 1, 1.5)
       }
     case "sm":
       return {
