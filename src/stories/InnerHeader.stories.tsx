@@ -2,9 +2,9 @@ import { Story, Meta } from "@storybook/react"
 
 import InnerHeader, { InnerHeaderProps } from "../components/shared/InnerHeader"
 import MuiBox from "@mui/material/Box"
-import GridItem from "../components/GridItem"
 import Typography from "../components/Typography"
-import GridContainer from "../components/GridContainer"
+import Button from "../components/Button"
+import Icon from "../components/Icon"
 
 const argTypes = {
   headerBg: {
@@ -50,26 +50,29 @@ const description = [
 
 const Template: Story<InnerHeaderProps> = (args) => {
   return (
-    <InnerHeader {...args}>
-      <GridContainer spacing={1} alignItems="baseline" justifyContent={{ xs: "center", sm: "unset" }}>
+    <InnerHeader
+      backButton={
+        <Button size="lg" variant="outlined" color="primary" startIcon={<Icon iconKey="arrowLeft" size="md" />} />
+      }
+      {...args}
+    >
+      <MuiBox display="flex" gap={1} alignItems="baseline">
         {description.map((item: DescriptionItem, i: number) => (
-          <GridItem xs="auto" sm="auto" flexGrow={{ xs: 0, sm: 1 }} key={i}>
-            <MuiBox display="flex" alignItems="baseline" position="relative">
-              {i > 0 && (
-                <Typography color="secondary" variant="heroParagraph">
-                  /
-                </Typography>
-              )}
-              <Typography variant={i < 1 ? "h2" : "heroParagraph"} mr={0.5} color={i < 1 ? "primary" : "supporting"}>
-                {item.value}
+          <MuiBox display="flex" alignItems="baseline" position="relative">
+            {i > 0 && (
+              <Typography color="secondary" variant="heroParagraph">
+                /
               </Typography>
-              <Typography variant="heroParagraph" color={i < 1 ? "primary" : "supporting"}>
-                {item.title}
-              </Typography>
-            </MuiBox>
-          </GridItem>
+            )}
+            <Typography variant={i < 1 ? "h2" : "heroParagraph"} mr={0.5} color={i < 1 ? "primary" : "supporting"}>
+              {item.value}
+            </Typography>
+            <Typography variant="heroParagraph" color={i < 1 ? "primary" : "supporting"}>
+              {item.title}
+            </Typography>
+          </MuiBox>
         ))}
-      </GridContainer>
+      </MuiBox>
     </InnerHeader>
   )
 }

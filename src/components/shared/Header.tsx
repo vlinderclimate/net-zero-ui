@@ -39,8 +39,13 @@ export const HeaderBox = styled("header")(({ theme }) => ({
   },
   [theme.breakpoints.down("md")]: {
     ".MuiBadge-badge": {
-      top: theme.spacing(0.5),
-      right: theme.spacing(0.5)
+      top: theme.spacing(0.625),
+      right: theme.spacing(0.625)
+    }
+  },
+  [theme.breakpoints.down("sm")]: {
+    "> .MuiBox-root": {
+      paddingRight: theme.spacing(1.5)
     }
   }
 }))
