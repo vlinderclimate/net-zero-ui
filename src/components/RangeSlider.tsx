@@ -79,6 +79,12 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     height: 2,
     borderRadius: 2,
     opacity: 1
+  },
+  [theme.breakpoints.down("sm")]: {
+    "& .MuiSlider-markLabel": {
+      fontSize: "9px",
+      lineHeight: "14px"
+    }
   }
 }))
 
