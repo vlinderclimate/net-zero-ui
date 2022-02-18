@@ -14,6 +14,13 @@ const MuiTableCell = {
     fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
     "&:not(:first-child)": {
       paddingLeft: 0
+    },
+    "&:last-child": {
+      paddingRight: 0
+    },
+    "@media all and (max-width: 426px)": {
+      paddingTop: 7,
+      paddingBottom: 8
     }
   },
   head: {

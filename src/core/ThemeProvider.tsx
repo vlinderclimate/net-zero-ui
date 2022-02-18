@@ -26,6 +26,7 @@ import MuiBackdrop from "../overrides/MuiBackDrop"
 import MuiLink from "../overrides/MuiLink"
 import MuiTooltip from "../overrides/MuiTooltip"
 import MuiBadge from "../overrides/MuiBadge"
+import MuiTableContainer from "../overrides/MuiTableContainer"
 
 /**
  * Types
@@ -97,6 +98,9 @@ export const theme = createTheme({
     },
     MuiTableRow: {
       styleOverrides: MuiTableRow
+    },
+    MuiTableContainer: {
+      styleOverrides: MuiTableContainer
     },
     MuiFormHelperText: {
       styleOverrides: MuiFormHelperText
