@@ -68,10 +68,9 @@ const StyledSwipeableDrawer = styled(MuiSwipeableDrawer)<StyledDrawerProps>(({ t
 
     [theme.breakpoints.down("md")]: {
       padding: theme.spacing(2.5, 3.75),
-      width: `calc(100vw - ${theme.spacing(3.75)})`
+      width: "100vw"
     },
     [theme.breakpoints.down("sm")]: {
-      width: "100vw",
       fontSize: theme.typography.fontSizeXs5,
       padding: theme.spacing(2, 2.5)
     }

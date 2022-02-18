@@ -13,6 +13,7 @@ export interface InnerHeaderProps {
   imageWidth?: string | number
   backButton?: JSX.Element | JSX.Element[] | string
   rightItem?: JSX.Element | JSX.Element[] | string
+  scrollButton?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
   headerBg?: "string"
 }
@@ -25,7 +26,8 @@ export const HeaderBox = styled(MuiBox)<StyledInnerHeaderProps>(({ theme, $heade
   background: $headerBg ? `url(${$headerBg}) no-repeat center bottom / cover` : "none",
 
   [theme.breakpoints.down("md")]: {
-    padding: theme.spacing(2, 0)
+    padding: theme.spacing(2, 0),
+    backgroundPosition: "right bottom"
   }
 }))
 
@@ -50,6 +52,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
   image,
   rightItem,
   backButton,
+  scrollButton,
   imageWidth = 120,
   children,
   headerBg
@@ -57,21 +60,16 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
   return (
     <HeaderBox $headerBg={headerBg}>
       <Section topIndent sx={{ paddingBottom: "40px" }}>
-        <GridContainer
-          alignItems="center"
-          justifyContent={rightItem ? "flex-start" : "center"}
-          spacing={1}
-          mt={rightItem ? -6 : 1}
-        >
-          {backButton}
-          <GridItem xs={12} md={rightItem ? 7 : 10}>
+        <GridContainer alignItems="center" spacing={1} mt={rightItem ? -6 : 1}>
+          {backButton && <GridItem xs={1}>{backButton}</GridItem>}
+          <GridItem xs={rightItem ? 12 : 10} md={rightItem ? 7 : 11}>
             <MuiBox
               display="flex"
               alignItems="center"
               justifyContent={{ xs: "center", md: "flex-start" }}
               flexDirection={{ xs: "row", md: "unset" }}
-              flexWrap={{ xs: "wrap", sm: "nowrap" }}
-              textAlign={{ xs: "center", sm: "left" }}
+              flexWrap={{ xs: "wrap", md: "nowrap" }}
+              textAlign={{ xs: "center", md: "left" }}
             >
               {image && (
                 <Item pr={{ xs: 0, sm: 2, md: 5 }} mb={{ xs: 3, md: 0 }}>
@@ -86,6 +84,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
               </Item>
             </MuiBox>
           </GridItem>
+          {scrollButton && <GridItem xs={1}>{scrollButton}</GridItem>}
           {rightItem && (
             <GridItem xs={12} md={5}>
               {rightItem}
