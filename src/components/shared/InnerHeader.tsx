@@ -26,8 +26,7 @@ export const HeaderBox = styled(MuiBox)<StyledInnerHeaderProps>(({ theme, $heade
   background: $headerBg ? `url(${$headerBg}) no-repeat center bottom / cover` : "none",
 
   [theme.breakpoints.down("md")]: {
-    padding: theme.spacing(2, 0),
-    backgroundPosition: "right bottom"
+    padding: theme.spacing(2, 0)
   }
 }))
 

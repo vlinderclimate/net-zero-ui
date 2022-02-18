@@ -81,7 +81,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     opacity: 1
   },
   [theme.breakpoints.down("sm")]: {
-    "& .MuiSlider-markLabel": {
+    "&.MuiSlider-root .MuiSlider-markLabel": {
       fontSize: "9px",
       lineHeight: "14px"
     }
