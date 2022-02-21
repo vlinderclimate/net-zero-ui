@@ -85,6 +85,11 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       fontSize: "9px",
       lineHeight: "14px"
     }
+  },
+  "@media (pointer: coarse)": {
+    "&.MuiSlider-root": {
+      padding: "13px 0"
+    }
   }
 }))
 
