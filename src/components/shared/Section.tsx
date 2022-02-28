@@ -10,6 +10,7 @@ export interface SectionProps {
   noPadding?: boolean
   topIndent?: boolean
   sx?: object
+  id?: string
 }
 
 export const SectionBox = styled(MuiBox)<SectionProps>(({ theme, noPadding, topIndent }) => ({
