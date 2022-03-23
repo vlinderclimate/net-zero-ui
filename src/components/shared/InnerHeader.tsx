@@ -15,11 +15,11 @@ export interface InnerHeaderProps {
   rightItem?: JSX.Element | JSX.Element[] | string
   scrollButton?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
-  headerBg?: "string"
+  headerBg?: string
 }
 
 interface StyledInnerHeaderProps extends Omit<InnerHeaderProps, "headerBg"> {
-  $headerBg?: "string"
+  $headerBg?: string
 }
 
 export const HeaderBox = styled(MuiBox)<StyledInnerHeaderProps>(({ theme, $headerBg }) => ({
