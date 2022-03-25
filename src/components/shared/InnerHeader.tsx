@@ -23,7 +23,9 @@ interface StyledInnerHeaderProps extends Omit<InnerHeaderProps, "headerBg"> {
 }
 
 export const HeaderBox = styled(MuiBox)<StyledInnerHeaderProps>(({ theme, $headerBg }) => ({
-  background: $headerBg ? `url(${$headerBg}) no-repeat center bottom / cover` : "none",
+  background: $headerBg
+    ? `${theme.palette.gray[400]} url(${$headerBg}) no-repeat center bottom / cover`
+    : theme.palette.gray[400],
 
   [theme.breakpoints.down("md")]: {
     padding: theme.spacing(2, 0)
