@@ -43,9 +43,10 @@ export const Divider = styled(GridItem)(({ theme }) => ({
   left: theme.spacing(-2)
 }))
 
-export const Image = styled("img")(() => ({
+export const Image = styled("img")(({ theme }) => ({
   maxWidth: "100%",
-  display: "block"
+  display: "block",
+  backgroundColor: theme.palette.gray[400]
 }))
 
 const InnerHeader: React.FC<InnerHeaderProps> = ({
@@ -74,7 +75,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
             >
               {image && (
                 <Item pr={{ xs: 0, md: 5 }} mb={{ xs: 3, sm: 4, md: 0 }}>
-                  <Image src={image} alt={title} width={imageWidth} />
+                  <Image src={image} alt={title} width={imageWidth} height={imageWidth} />
                 </Item>
               )}
               <Item sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
