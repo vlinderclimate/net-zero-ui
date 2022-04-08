@@ -191,7 +191,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       }
     },
     [`&.${classes.withIcon}`]: {
-      "&.MuiButton-contained, &.MuiButton-text": {
+      "&.MuiButton-text": {
         "& .MuiButton-endIcon": {
           width: 0,
           opacity: 0,
@@ -203,6 +203,22 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
             "& .MuiButton-endIcon": {
               opacity: 1,
               transform: "translate(0px, 0)"
+            }
+          }
+        }
+      },
+      "&.MuiButton-contained": {
+        "& .MuiButton-endIcon": {
+          width: 0,
+          opacity: 0,
+          transform: "translate(-12px, 0)",
+          transition: theme.transitions.create(["all"])
+        },
+        [theme.breakpoints.up("md")]: {
+          "&:hover": {
+            "& .Button-innerText, & .MuiButton-endIcon": {
+              opacity: 1,
+              transform: "translate(-8px, 0)"
             }
           }
         }
