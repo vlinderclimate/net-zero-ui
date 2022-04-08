@@ -25,7 +25,7 @@ interface StyledFooterProps extends Omit<FooterProps, "footerBg"> {
 export const FooterBox = styled("footer")<StyledFooterProps>(({ theme, $footerBg }) => ({
   margin: "0 auto",
   width: "100%",
-  padding: theme.spacing(10, 0, 4),
+  padding: theme.spacing(17, 0, 7.5),
   position: "relative",
   fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
 
@@ -42,7 +42,11 @@ export const FooterBox = styled("footer")<StyledFooterProps>(({ theme, $footerBg
   },
 
   ".inline-list": {
-    display: "flex"
+    display: "flex",
+
+    li: {
+      marginBottom: "0 !important"
+    }
   },
 
   [theme.breakpoints.down("sm")]: {

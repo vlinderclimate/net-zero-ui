@@ -46,7 +46,8 @@ export const Divider = styled(GridItem)(({ theme }) => ({
 export const Image = styled("img")(({ theme }) => ({
   maxWidth: "100%",
   display: "block",
-  backgroundColor: theme.palette.gray[400]
+  backgroundColor: theme.palette.gray[400],
+  objectFit: "contain"
 }))
 
 const InnerHeader: React.FC<InnerHeaderProps> = ({
