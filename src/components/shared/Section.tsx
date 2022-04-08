@@ -5,7 +5,7 @@ import MuiBox from "@mui/material/Box"
 import Container from "../Container"
 
 export interface SectionProps {
-  children?: JSX.Element | JSX.Element[] | string | number
+  children?: JSX.Element | JSX.Element[] | string | number | Element[]
   noContainer?: boolean
   noPadding?: boolean
   topIndent?: boolean
@@ -23,7 +23,7 @@ export const SectionBox = styled(MuiBox)<SectionProps>(({ theme, noPadding, topI
   backgroundSize: "cover",
 
   [theme.breakpoints.down("md")]: {
-    padding: noPadding ? 0 : topIndent ? theme.spacing(11, 0, 4) : theme.spacing(10, 0)
+    padding: noPadding ? 0 : topIndent ? theme.spacing(11, 0, 4) : theme.spacing(5, 0)
   },
   [theme.breakpoints.down("sm")]: {
     padding: noPadding ? 0 : topIndent ? theme.spacing(6, 0, 2) : theme.spacing(3, 0)

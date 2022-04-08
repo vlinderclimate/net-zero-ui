@@ -19,9 +19,6 @@ export const SliderBox = styled("div")(({ theme }) => ({
   ".slick-slide": {
     paddingRight: theme.spacing(5)
   },
-  ".project-card": {
-    maxWidth: "none"
-  },
   [theme.breakpoints.down("sm")]: {
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(2),
