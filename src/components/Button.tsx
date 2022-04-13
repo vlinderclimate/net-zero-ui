@@ -12,6 +12,7 @@ import { fontWeight, lineHeightMobile, fontSizeMobile } from "../theme/typograph
  */
 export const ButtonColorVariants = [
   "primary",
+  "primaryAlt",
   "secondary",
   "secondaryAlt",
   "inverse",
@@ -53,6 +54,7 @@ interface ColorMap {
 const colorMap: ColorMap = {
   background: {
     primary: colors.primary.main,
+    primaryAlt: colors.primary.main,
     secondary: colors.text.primary,
     secondaryAlt: colors.gray[300],
     inverse: colors.gray.white,
@@ -62,6 +64,7 @@ const colorMap: ColorMap = {
   },
   color: {
     primary: colors.text.inversePrimary,
+    primaryAlt: colors.text.inversePrimary,
     secondary: colors.text.inversePrimary,
     secondaryAlt: colors.gray[800],
     inverse: colors.text.primary,
@@ -71,6 +74,7 @@ const colorMap: ColorMap = {
   },
   outlined: {
     primary: colors.text.primary,
+    primaryAlt: colors.text.primary,
     secondary: colors.gray[500],
     secondaryAlt: colors.gray[700],
     inverse: colors.gray.white,
@@ -80,6 +84,7 @@ const colorMap: ColorMap = {
   },
   text: {
     primary: colors.text.primary,
+    primaryAlt: colors.text.primary,
     secondary: colors.text.brand,
     secondaryAlt: colors.gray[700],
     inverse: colors.gray.white,
@@ -241,6 +246,13 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       padding: getOutlinePadding({ size, theme, onlyIcon }),
       [`&.${PREFIX}-primary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
+        color: theme.palette.gray[800],
+        "&:hover": {
+          color: theme.palette.gray[700]
+        }
+      },
+      [`&.${PREFIX}-primaryAlt`]: {
+        boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
         color: theme.palette.gray[800],
         "&:hover": {
           color: theme.palette.gray[700]
