@@ -22,6 +22,9 @@ export const SectionBox = styled(MuiBox)<SectionProps>(({ theme, noPadding, topI
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
 
+  "&:last-child": {
+    paddingBottom: "0 !important"
+  },
   [theme.breakpoints.down("md")]: {
     padding: noPadding ? 0 : topIndent ? theme.spacing(11, 0, 4) : theme.spacing(5, 0)
   },
@@ -38,7 +41,7 @@ const SectionComponent: React.FC<SectionProps> = ({
   ...props
 }) => {
   return (
-    <SectionBox noPadding={noPadding} topIndent={topIndent} {...props}>
+    <SectionBox as="section" noPadding={noPadding} topIndent={topIndent} {...props}>
       {noContainer ? children : <Container>{children}</Container>}
     </SectionBox>
   )
