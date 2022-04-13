@@ -126,7 +126,7 @@ const Template: Story<FooterProps> = (args) => {
             )}
 
             {!isMobile && item.text && (
-              <Typography variant="caption" component="div" marginBottom={{ xs: 1, md: 2 }}>
+              <Typography variant="caption" component="div" marginBottom={{ xs: 1, md: 3 }}>
                 {item.text}
               </Typography>
             )}
@@ -134,17 +134,7 @@ const Template: Story<FooterProps> = (args) => {
             <List className={item.modifier} sx={isMobile ? { flexDirection: "row", display: "flex" } : undefined}>
               {item?.list?.map((item: any, i: number) => (
                 <ListItem key={i} sx={isMobile ? { width: "auto", marginRight: theme.spacing(2) } : undefined}>
-                  <MuiLink
-                    href={item.link}
-                    sx={{
-                      color: "rgba(0, 0, 0, 0.56)",
-                      display: "flex",
-                      alignItems: "center",
-
-                      gap: 1,
-                      "&:hover": { color: "brand" }
-                    }}
-                  >
+                  <MuiLink href={item.fields?.link}>
                     {item.iconKey && <Icon color="supporting" iconKey={item.iconKey} rotate={0} size="sm" />}
                     {!isMobile && item.title}
                   </MuiLink>

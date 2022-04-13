@@ -11,9 +11,6 @@ const StyledListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
   fontSize: theme?.typography.fontSizeXs2,
   lineHeight: theme?.typography.lineHeightXs4,
 
-  "&:last-child": {
-    marginBottom: 0
-  },
   ".MuiLink-root": {
     color: theme.palette.gray.a700,
     display: "flex",
@@ -21,10 +18,15 @@ const StyledListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
     gap: theme.spacing(1),
     transition: theme.transitions.create(["color"]),
     "&:hover": {
-      color: theme.palette.primary.main,
+      color: theme.palette.text.primary,
       ".icon path": {
-        fill: theme.palette.primary.main
+        fill: theme.palette.text.primary
       }
+    }
+  },
+  [theme?.breakpoints.up("md")]: {
+    "&:last-child": {
+      marginBottom: 0
     }
   },
   [theme?.breakpoints.down("sm")]: {
