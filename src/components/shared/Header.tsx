@@ -68,7 +68,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHan
                   <MuiBadge color="error" variant="dot" sx={{ verticalAlign: "inherit" }} invisible={isEmpty}>
                     <Button
                       variant={isMobile ? "outlined" : "text"}
-                      color="primary"
+                      color="primaryAlt"
                       size={isMobile ? "md" : "sm"}
                       startIcon={<Icon iconKey="cart" size={isMobile ? "xs" : "md"} />}
                       onClick={cartHandler}
@@ -83,7 +83,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHan
                   {isMobile && (
                     <Button
                       variant="outlined"
-                      color="primary"
+                      color="primaryAlt"
                       size="md"
                       startIcon={<Icon iconKey="menu" size="xs" />}
                       onClick={menuHandler}

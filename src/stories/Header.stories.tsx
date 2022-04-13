@@ -61,7 +61,7 @@ const Template: Story<HeaderProps> = (args) => {
       {isMobile ? (
         <Button
           variant="outlined"
-          color="primary"
+          color="primaryAlt"
           size="md"
           startIcon={<Icon iconKey="user" size="xs" />}
           onClick={() => console.log(">> open user menu")}
@@ -71,7 +71,7 @@ const Template: Story<HeaderProps> = (args) => {
           <Button
             sx={{ display: "block" }}
             variant="outlined"
-            color="primary"
+            color="primaryAlt"
             size="sm"
             onClick={() => console.log(">> open user menu")}
           >
