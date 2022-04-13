@@ -8,6 +8,8 @@ import GridContainer from "../GridContainer"
 import GridItem from "../GridItem"
 import Typography from "../Typography"
 
+import initialFooterBg from "../../assets/images/footer-bg.jpg"
+
 export interface FooterProps {
   children?: JSX.Element | JSX.Element[] | string
   logo?: JSX.Element | JSX.Element[] | string
@@ -22,24 +24,23 @@ interface StyledFooterProps extends Omit<FooterProps, "footerBg"> {
   $footerBg?: string
 }
 
-export const FooterBox = styled("footer")<StyledFooterProps>(({ theme, $footerBg }) => ({
+export const FooterBackground = styled("img")(({ theme }) => ({
+  position: "absolute",
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  zIndex: -1,
+  height: "100%",
+  width: "100%"
+}))
+
+export const FooterBox = styled("footer")<StyledFooterProps>(({ theme }) => ({
   margin: "0 auto",
   width: "100%",
-  padding: theme.spacing(17, 0, 7.5),
+  padding: theme.spacing(31, 0, 7.5),
   position: "relative",
   fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
-
-  "&:before": {
-    content: "''",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    width: "100%",
-    height: "300vh",
-    pointerEvents: "none",
-    zIndex: "-1",
-    background: $footerBg ? `url(${$footerBg}) no-repeat center bottom / contain` : "none"
-  },
 
   ".inline-list": {
     display: "flex",
@@ -48,9 +49,11 @@ export const FooterBox = styled("footer")<StyledFooterProps>(({ theme, $footerBg
       marginBottom: "0 !important"
     }
   },
-
-  [theme.breakpoints.down("sm")]: {
-    padding: theme.spacing(5, 0)
+  [theme.breakpoints.down("md")]: {
+    padding: theme.spacing(12, 0, 4),
+    li: {
+      marginBottom: "0 !important"
+    }
   }
 }))
 
@@ -78,7 +81,8 @@ const FooterComponent: React.FC<FooterProps> = ({
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
-    <FooterBox $footerBg={footerBg} {...props}>
+    <FooterBox {...props}>
+      <FooterBackground src={footerBg ?? initialFooterBg} alt="footer bg" />
       <Container>
         <GridContainer
           justifyContent="space-between"
