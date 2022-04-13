@@ -22,7 +22,7 @@ export const SectionBox = styled(MuiBox)<SectionProps>(({ theme, noPadding, topI
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
 
-  "&:last-child": {
+  "main & > &:last-child": {
     paddingBottom: "0 !important"
   },
   [theme.breakpoints.down("md")]: {
