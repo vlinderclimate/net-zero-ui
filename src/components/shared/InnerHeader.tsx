@@ -62,7 +62,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
 }) => {
   return (
     <HeaderBox $headerBg={headerBg}>
-      <Section topIndent sx={{ paddingBottom: "40px" }}>
+      <Section topIndent>
         <GridContainer alignItems="center" spacing={1} mt={{ xs: 1, md: rightItem ? -6 : 1 }}>
           {backButton && <GridItem xs={1}>{backButton}</GridItem>}
           <GridItem xs={rightItem ? 12 : 10} md={rightItem ? 7 : 11}>
