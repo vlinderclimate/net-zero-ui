@@ -255,7 +255,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
         color: theme.palette.gray[800],
         "&:hover": {
-          color: theme.palette.gray[700]
+          color: theme.palette.gray.a700
         }
       },
       [`&.${PREFIX}-secondary`]: {
