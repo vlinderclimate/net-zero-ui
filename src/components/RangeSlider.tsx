@@ -80,6 +80,79 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     borderRadius: 2,
     opacity: 1
   },
+  "&.MuiSlider-sizeMedium": {
+    height: 32,
+    padding: 0,
+    marginTop: 32,
+
+    "&:after": {
+      content: "''",
+      position: "absolute",
+      backgroundColor: "#000",
+      borderRadius: 0,
+      height: "100%",
+      width: 1,
+      top: "0",
+      left: "50%",
+      zIndex: 1,
+      transform: "translate(-2.5px, 0)",
+      mixBlendMode: "overlay"
+    },
+    ".MuiSlider-rail, .MuiSlider-track": {
+      height: 32,
+      borderRadius: 0
+    },
+    ".MuiSlider-rail": {
+      backgroundColor: theme.palette.gray[400]
+    },
+    ".MuiSlider-mark": {
+      borderRadius: 0,
+      height: 16,
+      width: 1,
+      backgroundColor: theme.palette.gray.a500,
+      top: "-50%",
+      marginTop: 2
+    },
+    "& .MuiSlider-thumb": {
+      height: 16,
+      width: 16,
+      border: `3px solid ${theme.palette.primary.main}`,
+      boxShadow: "none !important",
+      top: "0",
+      marginTop: -12,
+      "&:after": {
+        content: "''",
+        width: 3,
+        height: 39,
+        backgroundColor: theme.palette.primary.main,
+        position: "absolute",
+        top: "100%",
+        left: "50%",
+        display: "block!important",
+        borderRadius: 0,
+        transform: "translate(-50%,0)"
+      },
+      "&.Mui-disabled": {
+        height: 16,
+        width: 16
+      }
+    },
+    ".MuiSlider-markLabel": {
+      top: "-100%",
+      marginTop: -2,
+      transform: "translate(-2px, -50%)",
+      color: theme.palette.gray[600],
+      ...typography.caption.main,
+
+      "&[data-index='1']": {
+        transform: "translate(-50%, -50%)"
+      },
+      "&[data-index='2']": {
+        transform: "translate(-100%, -50%)",
+        marginLeft: 1
+      }
+    }
+  },
   [theme.breakpoints.down("sm")]: {
     "&.MuiSlider-root .MuiSlider-markLabel": {
       fontSize: "9px",
@@ -93,8 +166,8 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   }
 }))
 
-const RangeSlider: React.FC<RangeSliderProps> = ({ disabled, color = "primary", defaultValue, ...props }) => {
-  return <StyledSlider color={color} defaultValue={defaultValue} disabled={disabled} {...props} />
+const RangeSlider: React.FC<RangeSliderProps> = ({ disabled, color = "primary", size, defaultValue, ...props }) => {
+  return <StyledSlider size={size} color={color} defaultValue={defaultValue} disabled={disabled} {...props} />
 }
 
 export default RangeSlider

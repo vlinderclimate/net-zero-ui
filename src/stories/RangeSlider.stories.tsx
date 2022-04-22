@@ -14,6 +14,10 @@ const argTypes = {
       defaultValue: { summary: false }
     }
   },
+  size: {
+    name: "size",
+    defaultValue: "small"
+  },
   isRtl: { table: { disable: true } },
   disableSwap: { table: { disable: true } },
   componentsProps: { table: { disable: true } },
@@ -21,7 +25,6 @@ const argTypes = {
   tabIndex: { table: { disable: true } },
   sx: { table: { disable: true } },
   classes: { table: { disable: true } },
-  size: { table: { disable: true } },
   track: { table: { disable: true } },
   defaultValue: { table: { disable: true } },
   ref: { table: { disable: true } },
@@ -47,8 +50,26 @@ const argTypes = {
   orientation: { table: { disable: true } }
 }
 
+const MIN = 1
+const MAX = 300
+
+const marks = [
+  {
+    value: MIN,
+    label: "min"
+  },
+  {
+    value: MAX / 2,
+    label: "150"
+  },
+  {
+    value: MAX,
+    label: "max"
+  }
+]
+
 const Template: Story<RangeSliderProps> = (args) => {
-  return <RangeSlider color="primary" defaultValue={20} {...args} />
+  return <RangeSlider min={MIN} max={MAX} marks={marks} color="primary" defaultValue={20} {...args} />
 }
 
 export const Default = Template.bind({})
