@@ -14,7 +14,7 @@ interface StyledProps extends RangeSliderProps {
 
 const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledProps) => ({
   height: 4,
-  marginBottom: theme.spacing(1),
+  marginBottom: 0,
 
   "*:after": {
     display: "none !important"
@@ -44,7 +44,6 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   },
   "&.MuiSlider-root .MuiSlider-markLabel": {
     ...typography.supporting.main,
-    textTransform: "uppercase",
     color: theme.palette.gray.a700,
     transform: "none",
     "&[data-index='1']": {
@@ -83,7 +82,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   "&.MuiSlider-sizeMedium": {
     height: 32,
     padding: 0,
-    marginTop: 32,
+    marginTop: theme.spacing(5),
 
     "&:after": {
       content: "''",
@@ -95,7 +94,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       top: "0",
       left: "50%",
       zIndex: 1,
-      transform: "translate(-2.5px, 0)",
+      transform: "translate(-2px, 0)",
       mixBlendMode: "overlay"
     },
     ".MuiSlider-rail, .MuiSlider-track": {

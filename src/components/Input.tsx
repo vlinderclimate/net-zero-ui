@@ -145,8 +145,7 @@ export const formCommonStyles = (theme: Theme) => ({
     }
   },
   "& [type=number]": {
-    appearance: "number",
-    textAlign: "center"
+    appearance: "number"
   },
   [theme.breakpoints.down("sm")]: {
     "&.Mui-focused": {
