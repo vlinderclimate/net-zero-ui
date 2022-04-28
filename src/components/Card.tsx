@@ -84,7 +84,7 @@ const StyledCard = styled(MuiCard)<CardProps>(
       padding: padding ? theme.spacing(padding.y, padding.x) : "0",
       marginBottom: theme.spacing(0.8),
       color: colorMap.get(color),
-      backgroundColor: backgroundMap.get(color),
+      backgroundColor: bg,
       position: "relative",
       overflow: "visible",
       boxShadow: selected ? `inset 0 0 0 3px ${theme.palette.primary.main}` : "none",
@@ -116,15 +116,17 @@ const StyledCard = styled(MuiCard)<CardProps>(
   }
 )
 
-const Overlay = styled("div")<CardProps>(() => {
+const Overlay = styled("div")<CardProps>(({ color = CardColorVariants.Initial }) => {
+  const bg = backgroundMap.get(color)
+
   return {
     position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    left: -8,
+    right: -8,
+    top: -8,
+    bottom: -8,
+    backgroundColor: bg,
+    opacity: 0.8,
     zIndex: 10
   }
 })
@@ -144,7 +146,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <StyledCard {...styleProps} {...props}>
       {children}
-      {disabled && <Overlay />}
+      {disabled && <Overlay color={color} />}
     </StyledCard>
   )
 }
