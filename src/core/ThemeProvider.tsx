@@ -27,6 +27,7 @@ import MuiLink from "../overrides/MuiLink"
 import MuiTooltip from "../overrides/MuiTooltip"
 import MuiBadge from "../overrides/MuiBadge"
 import MuiTableContainer from "../overrides/MuiTableContainer"
+import MuiMobileStepper from "../overrides/MuiMobileStepper"
 
 /**
  * Types
@@ -131,6 +132,9 @@ export const theme = createTheme({
     },
     MuiBadge: {
       styleOverrides: MuiBadge
+    },
+    MuiMobileStepper: {
+      styleOverrides: MuiMobileStepper
     }
   }
 })

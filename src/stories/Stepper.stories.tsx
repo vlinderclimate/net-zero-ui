@@ -1,9 +1,6 @@
-import React, { useState } from "react"
 import { Story } from "@storybook/react"
-import { Box, Step } from "@mui/material"
-import Button from "../components/Button"
+import { Step } from "@mui/material"
 import StepLabel from "../components/StepLabel"
-import Typography from "../components/Typography"
 import StepLabelText from "../components/StepLabelText"
 import Stepper, { StepperProps } from "../components/Stepper"
 
