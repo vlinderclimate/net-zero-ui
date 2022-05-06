@@ -12,9 +12,9 @@ interface StyledProps {
 }
 
 const StepperBox = styled(MuiStepper)(({ theme }: StyledProps) => ({
-  padding: theme.spacing(2, 3, 5, 3),
+  padding: 0,
   "& .MuiStep-root": {
-    paddingBottom: theme.spacing(0)
+    paddingBottom: 0
   },
   "& .MuiStepLabel-root": {
     alignItems: "flex-start"
