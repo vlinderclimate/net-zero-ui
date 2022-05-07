@@ -16,23 +16,21 @@ const StepLabelBox = styled(MuiStepLabel)(({ theme }) => ({
     borderStyle: "solid",
     borderColor: theme.palette.green.main,
     position: "absolute",
-    top: 34,
-    bottom: -6,
+    top: theme.spacing(2),
+    bottom: theme.spacing(-2),
     marginLeft: "-1px",
     left: 12
   },
-
   ".MuiStepLabel-iconContainer": {
     paddingRight: theme.spacing(3)
   },
-
   [theme.breakpoints.down("sm")]: {
     "&::after": {
       borderLeftWidth: 1,
-      top: 26,
+      top: theme.spacing(1),
+      bottom: theme.spacing(-1),
       left: 8
     },
-
     ".MuiStepLabel-iconContainer": {
       paddingRight: 18
     }
@@ -46,6 +44,7 @@ const StepIcon = styled("div")<{
   width: 24,
   height: 24,
   borderRadius: "100%",
+  boxShadow: `0 0 0 2px ${theme.palette.gray.white}`,
   backgroundColor: theme.palette.green.main,
 
   ...(ownerState.active && {}),

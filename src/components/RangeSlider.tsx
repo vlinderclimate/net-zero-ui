@@ -45,9 +45,14 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   "&.MuiSlider-root .MuiSlider-markLabel": {
     ...typography.supporting.main,
     color: theme.palette.gray.a700,
-    transform: "none",
-    "&[data-index='1']": {
-      transform: "translate(-100%, 0)"
+    transform: "translate(-50%, -50%)",
+
+    "&[style='left: 0%;']": {
+      transform: "translate(-2px, -50%)"
+    },
+    "&[style='left: 100%;']": {
+      transform: "translate(-100%, -50%)",
+      marginLeft: 1
     }
   },
   "& .MuiSlider-thumb": {
@@ -139,17 +144,8 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     ".MuiSlider-markLabel": {
       top: "-100%",
       marginTop: -2,
-      transform: "translate(-2px, -50%)",
       color: theme.palette.gray[600],
-      ...typography.caption.main,
-
-      "&[data-index='1']": {
-        transform: "translate(-50%, -50%)"
-      },
-      "&[data-index='2']": {
-        transform: "translate(-100%, -50%)",
-        marginLeft: 1
-      }
+      ...typography.caption.main
     }
   },
   [theme.breakpoints.down("sm")]: {

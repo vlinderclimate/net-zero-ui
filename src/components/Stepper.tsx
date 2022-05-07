@@ -13,15 +13,22 @@ interface StyledProps {
 
 const StepperBox = styled(MuiStepper)(({ theme }: StyledProps) => ({
   padding: 0,
+
   "& .MuiStep-root": {
     paddingBottom: 0
   },
   "& .MuiStepLabel-root": {
-    alignItems: "flex-start"
+    alignItems: "flex-start",
+    padding: theme.spacing(2, 0)
   },
   "& .MuiStep-root:last-of-type .MuiStepLabel-root": {
     "&::after": {
       display: "none"
+    }
+  },
+  [theme.breakpoints.down("sm")]: {
+    "& .MuiStepLabel-root": {
+      padding: theme.spacing(1, 0)
     }
   }
 }))
