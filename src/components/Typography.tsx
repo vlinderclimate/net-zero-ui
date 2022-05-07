@@ -337,7 +337,7 @@ const StyledTypography: any = styled(MuiTypography)(({ theme, color, variant }: 
   color: theme.palette.text[color ?? "primary"],
   ...customizedVariants[variant]?.styles(theme),
 
-  "&a, & a": {
+  "&a:not(.MuiButton-root), & a:not(.MuiButton-root)": {
     display: "inline-block",
     position: "relative",
     color: theme.palette.text.primary,
