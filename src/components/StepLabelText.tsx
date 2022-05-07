@@ -23,9 +23,9 @@ export interface StepLabelTextProps {
 
 // prettier-ignore
 const typographyVariant: Record<Exclude<StepLabelTextProps["variant"], undefined>, Partial<TypographyProps["variant"]>> = {
-  title: "captionBold",
-  subtitle: "caption",
-  note: "caption"
+  title: "heroParagraphBold",
+  subtitle: "heroParagraph",
+  note: "heroParagraph"
 }
 
 const Label = styled("div")(({ theme }: { theme: Theme }) => ({}))

@@ -51,7 +51,7 @@ const argTypes = {
 }
 
 const MIN = 1
-const MAX = 300
+const MAX = 180
 
 const marks = [
   {
@@ -60,7 +60,7 @@ const marks = [
   },
   {
     value: MAX / 2,
-    label: "150"
+    label: MAX / 2
   },
   {
     value: MAX,
