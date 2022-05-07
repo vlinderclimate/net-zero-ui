@@ -28,7 +28,15 @@ const typographyVariant: Record<Exclude<StepLabelTextProps["variant"], undefined
   note: "heroParagraph"
 }
 
-const Label = styled("div")(({ theme }: { theme: Theme }) => ({}))
+const Label = styled("div")(({ theme }: { theme: Theme }) => ({
+  "&.StepLabelText-title": {
+    marginTop: -4,
+
+    [theme.breakpoints.down("sm")]: {
+      marginTop: -2
+    }
+  }
+}))
 
 const StepLabelText: React.FC<StepLabelTextProps> = ({ variant = "subtitle", children, typographyProps }) => {
   return (
