@@ -18,7 +18,8 @@ export const ButtonColorVariants = [
   "inverse",
   "positive",
   "negative",
-  "disabled"
+  "disabled",
+  "muted"
 ] as const
 
 export type ButtonColorVariant = typeof ButtonColorVariants[number]
@@ -60,7 +61,8 @@ const colorMap: ColorMap = {
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray[400]
+    disabled: colors.gray[400],
+    muted: colors.gray[400]
   },
   color: {
     primary: colors.text.inversePrimary,
@@ -70,7 +72,8 @@ const colorMap: ColorMap = {
     inverse: colors.text.primary,
     positive: colors.text.inversePrimary,
     negative: colors.text.inversePrimary,
-    disabled: colors.gray[600]
+    disabled: colors.gray[600],
+    muted: colors.gray[700]
   },
   outlined: {
     primary: colors.text.primary,
@@ -80,7 +83,8 @@ const colorMap: ColorMap = {
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray.a500
+    disabled: colors.gray.a500,
+    muted: colors.gray[400]
   },
   text: {
     primary: colors.text.primary,
@@ -90,7 +94,8 @@ const colorMap: ColorMap = {
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray.a500
+    disabled: colors.gray.a500,
+    muted: colors.gray[700]
   }
 }
 
@@ -131,7 +136,7 @@ const getPadding = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
 
 const getOutlinePadding = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
   if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
-  if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
+  if (size === "sm") return theme.spacing(0.5, onlyIcon ? 0.5 : 2, onlyIcon ? 0.5 : 0.875, onlyIcon ? 0.5 : 2)
   if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1.25 : 4.5, onlyIcon ? 1.25 : 1.4)
   return theme.spacing(0.75, onlyIcon ? 0.75 : 3, onlyIcon ? 0.75 : 1)
 }
@@ -268,6 +273,14 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       [`&.${PREFIX}-secondaryAlt`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.blue.main}`,
         color: theme.palette.blue.main
+      },
+      [`&.${PREFIX}-muted`]: {
+        boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
+        backgroundColor: theme.palette.gray[400],
+        color: theme.palette.gray[700],
+        "&:hover": {
+          boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a600}`
+        }
       }
     },
     "&.MuiButton-text": {

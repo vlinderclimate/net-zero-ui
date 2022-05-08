@@ -36,6 +36,7 @@ export const IconKeyVariants = [
   "plus",
   "minus",
   "helpCircle",
+  "help",
   "lock",
   "delete",
   "download",
@@ -60,7 +61,7 @@ export const IconKeyVariants = [
 
 export type IconKeyVariant = typeof IconKeyVariants[number]
 
-export const IconSizeVariants = ["xs", "sm", "md", "lg"] as const
+export const IconSizeVariants = ["xs1", "xs", "sm", "md", "lg"] as const
 
 export type IconSizeVariant = typeof IconSizeVariants[number]
 export interface IconProps {
@@ -85,6 +86,7 @@ export const iconMap: Record<IconKeyVariant, ReactNode> = {
   infoCircle: <I.InfoCircle />,
   errorCircle: <I.ErrorCircle />,
   helpCircle: <I.HelpCircle />,
+  help: <I.Help />,
   attention: <I.Attention />,
   lock: <I.Lock />,
   delete: <I.Delete />,
@@ -132,6 +134,7 @@ export const iconMap: Record<IconKeyVariant, ReactNode> = {
 }
 
 export const iconSizeMap: Record<IconSizeVariant, number> = {
+  xs1: 12,
   xs: 16,
   sm: 20,
   md: 24,
@@ -139,6 +142,7 @@ export const iconSizeMap: Record<IconSizeVariant, number> = {
 }
 
 export const iconMobileSizeMap: Record<IconSizeVariant, number> = {
+  xs1: 12,
   xs: 16,
   sm: 16,
   md: 20,
