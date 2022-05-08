@@ -34,7 +34,7 @@ export const fontSize: {
 }
 
 export const lineHeight: {
-  xs5: "16px",
+  xs5: "16px"
   xs4: "18px"
   xs3: "20px"
   xs2: "24px"
@@ -160,7 +160,7 @@ const typography = {
   heroParagraph: {
     main: {
       fontFamily: fontFamily.headline,
-      fontWeight: fontWeight.medium,
+      fontWeight: fontWeight.normal,
       fontSize: fontSize.xs1,
       lineHeight: lineHeight.s,
       letterSpacing: 0.25
