@@ -198,6 +198,13 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
 
       "& .icon svg path": {
         fill: "currentColor !important"
+      },
+      "&:hover": {
+        boxShadow: "none"
+      },
+      "&:active": {
+        boxShadow: "none",
+        transform: "scale(0.98)"
       }
     },
     [`&.${classes.withIcon}`]: {
@@ -232,15 +239,6 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
             }
           }
         }
-      }
-    },
-    "&.MuiButton-contained, &.MuiButton-outlined": {
-      "&:hover": {
-        boxShadow: "none"
-      },
-      "&:active": {
-        boxShadow: "none",
-        transform: "scale(0.98)"
       }
     },
     "&.MuiButton-outlined": {
@@ -278,8 +276,9 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
         backgroundColor: theme.palette.gray[400],
         color: theme.palette.gray[700],
-        "&:hover": {
-          boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a600}`
+        "&:hover, &:focus": {
+          boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a600}`,
+          color: theme.palette.gray[700]
         }
       }
     },
