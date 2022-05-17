@@ -1,3 +1,6 @@
+<div align="center">
+<img src="https://storage.yandexcloud.net/static.vlinderstorage.com/Telegram_VlinderTech.png" width=200 />
+ </div>
 <h1 align="center">Net Zero UI kit</h1>
 
 <div align="center">
@@ -42,6 +45,11 @@ const Root = () => {
 ```
 
 More detailed instructions can be found at [Getting started with `@vlinderclimate/net-zero-ui`](/docs/getting-started.md).
+
+## Sponsors
+<div align="center">
+<a src="https://vlinderclimate.com"><img src="https://storage.yandexcloud.net/static.vlinderstorage.com/logo-sign.png" width=200 /></a>
+</div>
 
 ## Contributing
 
