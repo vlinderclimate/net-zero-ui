@@ -48,7 +48,7 @@ More detailed instructions can be found at [Getting started with `@vlinderclimat
 
 ## Sponsors
 <div align="center">
-<a src="https://vlinderclimate.com"><img src="https://storage.yandexcloud.net/static.vlinderstorage.com/logo-sign.png" width=200 /></a>
+<a href="https://vlinderclimate.com"><img src="https://storage.yandexcloud.net/static.vlinderstorage.com/logo-sign.png" width=200 /></a>
 </div>
 
 ## Contributing
