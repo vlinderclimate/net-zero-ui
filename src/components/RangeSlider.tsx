@@ -12,14 +12,24 @@ interface StyledProps extends RangeSliderProps {
   theme: Theme
 }
 
+const railSize = {
+  desktop: {
+    small: 3,
+    medium: 32
+  },
+  mobile: {
+    small: 3,
+    medium: 24
+  }
+}
+
 const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledProps) => ({
-  height: 4,
+  height: railSize.desktop.small,
   marginBottom: 0,
 
   "*:after": {
     display: "none !important"
   },
-
   "&.MuiSlider-colorSecondary": {
     color: theme.palette.primary.main,
 
@@ -30,7 +40,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   "&.MuiSlider-colorPrimary": {
     color: theme.palette.gray.white,
     "& .MuiSlider-rail": {
-      backgroundColor: theme.palette.gray[500]
+      backgroundColor: theme.palette.gray[400]
     },
     "& .MuiSlider-track": {
       backgroundColor: theme.palette.primary.main
@@ -44,7 +54,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   },
   "&.MuiSlider-root .MuiSlider-markLabel": {
     ...typography.supporting.main,
-    color: theme.palette.gray.a700,
+    color: theme.palette.gray[600],
     transform: "translate(-50%, -50%)",
 
     "&[style='left: 0%;']": {
@@ -56,11 +66,10 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     }
   },
   "& .MuiSlider-thumb": {
-    height: 20,
-    width: 20,
-    border: `1px solid ${theme.palette.gray[500]}`,
-    cursor: "ew-resize",
-    boxShadow: "none !important",
+    height: 16,
+    width: 16,
+    border: `3px solid ${theme.palette.primary.main}`,
+    boxShadow: `0 0 0 2px ${theme.palette.gray.white}`,
     "&:before": {
       display: "none"
     },
@@ -74,18 +83,28 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     }
   },
   "& .MuiSlider-track": {
-    height: 2,
+    height: railSize.desktop.small,
     borderRadius: 2,
     opacity: 1,
     border: 0
   },
   "& .MuiSlider-rail": {
-    height: 2,
+    height: railSize.desktop.small,
     borderRadius: 2,
     opacity: 1
   },
+  ".MuiSlider-valueLabel": {
+    backgroundColor: theme.palette.gray.white,
+    color: theme.palette.text.primary,
+    ...typography.caption.main,
+    padding: "0 2px",
+    top: -5,
+    "&:before": {
+      display: "none"
+    }
+  },
   "&.MuiSlider-sizeMedium": {
-    height: 32,
+    height: railSize.desktop.medium,
     padding: 0,
     marginTop: theme.spacing(5),
 
@@ -103,7 +122,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       mixBlendMode: "overlay"
     },
     ".MuiSlider-rail, .MuiSlider-track": {
-      height: 32,
+      height: railSize.desktop.medium,
       borderRadius: 0
     },
     ".MuiSlider-rail": {
@@ -127,7 +146,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       "&:after": {
         content: "''",
         width: 3,
-        height: 39,
+        height: railSize.desktop.medium + 7,
         backgroundColor: theme.palette.primary.main,
         position: "absolute",
         top: "100%",
@@ -149,9 +168,28 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     }
   },
   [theme.breakpoints.down("sm")]: {
-    "&.MuiSlider-root .MuiSlider-markLabel": {
-      fontSize: "9px",
+    "&.MuiSlider-root .MuiSlider-markLabel, .MuiSlider-valueLabel": {
+      fontSize: "12px",
       lineHeight: "14px"
+    },
+    ".MuiSlider-valueLabel": {
+      display: "none"
+    },
+    ".MuiSlider-rail, .MuiSlider-track": {
+      height: railSize.mobile.small
+    },
+    "&.MuiSlider-sizeMedium": {
+      "&, .MuiSlider-rail, .MuiSlider-track": {
+        height: railSize.mobile.medium
+      },
+      "& .MuiSlider-thumb": {
+        "&:after": {
+          height: railSize.mobile.medium + 7
+        }
+      },
+      ".MuiSlider-mark": {
+        height: 12
+      }
     }
   },
   "@media (pointer: coarse)": {
