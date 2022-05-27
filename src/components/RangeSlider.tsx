@@ -54,7 +54,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   },
   "&.MuiSlider-root .MuiSlider-markLabel": {
     ...typography.supporting.main,
-    color: theme.palette.gray[600],
+    color: theme.palette.alpha[700],
     transform: "translate(-50%, -50%)",
 
     "&[style='left: 0%;']": {
@@ -136,7 +136,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       borderRadius: 0,
       height: 16,
       width: 1,
-      backgroundColor: theme.palette.gray.a500,
+      backgroundColor: theme.palette.alpha[500],
       top: "-50%",
       marginTop: 2
     },

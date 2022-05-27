@@ -92,7 +92,7 @@ declare module "@mui/material/styles/createPalette" {
     positive: string
     negative: string
     brand: string
-    transparent: "transparent"
+    transparent: string
     currentColor: "currentColor"
 
     // Unnecessary properties
@@ -117,50 +117,65 @@ declare module "@mui/material/styles/createPalette" {
 
   interface BaseColors {
     violet: {
+      pastel: string
       light: string
       main: string
     }
     turquoise: {
+      pastel: string
       light: string
       main: string
-    },
+    }
     green: {
+      pastel: string
       light: string
       main: string
     }
     blue: {
+      pastel: string
       light: string
       main: string
     }
     red: {
+      pastel: string
       light: string
       main: string
     }
     pink: {
+      pastel: string
       light: string
       main: string
     }
     yellow: {
+      pastel: string
       light: string
       main: string
-    },
+    }
     orange: {
-      light: string,
+      pastel: string
+      light: string
       main: string
-    },
+    }
     gray: {
-      white: string
       200: string
       300: string
       400: string
       500: string
-      a500: string
       600: string
-      a600: string
-      700: string,
-      a700: string
-      800: string,
+      700: string
+      800: string
+      white: string
       black: string
+    }
+    alpha: {
+      transparent: string
+      200: string
+      300: string
+      400: string
+      500: string
+      600: string
+      700: string
+      800: string
     }
   }
 }

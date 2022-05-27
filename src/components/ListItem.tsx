@@ -12,7 +12,7 @@ const StyledListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
   lineHeight: theme?.typography.lineHeightXs4,
 
   ".MuiLink-root": {
-    color: theme.palette.gray.a700,
+    color: theme.palette.alpha[700],
     display: "flex",
     alignItems: "center",
     gap: theme.spacing(1),
