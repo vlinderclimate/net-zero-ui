@@ -1,10 +1,12 @@
 import React from "react"
 import { Story, Meta } from "@storybook/react"
 import MuiInputAdornment from "@mui/material/InputAdornment"
+import MuiBox from "@mui/material/Box"
 
 import Icon from "../components/Icon"
 import IconButton from "../components/IconButton"
 import TextField, { TextFieldProps } from "../components/TextField"
+import RangeSlider from "../components/RangeSlider"
 import { textFieldArgTypes } from "./utils/formControlStories"
 import { AdornmentStoryProps, getAdornmentIconProps } from "./utils/adornmentStories"
 
@@ -31,7 +33,15 @@ const Template: Story<TextFieldStoryProps> = (args) => {
       fullWidth={fullWidth}
       variant={variant}
       actionButtonProps={
-        actionButton ? { disabled: false, children: "Submit", onClick: () => console.log("clicked") } : undefined
+        actionButton
+          ? {
+              disabled: false,
+              variant: "outlined",
+              color: "primary",
+              children: "Submit",
+              onClick: () => console.log("clicked")
+            }
+          : undefined
       }
       InputProps={{
         startAdornment: startAdornmentIconProps ? (
@@ -107,7 +117,12 @@ export const ActionButton = () => {
       variant="filled"
       error={isError}
       fullWidth
-      actionButtonProps={{ disabled: false, children: "Submit", onClick: () => console.log("clicked") }}
+      actionButtonProps={{
+        disabled: false,
+        children: "Submit",
+
+        onClick: () => console.log("clicked")
+      }}
       InputProps={{
         endAdornment: !isError ? (
           <MuiInputAdornment position="end">
@@ -116,6 +131,43 @@ export const ActionButton = () => {
         ) : undefined
       }}
     />
+  )
+}
+
+export const WithRangeSlider = () => {
+  const [value, setValue] = React.useState("")
+  const [isError, setIsError] = React.useState(false)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value)
+    setIsError(value.length >= 1 && !value.includes("@"))
+  }
+
+  return (
+    <>
+      <TextField
+        id="action-button"
+        label="Coal"
+        placeholder="Amount"
+        helperText={
+          <MuiBox mt={-2.6}>
+            <RangeSlider min={0} max={100} color="primary" size="small" defaultValue={20} />
+          </MuiBox>
+        }
+        value={value}
+        onChange={handleChange}
+        variant="outlined"
+        color="primary"
+        error={isError}
+        size="xs"
+        fullWidth
+        actionButtonProps={{
+          disabled: false,
+          variant: "outlined",
+          children: "Submit",
+          onClick: () => console.log("clicked")
+        }}
+      />
+    </>
   )
 }
 

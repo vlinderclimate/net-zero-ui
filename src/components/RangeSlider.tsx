@@ -84,14 +84,18 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
   },
   "& .MuiSlider-track": {
     height: railSize.desktop.small,
-    borderRadius: 2,
+    borderRadius: 0,
     opacity: 1,
     border: 0
   },
   "& .MuiSlider-rail": {
     height: railSize.desktop.small,
     borderRadius: 2,
-    opacity: 1
+    opacity: 1,
+
+    ".MuiFormControl-root &": {
+      backgroundColor: "transparent !important"
+    }
   },
   ".MuiSlider-valueLabel": {
     backgroundColor: theme.palette.gray.white,
