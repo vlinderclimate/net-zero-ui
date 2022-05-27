@@ -27,6 +27,7 @@ export interface EndAdornmentProps {
     disabled: ButtonProps["disabled"]
     children: ButtonProps["children"]
     color?: ButtonProps["color"]
+    variant?: ButtonProps["variant"]
     onClick: ButtonProps["onClick"]
   }
 }
@@ -45,6 +46,13 @@ const buttonSizeMap: Record<Exclude<InputProps["size"], undefined>, ButtonProps[
   lg: "sm"
 }
 
+const buttonIndentMap: Record<Exclude<InputProps["size"], undefined>, number> = {
+  xs: -1,
+  sm: -1,
+  md: -1.5,
+  lg: -1.5
+}
+
 const EndAdornmentBox = styled(MuiBox)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -56,8 +64,12 @@ const EndAdornment: React.FC<EndAdornmentProps> = ({ size = "md", error, actionB
     <MuiInputAdornment position="end">
       <EndAdornmentBox>
         {error && <Icon iconKey="infoCircle" size={errorIconSizeMap[size]} color="negative" />}
-        {endAdornment && endAdornment}
-        {actionButtonProps && <Button {...actionButtonProps} size={buttonSizeMap[size]} />}
+        {endAdornment}
+        {actionButtonProps && (
+          <MuiBox mr={buttonIndentMap[size]}>
+            <Button {...actionButtonProps} size={buttonSizeMap[size]} />
+          </MuiBox>
+        )}
       </EndAdornmentBox>
     </MuiInputAdornment>
   )

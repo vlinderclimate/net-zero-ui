@@ -44,18 +44,6 @@ const argTypes = {
       defaultValue: { summary: false }
     }
   },
-  $bubble: {
-    name: "$bubble",
-    description: "Add bubble style.",
-    defaultValue: false,
-    control: {
-      type: "boolean"
-    },
-    table: {
-      type: { summary: "boolean" },
-      defaultValue: { summary: false }
-    }
-  },
   component: { table: { disable: true } },
   ref: { table: { disable: true } },
   square: { table: { disable: true } },
