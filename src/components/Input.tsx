@@ -61,23 +61,23 @@ export const getPadding = ({ size, theme, $append: append }: ExtendedStyledInput
   switch (size) {
     case "xs":
       return {
-        main: theme.spacing(1, append ? 1 : 2, 1, 2),
-        mobile: theme.spacing(1, append ? 0.5 : 1.5, 1, 1.5)
+        main: theme.spacing(1, 2, 1, 2),
+        mobile: theme.spacing(1, 1.5, 1, 1.5)
       }
     case "sm":
       return {
-        main: theme.spacing(1.5, append ? 1 : 2, 1.5, 2),
-        mobile: theme.spacing(1.25, append ? 0.5 : 1.5, 1.25, 1.5)
+        main: theme.spacing(1.5, 2, 1.5, 2),
+        mobile: theme.spacing(1.25, 1.5, 1.25, 1.5)
       }
     case "md":
       return {
-        main: theme.spacing(2, append ? 0.5 : 3, 2, 3),
-        mobile: theme.spacing(1.5, append ? 0.5 : 2, 1.5, 2)
+        main: theme.spacing(2, 3, 2, 3),
+        mobile: theme.spacing(1.5, 2, 1.5, 2)
       }
     case "lg":
       return {
-        main: theme.spacing(2, append ? 0.5 : 3, 2, 3),
-        mobile: theme.spacing(1.5, append ? 0.5 : 2, 1.5, 2)
+        main: theme.spacing(2, 3, 2, 3),
+        mobile: theme.spacing(1.5, 2, 1.5, 2)
       }
   }
 }

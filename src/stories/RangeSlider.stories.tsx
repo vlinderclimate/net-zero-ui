@@ -1,6 +1,10 @@
 import { Story, Meta } from "@storybook/react"
 import RangeSlider, { RangeSliderProps } from "../components/RangeSlider"
 
+interface StoryRangeSliderProps extends RangeSliderProps {
+  valueFormat: string
+}
+
 const argTypes = {
   disabled: {
     name: "disabled",
@@ -17,6 +21,14 @@ const argTypes = {
   size: {
     name: "size",
     defaultValue: "small"
+  },
+  valueFormat: {
+    name: "valueFormat",
+    defaultValue: " t",
+    control: {
+      type: "text"
+    },
+    table: { category: "Value Format" }
   },
   isRtl: { table: { disable: true } },
   disableSwap: { table: { disable: true } },
@@ -68,8 +80,24 @@ const marks = [
   }
 ]
 
-const Template: Story<RangeSliderProps> = (args) => {
-  return <RangeSlider min={MIN} max={MAX} marks={marks} color="primary" defaultValue={20} {...args} />
+const valueLabelFormat = (value: number, format: string) => {
+  return `${value}${format}`
+}
+
+const Template: Story<StoryRangeSliderProps> = (args) => {
+  return (
+    <RangeSlider
+      min={MIN}
+      max={MAX}
+      marks={marks}
+      valueLabelDisplay="auto"
+      getAriaValueText={(val) => valueLabelFormat(val, args.valueFormat)}
+      valueLabelFormat={(val) => valueLabelFormat(val, args.valueFormat)}
+      color="primary"
+      defaultValue={20}
+      {...args}
+    />
+  )
 }
 
 export const Default = Template.bind({})

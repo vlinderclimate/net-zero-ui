@@ -77,7 +77,8 @@ const TextField: React.FC<TextFieldProps> = forwardRef(
       return undefined
     })()
 
-    const append = Boolean(error ?? inputProps?.endAdornment ?? actionButtonProps)
+    const append = Boolean(actionButtonProps ?? inputProps?.endAdornment ?? error)
+    console.log(append)
 
     return (
       <StyledTextField
@@ -86,7 +87,7 @@ const TextField: React.FC<TextFieldProps> = forwardRef(
         error={error}
         variant={variant}
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-        $append={Boolean(error || inputProps?.endAdornment || actionButtonProps)}
+        $append={Boolean(error ?? inputProps?.endAdornment ?? actionButtonProps)}
         InputProps={{
           ...inputProps?.InputProps,
           error,

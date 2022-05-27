@@ -23,16 +23,13 @@ export enum CardColorVariants {
 export interface CardProps extends Omit<MuiCardProps, "color"> {
   color?: CardColorVariants
   selected?: boolean
-  $bubble?: boolean
-  $rounded?: boolean
+  rounded?: boolean | number
   disabled?: boolean
   size?: CardSizeVariants
 }
 
-interface StyledProps extends Omit<CardProps, "$bubble" | "$rounded"> {
+interface StyledProps extends CardProps {
   theme: Theme
-  bubble?: boolean
-  rounded?: boolean
 }
 
 export const sizeMap = new Map<CardSizeVariants, { x: number; y: number }>([
@@ -68,14 +65,7 @@ export const backgroundMap = new Map<CardColorVariants, string>([
 ])
 
 const StyledCard = styled(MuiCard)<CardProps>(
-  ({
-    color = CardColorVariants.Initial,
-    size = CardSizeVariants.Medium,
-    selected,
-    bubble,
-    rounded,
-    theme
-  }: StyledProps) => {
+  ({ color = CardColorVariants.Initial, size = CardSizeVariants.Medium, selected, rounded, theme }: StyledProps) => {
     const padding = sizeMap.get(size)
     const paddingMobile = sizeMobileMap.get(size)
     const bg = backgroundMap.get(color)
@@ -90,23 +80,6 @@ const StyledCard = styled(MuiCard)<CardProps>(
       boxShadow: selected ? `inset 0 0 0 3px ${theme.palette.primary.main}` : "none",
       borderRadius: rounded ? theme.borders.radius.m : 0,
       zIndex: 1,
-
-      "&:after": {
-        content: "''",
-        top: -1,
-        left: -24,
-        position: "absolute",
-        border: "0px solid",
-        width: "38px",
-        height: "26px",
-        backgroundColor: "transparent",
-        borderBottomLeftRadius: "50%",
-        borderBottomRightRadius: "50%",
-        boxShadow: bg ? `-14px 9px 0px 3px ${bg}` : "none",
-        transform: "rotateY(180deg)",
-        zIndex: 0,
-        display: bubble ? "block" : "none"
-      },
 
       [theme.breakpoints.down("sm")]: {
         padding: paddingMobile ? theme.spacing(paddingMobile.y, paddingMobile.x) : "0",
@@ -131,17 +104,8 @@ const Overlay = styled("div")<CardProps>(({ color = CardColorVariants.Initial })
   }
 })
 
-const Card: React.FC<CardProps> = ({
-  children,
-  color,
-  size,
-  selected,
-  disabled,
-  $rounded = false,
-  $bubble = false,
-  ...props
-}) => {
-  const styleProps = { color, size, selected, disabled, $rounded, $bubble }
+const Card: React.FC<CardProps> = ({ children, color, size, selected, disabled, rounded = false, ...props }) => {
+  const styleProps = { color, size, selected, disabled, rounded: rounded ? 1 : 0 }
 
   return (
     <StyledCard {...styleProps} {...props}>
