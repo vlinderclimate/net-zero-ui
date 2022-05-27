@@ -83,7 +83,7 @@ const colorMap: ColorMap = {
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray.a500,
+    disabled: colors.alpha[500],
     muted: colors.gray[400]
   },
   text: {
@@ -94,7 +94,7 @@ const colorMap: ColorMap = {
     inverse: colors.gray.white,
     positive: colors.positive.main,
     negative: colors.negative.main,
-    disabled: colors.gray.a500,
+    disabled: colors.alpha[500],
     muted: colors.gray[700]
   }
 }
@@ -201,7 +201,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       },
       "&.Mui-disabled": {
         backgroundColor: `${theme.palette.gray[200]} !important`,
-        color: `${theme.palette.gray.a500} !important`,
+        color: `${theme.palette.alpha[500]} !important`,
         boxShadow: "none !important"
       }
     },
@@ -248,7 +248,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
         color: theme.palette.gray[800],
         "&:hover": {
-          boxShadow: `inset 0 0 0 1.5px ${theme.palette.gray.a600}`,
+          boxShadow: `inset 0 0 0 1.5px ${theme.palette.alpha[600]}`,
           color: theme.palette.gray[800]
         },
         "&:active": {
@@ -257,17 +257,17 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         }
       },
       [`&.${PREFIX}-primaryAlt`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a500}`,
+        boxShadow: `inset 0 0 0 1px ${theme.palette.alpha[500]}`,
         color: theme.palette.gray[800],
         "&:hover": {
-          color: theme.palette.gray.a700
+          color: theme.palette.alpha[700]
         }
       },
       [`&.${PREFIX}-secondary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
-        color: theme.palette.gray.a700,
+        color: theme.palette.alpha[700],
         "&:hover": {
-          color: theme.palette.gray.a600
+          color: theme.palette.alpha[600]
         }
       },
       [`&.${PREFIX}-secondaryAlt`]: {
@@ -275,17 +275,17 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         color: theme.palette.blue.main
       },
       [`&.${PREFIX}-muted`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
+        boxShadow: `inset 0 0 0 1px ${theme.palette.alpha[600]}`,
         backgroundColor: theme.palette.gray[400],
         color: theme.palette.gray[700],
         "&:hover, &:focus": {
-          boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a600}`,
+          boxShadow: `inset 0 0 0 1px ${theme.palette.alpha[600]}`,
           color: theme.palette.gray[700]
         }
       },
       "&.Mui-disabled": {
         backgroundColor: `${theme.palette.gray[200]} !important`,
-        color: `${theme.palette.gray.a500} !important`,
+        color: `${theme.palette.alpha[500]} !important`,
         boxShadow: "none !important"
       }
     },
@@ -295,7 +295,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       boxShadow: "none !important",
       padding: theme.spacing(0, 2),
       "&.Mui-disabled": {
-        color: `${theme.palette.gray.a500} !important`
+        color: `${theme.palette.alpha[500]} !important`
       },
       [theme.breakpoints.down("sm")]: {
         padding: 0
@@ -343,9 +343,9 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         }
       },
       "&.Mui-disabled": {
-        color: `${theme.palette.gray.a500} !important`,
+        color: `${theme.palette.alpha[500]} !important`,
         "&:after": {
-          borderBottom: `${theme?.borders.size.secondary as number}px solid ${theme.palette.gray.a500}`
+          borderBottom: `${theme?.borders.size.secondary as number}px solid ${theme.palette.alpha[500]}`
         }
       }
     }
