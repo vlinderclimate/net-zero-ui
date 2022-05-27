@@ -5,7 +5,7 @@ import { Theme, styled } from "@mui/material/styles"
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button"
 
 import colors from "../theme/colors"
-import { fontWeight, lineHeightMobile, fontSizeMobile } from "../theme/typography"
+import { fontWeight, lineHeight, lineHeightMobile, fontSize, fontSizeMobile } from "../theme/typography"
 
 /**
  * Types
@@ -100,52 +100,45 @@ const colorMap: ColorMap = {
 }
 
 const getFontSize = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.typography.fontSizeXs2
-  if (size === "sm") return theme.typography.fontSizeXs2
-  if (size === "lg") return theme.typography.fontSizeXs1
-  return theme.typography.fontSizeXs1
+  if (size === "xs") return fontSize.xs4
+  if (size === "sm") return fontSize.xs2
+  if (size === "lg") return fontSize.xs1
+  return fontSizeMobile.xs1
 }
 
 const getFontSizeMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return fontSizeMobile.xs2
-  if (size === "sm") return fontSizeMobile.xs1
+  if (size === "xs") return fontSize.xs4
+  if (size === "sm") return fontSize.xs4
   if (size === "lg") return fontSizeMobile.xs1
   return fontSizeMobile.xs1
 }
 
 const getLineHeight = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.typography.lineHeightXs2
-  if (size === "sm") return theme.typography.lineHeightXs2
-  if (size === "lg") return theme.typography.lineHeightS
-  return theme.typography.lineHeightS
-}
-
-const getLineHeightMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return lineHeightMobile.xs1
-  if (size === "sm") return lineHeightMobile.s
-  if (size === "lg") return lineHeightMobile.s
+  if (size === "xs") return lineHeight.xs3
+  if (size === "sm") return lineHeight.xs2
+  if (size === "lg") return lineHeight.s
   return lineHeightMobile.s
 }
 
-const getPadding = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
-  if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
-  if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1.25 : 4.5, onlyIcon ? 1.25 : 1.4)
-  return theme.spacing(0.75, onlyIcon ? 0.75 : 4.5, onlyIcon ? 0.75 : 1)
+const getLineHeightMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
+  if (size === "xs") return lineHeight.xs3
+  if (size === "sm") return lineHeight.xs3
+  if (size === "lg") return lineHeightMobile.s
+  return lineHeightMobile.m
 }
 
-const getOutlinePadding = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
-  if (size === "sm") return theme.spacing(0.5, onlyIcon ? 0.5 : 2, onlyIcon ? 0.5 : 0.875, onlyIcon ? 0.5 : 2)
-  if (size === "lg") return theme.spacing(1.25, onlyIcon ? 1.25 : 4.5, onlyIcon ? 1.25 : 1.4)
-  return theme.spacing(0.75, onlyIcon ? 0.75 : 3, onlyIcon ? 0.75 : 1)
+const getPadding = ({ size, onlyIcon }: ExtendedStyledButtonProps) => {
+  if (size === "xs") return onlyIcon ? "3px" : "3px 16px 5px 16px"
+  if (size === "sm") return onlyIcon ? "5px" : "3px 16px 5px 16px"
+  if (size === "lg") return onlyIcon ? "8px" : "6px 36px 8px 36px"
+  return onlyIcon ? "7px" : "7px 20px 8px 20px"
 }
 
 const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
-  if (size === "xs") return theme.spacing(0.375, onlyIcon ? 0.375 : 2, onlyIcon ? 0.375 : 0.625, onlyIcon ? 0.375 : 2)
-  if (size === "sm") return theme.spacing(0.625, onlyIcon ? 0.625 : 2, onlyIcon ? 0.625 : 0.875, onlyIcon ? 0.625 : 2)
-  if (size === "lg") return theme.spacing(onlyIcon ? 1 : 1.25, onlyIcon ? 1 : 2.5, onlyIcon ? 1 : 1.4)
-  return theme.spacing(onlyIcon ? 1 : 0.75, onlyIcon ? 1 : 2.5, 1)
+  if (size === "xs") return onlyIcon ? "3px" : "3px 16px 5px 16px"
+  if (size === "sm") return onlyIcon ? "3px" : "3px 16px 5px 16px"
+  if (size === "lg") return onlyIcon ? "8px" : "7px 20px 8px 20px"
+  return onlyIcon ? "5px" : "3px 16px 5px 16px"
 }
 
 const PREFIX = "Button"
@@ -205,6 +198,11 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       "&:active": {
         boxShadow: "none",
         transform: "scale(0.98)"
+      },
+      "&.Mui-disabled": {
+        backgroundColor: `${theme.palette.gray[200]} !important`,
+        color: `${theme.palette.gray.a500} !important`,
+        boxShadow: "none !important"
       }
     },
     [`&.${classes.withIcon}`]: {
@@ -246,12 +244,16 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       color: colorMap.outlined[color],
       backgroundColor: "transparent",
       boxShadow: `inset 0 0 0 1px ${colorMap.outlined[color]}`,
-      padding: getOutlinePadding({ size, theme, onlyIcon }),
       [`&.${PREFIX}-primary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
         color: theme.palette.gray[800],
         "&:hover": {
-          color: theme.palette.gray[700]
+          boxShadow: `inset 0 0 0 1.5px ${theme.palette.gray.a600}`,
+          color: theme.palette.gray[800]
+        },
+        "&:active": {
+          boxShadow: `inset 0 0 0 1.5px ${theme.palette.gray[800]}`,
+          color: theme.palette.gray[800]
         }
       },
       [`&.${PREFIX}-primaryAlt`]: {
@@ -280,6 +282,11 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
           boxShadow: `inset 0 0 0 1px ${theme.palette.gray.a600}`,
           color: theme.palette.gray[700]
         }
+      },
+      "&.Mui-disabled": {
+        backgroundColor: `${theme.palette.gray[200]} !important`,
+        color: `${theme.palette.gray.a500} !important`,
+        boxShadow: "none !important"
       }
     },
     "&.MuiButton-text": {
@@ -287,6 +294,9 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       backgroundColor: "transparent !important",
       boxShadow: "none !important",
       padding: theme.spacing(0, 2),
+      "&.Mui-disabled": {
+        color: `${theme.palette.gray.a500} !important`
+      },
       [theme.breakpoints.down("sm")]: {
         padding: 0
       }
@@ -330,6 +340,12 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       "&:active, &:hover, &:focus": {
         "&:after": {
           width: 0
+        }
+      },
+      "&.Mui-disabled": {
+        color: `${theme.palette.gray.a500} !important`,
+        "&:after": {
+          borderBottom: `${theme?.borders.size.secondary as number}px solid ${theme.palette.gray.a500}`
         }
       }
     }
