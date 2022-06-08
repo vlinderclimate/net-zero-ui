@@ -271,8 +271,8 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
         }
       },
       [`&.${PREFIX}-secondaryAlt`]: {
-        boxShadow: `inset 0 0 0 1px ${theme.palette.blue.main}`,
-        color: theme.palette.blue.main
+        boxShadow: `inset 0 0 0 1px ${theme.palette.gray[800]}`,
+        color: theme.palette.gray[800]
       },
       [`&.${PREFIX}-muted`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.alpha[600]}`,
