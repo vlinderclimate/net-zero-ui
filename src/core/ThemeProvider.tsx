@@ -28,6 +28,8 @@ import MuiTooltip from "../overrides/MuiTooltip"
 import MuiBadge from "../overrides/MuiBadge"
 import MuiTableContainer from "../overrides/MuiTableContainer"
 import MuiMobileStepper from "../overrides/MuiMobileStepper"
+import MuiTab from "../overrides/MuiTab"
+import MuiTabs from "../overrides/MuiTabs"
 
 /**
  * Types
@@ -135,6 +137,12 @@ export const theme = createTheme({
     },
     MuiMobileStepper: {
       styleOverrides: MuiMobileStepper
+    },
+    MuiTab: {
+      styleOverrides: MuiTab
+    },
+    MuiTabs: {
+      styleOverrides: MuiTabs
     }
   }
 })
