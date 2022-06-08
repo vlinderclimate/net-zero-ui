@@ -1,3 +1,4 @@
+// 24px
 export { default as ArrowLeft } from "./ArrowLeft"
 export { default as ArrowRight } from "./ArrowRight"
 export { default as CheckCircle } from "./CheckCircle"
@@ -6,7 +7,6 @@ export { default as InfoCircle } from "./InfoCircle"
 export { default as ErrorCircle } from "./ErrorCircle"
 export { default as Attention } from "./Attention"
 export { default as HelpCircle } from "./HelpCircle"
-export { default as Help } from "./Help"
 export { default as Lock } from "./Lock"
 export { default as Delete } from "./Delete"
 export { default as TriangleRight } from "./TriangleRight"
@@ -48,3 +48,10 @@ export { default as Collection } from "./Collection"
 export { default as Sprout } from "./Sprout"
 export { default as Verify } from "./Verify"
 export { default as User } from "./User"
+
+// 16px
+export { default as Help } from "./Help"
+export { default as CloseSmall } from "./CloseSmall"
+export { default as MinusSmall } from "./MinusSmall"
+export { default as PlusSmall } from "./PlusSmall"
+export { default as Dropdown } from "./Dropdown"

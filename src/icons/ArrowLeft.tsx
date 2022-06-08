@@ -1,9 +1,9 @@
-const ArrowRight = () => {
+const ArrowLeft = () => {
   return (
     <svg viewBox="0 0 24 24">
-      <path d="M11.707 6.70718L10.2928 5.29297L3.58569 12.0001L10.2928 18.7072L11.707 17.293L7.41417 13.0001H19.9999V11.0001H7.41407L11.707 6.70718Z" />
+      <path d="M19.9999 11.25H6.80994L11.5299 6.52997L10.4699 5.46997L3.93994 12L10.4699 18.53L11.5299 17.47L6.80994 12.75H19.9999V11.25Z" />
     </svg>
   )
 }
 
-export default ArrowRight
+export default ArrowLeft
