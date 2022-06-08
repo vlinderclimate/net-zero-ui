@@ -1,8 +1,10 @@
 const Menu = () => (
   <svg viewBox="0 0 24 24">
-    <path d="M4.80005 4.7998H19.2V5.9998H4.80005V4.7998Z" />
-    <path d="M4.80005 11.3998H19.2V12.5998H4.80005V11.3998Z" />
-    <path d="M19.2 17.9998H4.80005V19.1998H19.2V17.9998Z" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M20 5.5H4V7H20V5.5ZM20 11.25H4V12.75H20V11.25ZM4 17H20V18.5H4V17Z"
+    />
   </svg>
 )
 
