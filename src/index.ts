@@ -29,6 +29,9 @@ export { default as Breadcrumbs, BreadcrumbsProps } from "./components/Breadcrum
 export { default as StepLabel, StepLabelProps } from "./components/StepLabel"
 export { default as StepLabelText, StepLabelTextProps } from "./components/StepLabelText"
 export { default as Stepper, StepperProps } from "./components/Stepper"
+export { default as Tabs, TabsProps } from "./components/Tabs"
+export { default as Tab, TabProps } from "./components/Tab"
+export { default as TabPanel, TabPanelProps } from "./components/TabPanel"
 
 export { default as Account, AccountProps } from "./components/shared/Account"
 export { default as CardSlider, CardSliderProps } from "./components/shared/CardSlider"
