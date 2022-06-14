@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { styled, Theme } from "@mui/material/styles"
+import { styled } from "@mui/material/styles"
 import MuiTab, { TabProps as MuiTabProps } from "@mui/material/Tab"
 import { Typography } from "@mui/material"
 

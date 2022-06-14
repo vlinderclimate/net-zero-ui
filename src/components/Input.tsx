@@ -110,6 +110,7 @@ export const getLineHeight = ({ size, theme }: ExtendedStyledInputProps) => {
 export const formCommonStyles = (theme: Theme) => ({
   caretColor: theme.palette.blue.main,
   backgroundColor: theme.palette.gray.white,
+  transition: theme.transitions.create(["box-shadow"]),
 
   fieldset: {
     display: "none"
@@ -123,11 +124,11 @@ export const formCommonStyles = (theme: Theme) => ({
   "&.Input-outlined": {
     boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`
   },
-  "&.Mui-focused": {
-    boxShadow: `inset 0 0 0 1px ${theme.palette.primary.main}`
+  "&.Mui-focused, &:hover": {
+    boxShadow: `inset 0 0 0 1.5px ${theme.palette.gray[600]}`
   },
   "&.Mui-error": {
-    boxShadow: `inset 0 0 0 1px ${theme.palette.negative.main}`
+    boxShadow: `inset 0 0 0 1.5px ${theme.palette.negative.main}`
   },
   "&.Mui-disabled": {
     backgroundColor: theme.palette.gray[500]
@@ -184,7 +185,7 @@ const Input: React.FC<InputProps> = forwardRef((props, ref) => {
     actionButtonProps,
     ...rest
   } = props
-  const append = Boolean(endAdornment ?? actionButtonProps)
+  const append = Boolean(endAdornment ?? actionButtonProps ?? !overrideErrorAdornment)
 
   return (
     <StyledInput
@@ -197,7 +198,7 @@ const Input: React.FC<InputProps> = forwardRef((props, ref) => {
         <EndAdornment
           size={size}
           error={error && !overrideErrorAdornment}
-          endAdornment={overrideErrorAdornment ? endAdornment : undefined}
+          endAdornment={!overrideErrorAdornment ? endAdornment : undefined}
           actionButtonProps={actionButtonProps}
         />
       }

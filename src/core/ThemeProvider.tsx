@@ -30,6 +30,7 @@ import MuiTableContainer from "../overrides/MuiTableContainer"
 import MuiMobileStepper from "../overrides/MuiMobileStepper"
 import MuiTab from "../overrides/MuiTab"
 import MuiTabs from "../overrides/MuiTabs"
+import MuiMenu from "../overrides/MuiMenu"
 
 /**
  * Types
@@ -122,6 +123,9 @@ export const theme = createTheme({
     },
     MuiListItem: {
       styleOverrides: MuiListItem
+    },
+    MuiMenu: {
+      styleOverrides: MuiMenu
     },
     MuiMenuItem: {
       styleOverrides: MuiMenuItem
