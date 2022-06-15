@@ -134,6 +134,13 @@ const getPadding = ({ size, onlyIcon }: ExtendedStyledButtonProps) => {
   return onlyIcon ? "7px" : "7px 20px 8px 20px"
 }
 
+const getOutlinePadding = ({ size, onlyIcon }: ExtendedStyledButtonProps) => {
+  if (size === "xs") return onlyIcon ? "3px" : "3px 16px 5px 16px"
+  if (size === "sm") return onlyIcon ? "5px" : "3px 16px 5px 16px"
+  if (size === "lg") return onlyIcon ? "8px" : "6px 24px 8px 24px"
+  return onlyIcon ? "7px" : "7px 20px 8px 20px"
+}
+
 const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
   if (size === "xs") return onlyIcon ? "3px" : "3px 16px 5px 16px"
   if (size === "sm") return onlyIcon ? "3px" : "3px 16px 5px 16px"
@@ -244,6 +251,9 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       color: colorMap.outlined[color],
       backgroundColor: "transparent",
       boxShadow: `inset 0 0 0 1px ${colorMap.outlined[color]}`,
+      [theme.breakpoints.up("sm")]: {
+        padding: getOutlinePadding({ size, theme, onlyIcon })
+      },
       [`&.${PREFIX}-primary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
         color: theme.palette.gray[800],
