@@ -68,9 +68,8 @@ const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHan
                   <MuiBadge color="error" variant="dot" sx={{ verticalAlign: "inherit" }} invisible={isEmpty}>
                     <Button
                       variant={isMobile ? "outlined" : "text"}
-                      color="primaryAlt"
-                      size={isMobile ? "md" : "sm"}
-                      startIcon={<Icon iconKey="cart" size={isMobile ? "xs" : "md"} />}
+                      color="primary"
+                      startIcon={<Icon iconKey="cart" size={isMobile ? "md" : "md"} />}
                       onClick={cartHandler}
                       {...(!isMobile && { sx: { padding: "0 !important" } })}
                     />
@@ -83,9 +82,8 @@ const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHan
                   {isMobile && (
                     <Button
                       variant="outlined"
-                      color="primaryAlt"
-                      size="md"
-                      startIcon={<Icon iconKey="menu" size="xs" />}
+                      color="primary"
+                      startIcon={<Icon iconKey="menu" size="md" />}
                       onClick={menuHandler}
                     />
                   )}

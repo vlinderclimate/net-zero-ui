@@ -5,7 +5,7 @@ import { Theme, styled } from "@mui/material/styles"
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button"
 
 import colors from "../theme/colors"
-import { fontWeight, lineHeight, lineHeightMobile, fontSize, fontSizeMobile } from "../theme/typography"
+import { fontWeight, lineHeight, lineHeightMobile, fontSize } from "../theme/typography"
 
 /**
  * Types
@@ -103,14 +103,14 @@ const getFontSize = ({ size, theme }: ExtendedStyledButtonProps) => {
   if (size === "xs") return fontSize.xs4
   if (size === "sm") return fontSize.xs2
   if (size === "lg") return fontSize.xs1
-  return fontSizeMobile.xs1
+  return fontSize.xs2
 }
 
 const getFontSizeMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
   if (size === "xs") return fontSize.xs4
   if (size === "sm") return fontSize.xs4
-  if (size === "lg") return fontSizeMobile.xs1
-  return fontSizeMobile.xs1
+  if (size === "lg") return fontSize.xs2
+  return fontSize.xs2
 }
 
 const getLineHeight = ({ size, theme }: ExtendedStyledButtonProps) => {
@@ -138,14 +138,14 @@ const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) 
   if (size === "xs") return onlyIcon ? "3px" : "3px 16px 5px 16px"
   if (size === "sm") return onlyIcon ? "3px" : "3px 16px 5px 16px"
   if (size === "lg") return onlyIcon ? "8px" : "7px 20px 8px 20px"
-  return onlyIcon ? "5px" : "3px 16px 5px 16px"
+  return onlyIcon ? "6px" : "3px 16px 5px 16px"
 }
 
 const PREFIX = "Button"
 
 const classes = {
   root: `${PREFIX}-root`,
-  withIcon: `${PREFIX}-widthIcon`,
+  withIcon: `${PREFIX}-withIcon`,
   underline: `${PREFIX}-underline`
 }
 
