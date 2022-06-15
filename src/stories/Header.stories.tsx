@@ -61,9 +61,8 @@ const Template: Story<HeaderProps> = (args) => {
       {isMobile ? (
         <Button
           variant="outlined"
-          color="primaryAlt"
-          size="md"
-          startIcon={<Icon iconKey="user" size="xs" />}
+          color="primary"
+          startIcon={<Icon iconKey="user" size="md" />}
           onClick={() => console.log(">> open user menu")}
         />
       ) : (
@@ -71,8 +70,7 @@ const Template: Story<HeaderProps> = (args) => {
           <Button
             sx={{ display: "block" }}
             variant="outlined"
-            color="primaryAlt"
-            size="sm"
+            color="primary"
             onClick={() => console.log(">> open user menu")}
           >
             <AccountImage src="https://atomasolutions.gitlab.io/atoma.cash/vlinder-marketplace/_next/static/image/src/assets/images/user-empty.76b16152d61cce930535836c8292c293.svg" />

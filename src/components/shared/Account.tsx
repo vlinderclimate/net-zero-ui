@@ -14,7 +14,7 @@ export const AccountImage = styled("img")(({ theme }) => ({
   width: theme.spacing(3.5),
   height: theme.spacing(3.5),
   borderRadius: "100%",
-  margin: "-6px 0 -9px -12px",
+  margin: "-6px 0 -9px -16px",
   fontSize: 0,
 
   [theme.breakpoints.down("md")]: {
