@@ -77,7 +77,7 @@ const StyledCard = styled(MuiCard)<CardProps>(
       backgroundColor: bg,
       position: "relative",
       overflow: "visible",
-      boxShadow: bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]}` : "none",
+      boxShadow: bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]},  0px 2px 1px rgba(0, 0, 0, 0.04)` : "none",
       borderRadius: rounded ? theme.borders.radius.m : 0,
       zIndex: 1,
 
