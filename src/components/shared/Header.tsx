@@ -79,7 +79,7 @@ const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHan
               <MuiBox sx={{ display: "flex" }} ml={{ xs: 1.5, md: 1 }} gap={{ xs: 1.5, md: 0 }}>
                 <>
                   {children}
-                  {isMobile && (
+                  {menuHandler && isMobile && (
                     <Button
                       variant="outlined"
                       color="primary"
