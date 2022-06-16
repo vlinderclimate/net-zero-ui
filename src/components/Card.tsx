@@ -22,7 +22,7 @@ export enum CardColorVariants {
 
 export interface CardProps extends Omit<MuiCardProps, "color"> {
   color?: CardColorVariants
-  selected?: boolean
+  bordered?: boolean
   rounded?: boolean | number
   disabled?: boolean
   size?: CardSizeVariants
@@ -65,7 +65,7 @@ export const backgroundMap = new Map<CardColorVariants, string>([
 ])
 
 const StyledCard = styled(MuiCard)<CardProps>(
-  ({ color = CardColorVariants.Initial, size = CardSizeVariants.Medium, selected, rounded, theme }: StyledProps) => {
+  ({ color = CardColorVariants.Initial, size = CardSizeVariants.Medium, bordered, rounded, theme }: StyledProps) => {
     const padding = sizeMap.get(size)
     const paddingMobile = sizeMobileMap.get(size)
     const bg = backgroundMap.get(color)
@@ -77,7 +77,7 @@ const StyledCard = styled(MuiCard)<CardProps>(
       backgroundColor: bg,
       position: "relative",
       overflow: "visible",
-      boxShadow: selected ? `inset 0 0 0 3px ${theme.palette.primary.main}` : "none",
+      boxShadow: bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]}` : "none",
       borderRadius: rounded ? theme.borders.radius.m : 0,
       zIndex: 1,
 
@@ -104,8 +104,8 @@ const Overlay = styled("div")<CardProps>(({ color = CardColorVariants.Initial })
   }
 })
 
-const Card: React.FC<CardProps> = ({ children, color, size, selected, disabled, rounded = false, ...props }) => {
-  const styleProps = { color, size, selected, disabled, rounded: rounded ? 1 : 0 }
+const Card: React.FC<CardProps> = ({ children, color, size, bordered, disabled, rounded = false, ...props }) => {
+  const styleProps = { color, size, bordered, disabled, rounded: rounded ? 1 : 0 }
 
   return (
     <StyledCard {...styleProps} {...props}>
