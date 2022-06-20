@@ -35,7 +35,7 @@ export interface ExtendedStyledButtonProps {
   size?: string
   theme: Theme
 }
-interface StyledButtonProps extends Omit<ButtonProps, "color" | "onlyIcon"> {
+interface StyledButtonProps extends Omit<ButtonProps, "color" | "onlyIcon" | "align"> {
   $align: ButtonProps["align"]
   $onlyIcon?: boolean
   $color: ButtonProps["color"]
@@ -362,30 +362,32 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
   }
 })
 
-const Button: React.FC<ButtonProps> = ({
-  value,
-  align = "center",
-  placeholder,
-  color = "primary",
-  variant = "contained",
-  size = "md",
-  disabled = false,
-  startIcon,
-  endIcon,
-  onClick,
-  href,
-  linkProps,
-  children,
-  ...props
-}) => {
+const Button: React.FC<ButtonProps> = (props) => {
+  const {
+    value,
+    align = "center",
+    placeholder,
+    color = "primary",
+    variant = "contained",
+    size = "md",
+    disabled = false,
+    startIcon,
+    endIcon,
+    onClick,
+    href,
+    linkProps,
+    children,
+    ...rest
+  } = props
+
   const onlyIcon = Boolean(!children) && (Boolean(startIcon) ?? Boolean(endIcon))
+  const extendedProps = { $onlyIcon: onlyIcon, $color: color, size, $align: align }
   const className = clsx([
     classes.root,
     variant === "underline" && classes.underline,
     `${PREFIX}-${color}`,
     (endIcon ?? startIcon) && classes.withIcon
   ])
-  const stylingProps = { $onlyIcon: onlyIcon, $color: color, size, $align: align }
 
   return (
     <StyledButton
@@ -396,9 +398,9 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       startIcon={startIcon}
       endIcon={endIcon}
-      {...stylingProps}
       {...(href && { href, ...linkProps })}
-      {...props}
+      {...extendedProps}
+      {...rest}
     >
       <ButtonText className={`${PREFIX}-innerText`}>{children}</ButtonText>
     </StyledButton>
