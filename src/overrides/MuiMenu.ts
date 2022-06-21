@@ -15,7 +15,10 @@ const MuiMenu = {
         backgroundColor: colors.gray[200]
       }
     },
-    ".Mui-selected, .Mui-active, .Mui-focused": {
+    ".MuiList-root": {
+      padding: "8px 0"
+    },
+    ".Mui-selected, .Mui-active, .Mui-selected.Mui-focusVisible": {
       backgroundColor: colors.primary.main,
       color: colors.gray.white,
       "&:hover": {

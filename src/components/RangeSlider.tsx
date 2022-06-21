@@ -93,7 +93,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     borderRadius: 2,
     opacity: 1,
 
-    ".MuiFormControl-root &": {
+    ".MuiFormHelperText-root &": {
       backgroundColor: "transparent !important"
     }
   },
