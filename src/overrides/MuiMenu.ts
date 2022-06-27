@@ -2,7 +2,16 @@ import colors from "../theme/colors"
 import typography from "../theme/typography"
 
 const MuiMenu = {
-  root: {},
+  root: {
+    "&.Mui-selected, &.Mui-active, &.Mui-selected.Mui-focusVisible": {
+      backgroundColor: colors.primary.main,
+      color: colors.gray.white,
+      "&:hover": {
+        backgroundColor: colors.primary.main,
+        color: colors.gray.white
+      }
+    }
+  },
   paper: {
     border: 0,
     borderRadius: 0,

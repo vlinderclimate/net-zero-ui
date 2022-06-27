@@ -15,6 +15,10 @@ const StyledLabel = styled(FormControl)(({ theme }) => ({
   paddingBottom: theme.spacing(3.5),
   borderBottom: `1px solid ${theme.palette.gray[500]}`,
 
+  ".MuiFormControl-root": {
+    marginBottom: theme.spacing(1)
+  },
+
   [theme.breakpoints.down("sm")]: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(1)

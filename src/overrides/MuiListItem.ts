@@ -1,3 +1,5 @@
+import colors from "../theme/colors"
+
 const MuiListItem = {
   root: {
     backgroundColor: "transparent",
@@ -9,6 +11,14 @@ const MuiListItem = {
     "&.Mui-selected": {
       "&:hover": {
         backgroundColor: "transparent"
+      }
+    },
+    "&.Mui-selected, &.Mui-active, &.Mui-selected.Mui-focusVisible": {
+      backgroundColor: colors.primary.main,
+      color: colors.gray.white,
+      "&:hover": {
+        backgroundColor: colors.primary.main,
+        color: colors.gray.white
       }
     }
   }
