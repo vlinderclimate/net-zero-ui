@@ -8,8 +8,9 @@ import GridItem from "../GridItem"
 import Typography from "../Typography"
 
 export interface InnerHeaderProps {
-  title?: string
+  title?: JSX.Element | JSX.Element[] | string
   image?: string
+  imageTitle?: string
   imageWidth?: string | number
   backButton?: JSX.Element | JSX.Element[] | string
   rightItem?: JSX.Element | JSX.Element[] | string
@@ -55,6 +56,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
   rightItem,
   backButton,
   imageWidth = 120,
+  imageTitle,
   children,
   headerBg
 }) => {
@@ -74,7 +76,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
             >
               {image && (
                 <Item pr={{ xs: 0, md: 5 }} mb={{ xs: 3, sm: 4, md: 0 }}>
-                  <Image src={image} alt={title} width={imageWidth} height={imageWidth} />
+                  <Image src={image} alt={imageTitle} width={imageWidth} height={imageWidth} />
                 </Item>
               )}
               <Item sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
