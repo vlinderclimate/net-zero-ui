@@ -13,7 +13,6 @@ export interface InnerHeaderProps {
   imageWidth?: string | number
   backButton?: JSX.Element | JSX.Element[] | string
   rightItem?: JSX.Element | JSX.Element[] | string
-  scrollButton?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
   headerBg?: string
 }
@@ -55,7 +54,6 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
   image,
   rightItem,
   backButton,
-  scrollButton,
   imageWidth = 120,
   children,
   headerBg
@@ -87,7 +85,6 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
               </Item>
             </MuiBox>
           </GridItem>
-          {scrollButton && <GridItem xs={1}>{scrollButton}</GridItem>}
           {rightItem && (
             <GridItem xs={12} md={5}>
               {rightItem}
