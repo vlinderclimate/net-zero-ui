@@ -58,8 +58,6 @@ const Template: Story = ({ size, closeButton, transparentBackdrop }) => {
     setOpen(open)
   }
 
-  console.log(open)
-
   return (
     <>
       <Button color="primary" onClick={toggleDrawer(true)}>

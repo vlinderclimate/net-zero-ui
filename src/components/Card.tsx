@@ -80,9 +80,13 @@ const StyledCard = styled(MuiCard)<StyledCardProps>(
       backgroundColor: bg,
       position: "relative",
       overflow: "visible",
-      boxShadow: $bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]},  0px 2px 1px rgba(0, 0, 0, 0.04)` : "none",
+      boxShadow: $bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]}` : "none",
       borderRadius: $rounded ? theme.borders.radius.m : 0,
       zIndex: 1,
+
+      "a &": {
+        boxShadow: $bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]},  0px 2px 1px rgba(0, 0, 0, 0.04)` : "none"
+      },
 
       [theme.breakpoints.down("sm")]: {
         padding: paddingMobile ? theme.spacing(paddingMobile.y, paddingMobile.x) : "0",

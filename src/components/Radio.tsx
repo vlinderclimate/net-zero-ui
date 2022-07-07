@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import type { FC } from "react"
 import { styled } from "@mui/material/styles"
 import MuiRadio, { RadioProps as MuiRadioProps } from "@mui/material/Radio"
 import typography from "../theme/typography"
@@ -6,7 +6,10 @@ import typography from "../theme/typography"
 /**
  * Types
  */
-export interface RadioProps extends MuiRadioProps {}
+export interface RadioProps extends Omit<MuiRadioProps, "children"> {
+  variant?: "default" | "bordered"
+  className?: string
+}
 
 /**
  * Styles
@@ -40,12 +43,31 @@ const StyledRadio = styled(MuiRadio)(({ theme }) => ({
     }
   },
   "&.MuiRadio-root": {
-    padding: 4,
     marginRight: 8,
-    marginLeft: -16,
+    marginLeft: 0,
+    padding: 0,
     backgroundColor: "transparent !important",
     color: `${theme.palette.gray[500]} !important`,
     position: "static",
+
+    "&.Mui-checked": {
+      color: `${theme.palette.text.primary} !important`,
+
+      "& ~ .MuiFormControlLabel-label": {
+        color: `${theme.palette.text.primary} !important`
+      }
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 0
+    }
+  },
+  "&.MuiRadio-bordered.MuiRadio-root": {
+    backgroundColor: "transparent !important",
+    color: `${theme.palette.gray[500]} !important`,
+    position: "static",
+    padding: "10px 12px 10px 16px",
+    marginRight: 0,
+
     "&:before": {
       content: "''",
       border: "1px solid",
@@ -55,6 +77,9 @@ const StyledRadio = styled(MuiRadio)(({ theme }) => ({
       width: "100%",
       height: "100%"
     },
+    "& ~ .MuiFormControlLabel-label": {
+      padding: "10px 24px 10px 0"
+    },
     "&.Mui-checked": {
       color: `${theme.palette.text.primary} !important`,
 
@@ -63,8 +88,11 @@ const StyledRadio = styled(MuiRadio)(({ theme }) => ({
       }
     },
     [theme.breakpoints.down("sm")]: {
-      padding: 0,
-      marginLeft: -8
+      padding: "10px 8px 10px 12px",
+
+      "& ~ .MuiFormControlLabel-label": {
+        padding: "8px 16px 8px 0"
+      }
     }
   }
 }))
@@ -72,8 +100,8 @@ const StyledRadio = styled(MuiRadio)(({ theme }) => ({
 /**
  * Components
  */
-const Radio: FC<RadioProps> = ({ children, ...rest }) => {
-  return <StyledRadio {...rest}>{children}</StyledRadio>
+const Radio: FC<RadioProps> = ({ variant = "default", ...rest }) => {
+  return <StyledRadio className={`MuiRadio-${variant}`} {...rest} />
 }
 
 export default Radio

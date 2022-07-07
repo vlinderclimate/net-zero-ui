@@ -78,7 +78,6 @@ const TextField: React.FC<TextFieldProps> = forwardRef(
     })()
 
     const append = Boolean(actionButtonProps ?? inputProps?.endAdornment ?? error)
-    console.log(append)
 
     return (
       <StyledTextField
