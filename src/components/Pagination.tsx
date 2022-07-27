@@ -76,6 +76,8 @@ const Pagination = ({ onChange, page, count, variant = "outlined", size = "large
       count={count}
       variant={variant}
       size={size}
+      onChange={onChange}
+      page={page}
       renderItem={(item) => (
         <MuiPaginationItem
           components={{
