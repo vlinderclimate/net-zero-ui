@@ -3,7 +3,6 @@ import React from "react"
 import Pagination, { PaginationProps } from "../components/Pagination"
 
 const argTypes = {
-  onChange: { table: { disable: true } },
   ref: { table: { disable: true } },
   count: {
     name: "count",

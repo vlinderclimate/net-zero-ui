@@ -74,7 +74,7 @@ const Template: Story<TabsProps> = (args) => {
         <Container>
           <Tabs {...args} value={value} onChange={handleChange}>
             {list.map((item, i) => (
-              <Tab label={item} index={i} />
+              <Tab label={item} index={i} key={i} />
             ))}
           </Tabs>
         </Container>

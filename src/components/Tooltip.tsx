@@ -28,8 +28,16 @@ const StyledTooltip = styled(({ className, size, ...props }: TooltipProps) => (
   }
 }))
 
+const Container = styled("div")(({ theme }) => ({
+  position: "relative"
+}))
+
 const Tooltip: React.FC<TooltipProps> = ({ children, ...props }) => {
-  return <StyledTooltip {...props}>{children}</StyledTooltip>
+  return (
+    <StyledTooltip {...props}>
+      <Container>{children}</Container>
+    </StyledTooltip>
+  )
 }
 
 export default Tooltip

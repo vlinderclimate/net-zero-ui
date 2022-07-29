@@ -32,9 +32,33 @@ const argTypes = {
       defaultValue: { summary: "medium" }
     }
   },
-  selected: {
-    name: "selected",
-    description: "Add selected state.",
+  disabled: {
+    name: "disabled",
+    description: "Add disabled state.",
+    defaultValue: false,
+    control: {
+      type: "boolean"
+    },
+    table: {
+      type: { summary: "boolean" },
+      defaultValue: { summary: false }
+    }
+  },
+  bordered: {
+    name: "bordered",
+    description: "Add bordered state.",
+    defaultValue: false,
+    control: {
+      type: "boolean"
+    },
+    table: {
+      type: { summary: "boolean" },
+      defaultValue: { summary: false }
+    }
+  },
+  rounded: {
+    name: "rounded",
+    description: "Add rounded state.",
     defaultValue: false,
     control: {
       type: "boolean"
