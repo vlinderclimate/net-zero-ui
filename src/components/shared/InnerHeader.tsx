@@ -9,9 +9,7 @@ import Typography from "../Typography"
 
 export interface InnerHeaderProps {
   title?: JSX.Element | JSX.Element[] | string
-  image?: string
-  imageTitle?: string
-  imageWidth?: string | number
+  image?: JSX.Element | JSX.Element[] | string
   backButton?: JSX.Element | JSX.Element[] | string
   rightItem?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
@@ -43,23 +41,7 @@ export const Divider = styled(GridItem)(({ theme }) => ({
   left: theme.spacing(-2)
 }))
 
-export const Image = styled("img")(({ theme }) => ({
-  maxWidth: "100%",
-  display: "block",
-  backgroundColor: theme.palette.gray[400],
-  objectFit: "contain"
-}))
-
-const InnerHeader: React.FC<InnerHeaderProps> = ({
-  title,
-  image,
-  rightItem,
-  backButton,
-  imageWidth = 120,
-  imageTitle,
-  children,
-  headerBg
-}) => {
+const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, rightItem, backButton, children, headerBg }) => {
   return (
     <HeaderBox $headerBg={headerBg}>
       <Section topIndent>
@@ -76,7 +58,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
             >
               {image && (
                 <Item pr={{ xs: 0, md: 5 }} mb={{ xs: 3, sm: 4, md: 0 }}>
-                  <Image src={image} alt={imageTitle} width={imageWidth} height={imageWidth} />
+                  {image}
                 </Item>
               )}
               <Item sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>

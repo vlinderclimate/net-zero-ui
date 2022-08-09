@@ -5,6 +5,7 @@ import MuiBox from "@mui/material/Box"
 import Typography from "../components/Typography"
 import Button from "../components/Button"
 import Icon from "../components/Icon"
+import { styled } from "@mui/material"
 
 const argTypes = {
   headerBg: {
@@ -17,17 +18,6 @@ const argTypes = {
     name: "title",
     defaultValue: "Vlinder Kenya Blue Carbon",
     control: { type: "text" }
-  },
-  image: {
-    name: "",
-    defaultValue:
-      "https://images.ctfassets.net/xjhxiihvmjxq/392Qbn8RJ96idK2uOPOvNc/b4858279bb463e55ac35b907a8ffc758/kenya-card.jpg?h=250",
-    control: { type: "text" }
-  },
-  imageWidth: {
-    name: "imageWidth",
-    defaultValue: "120",
-    control: { type: "number" }
   }
 }
 
@@ -49,10 +39,25 @@ const description = [
 ]
 
 const Template: Story<InnerHeaderProps> = (args) => {
+  const Image = styled("img")(({ theme }) => ({
+    maxWidth: "100%",
+    display: "block",
+    backgroundColor: theme.palette.gray[400],
+    objectFit: "contain"
+  }))
+
   return (
     <InnerHeader
       backButton={
         <Button size="lg" variant="outlined" color="primary" startIcon={<Icon iconKey="arrowLeft" size="md" />} />
+      }
+      image={
+        <Image
+          src="https://images.ctfassets.net/xjhxiihvmjxq/392Qbn8RJ96idK2uOPOvNc/b4858279bb463e55ac35b907a8ffc758/kenya-card.jpg?h=250"
+          alt="alt"
+          width={120}
+          height={120}
+        />
       }
       {...args}
     >
