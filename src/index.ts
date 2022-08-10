@@ -39,6 +39,8 @@ export { default as FormLabel, FormLabelProps } from "./components/FormLabel"
 export { default as FormControlLabel, FormControlLabelProps } from "./components/FormControlLabel"
 export { default as Radio, RadioProps } from "./components/Radio"
 export { default as RadioGroup, RadioGroupProps } from "./components/RadioGroup"
+export { default as Chip, ChipProps } from "./components/Chip"
+export { default as Snackbar, SnackbarProps } from "./components/Snackbar"
 
 export { default as Account, AccountProps } from "./components/shared/Account"
 export { default as CardSlider, CardSliderProps } from "./components/shared/CardSlider"
