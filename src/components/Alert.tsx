@@ -41,7 +41,7 @@ export const colorMap: Record<AlertColor, string> = {
   info: colors.blue.main
 }
 
-const StyledAlert = styled(MuiAlert)<StyledAlertProps>(({ color, icon, $rounded: rounded, align, theme }) => ({
+export const StyledAlert = styled(MuiAlert)<StyledAlertProps>(({ color, icon, $rounded: rounded, align, theme }) => ({
   fontSize: theme.typography.fontSizeXs2,
   lineHeight: theme.typography.lineHeightS,
   fontWeight: theme.typography.fontWeightMedium,
@@ -51,10 +51,6 @@ const StyledAlert = styled(MuiAlert)<StyledAlertProps>(({ color, icon, $rounded:
   backgroundColor: backgroundMap[color ?? "info"],
   borderRadius: rounded ? theme.borders.radius.sm : 0,
   opacity: 1,
-
-  "& *": {
-    color: colorMap[color ?? "info"]
-  },
 
   "&.MuiAlert-filled": {
     backgroundColor: colorMap[color ?? "info"],
@@ -70,7 +66,8 @@ const StyledAlert = styled(MuiAlert)<StyledAlertProps>(({ color, icon, $rounded:
   },
 
   "& .MuiAlert-message": {
-    padding: 0
+    padding: 0,
+    color: colorMap[color ?? "info"]
   },
 
   "& .MuiAlert-icon": {
@@ -79,12 +76,8 @@ const StyledAlert = styled(MuiAlert)<StyledAlertProps>(({ color, icon, $rounded:
     padding: 0,
     marginRight: theme.spacing(1),
     height: theme.typography.lineHeightS,
-    color: colorMap[color ?? "info"],
-    opacity: 1,
-
-    "& path": {
-      fill: "currentColor"
-    }
+    // color: colorMap[color ?? "info"],
+    opacity: 1
   },
 
   [theme.breakpoints.down("sm")]: {

@@ -41,10 +41,18 @@ export const Divider = styled(GridItem)(({ theme }) => ({
   left: theme.spacing(-2)
 }))
 
-const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, rightItem, backButton, children, headerBg }) => {
+const InnerHeader: React.FC<InnerHeaderProps> = ({
+  title,
+  image,
+  rightItem,
+  backButton,
+  children,
+  headerBg,
+  ...props
+}) => {
   return (
     <HeaderBox $headerBg={headerBg}>
-      <Section topIndent>
+      <Section topIndent {...props}>
         <GridContainer alignItems="center" spacing={1} mt={{ xs: 1, md: rightItem ? -6 : 1 }}>
           {backButton && <GridItem xs={1}>{backButton}</GridItem>}
           <GridItem xs={rightItem ? 12 : 10} md={rightItem ? 7 : 11}>
@@ -62,7 +70,7 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({ title, image, rightItem, back
                 </Item>
               )}
               <Item sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
-                <Typography variant="h1" component="div" marginBottom={{ xs: 1, md: 2 }}>
+                <Typography variant="h1" component="div" marginBottom={{ xs: children ? 0 : 1, md: children ? 0 : 2 }}>
                   {title}
                 </Typography>
                 {children}
