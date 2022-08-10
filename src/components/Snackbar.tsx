@@ -29,7 +29,7 @@ const AlertBox = styled(MuiBox)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  gap: 16,
+  gap: theme.spacing(2),
 
   ".MuiPaper-root": {
     backgroundColor: theme.palette.gray[800],
@@ -39,6 +39,10 @@ const AlertBox = styled(MuiBox)(({ theme }) => ({
 
 const StyledAlert = styled(Alert)(({ theme }) => ({
   backgroundColor: theme.palette.gray[800],
+  paddingBlock: theme.spacing(2),
+  lineHeight: 1,
+  display: "flex",
+  alignItems: "center",
 
   div: {
     color: theme.palette.gray.white
@@ -73,7 +77,7 @@ const Snackbar: React.FC<SnackbarProps> = forwardRef(
     return (
       <MuiSnackbar
         open={open}
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
         {...props}
         onClose={onClose}
         ref={ref}

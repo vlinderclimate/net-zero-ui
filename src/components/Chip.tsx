@@ -38,7 +38,9 @@ const StyledChip = styled(MuiChip)(({ theme, color }: StyledChipProps) => ({
   backgroundColor: backgroundMap[color ?? "default"],
 
   ".MuiChip-label": {
-    paddingInline: theme.spacing(2)
+    paddingInline: theme.spacing(2),
+    position: "relative",
+    top: "-1px"
   },
   "&.MuiChip-outlined": {
     borderColor: colorMap[color ?? "default"],
