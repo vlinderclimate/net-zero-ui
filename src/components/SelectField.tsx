@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react"
+import React, { forwardRef, ReactNode, useState } from "react"
 import { styled, Theme } from "@mui/material/styles"
 import FormControl, { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl"
 import { ClickAwayListener, InputLabel } from "@mui/material"
@@ -10,7 +10,7 @@ type ExcludedProps = "onBlur" | "onChange" | "onFocus" | "onKeyDown" | "onKeyUp"
 
 export interface SelectFieldProps extends Omit<MuiFormControlProps, ExcludedProps> {
   id: string
-  label?: string
+  label?: string | ReactNode | ReactNode[]
   helperText?: string
   fullWidth?: boolean
   selectProps: SelectProps
@@ -41,7 +41,6 @@ const SelectField: React.FC<SelectFieldProps> = forwardRef(
           <Select
             id={id}
             aria-describedby={`${id}-select`}
-            label={label}
             endAdornment={
               <IconButton
                 iconProps={{
