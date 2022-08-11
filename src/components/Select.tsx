@@ -11,6 +11,7 @@ const StyledMuiSelect = styled(MuiSelect)<SelectProps>(({ theme }: { theme: Them
   boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
   transition: theme.transitions.create(["box-shadow"]),
   backgroundColor: theme.palette.gray.white,
+  marginTop: "0 !important",
 
   "&.Mui-focused": {
     boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`
