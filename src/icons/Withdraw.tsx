@@ -1,0 +1,9 @@
+const Withdraw = () => {
+  return (
+    <svg viewBox="0 0 24 24">
+      <path d="M2.5 8V4H21.5V8H20V5.5H18V20H6V5.5H4V8H2.5ZM7.5 18.5H16.5V5.5H7.5V18.5ZM12.7507 13.19L13.9707 11.97L15.0307 13.03L12.0007 16.06L8.9707 13.03L10.0307 11.97L11.2507 13.19V8H12.7507V13.19Z" />
+    </svg>
+  )
+}
+
+export default Withdraw

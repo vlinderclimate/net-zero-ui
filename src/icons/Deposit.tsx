@@ -1,0 +1,9 @@
+const Deposit = () => {
+  return (
+    <svg viewBox="0 0 24 24">
+      <path d="M20 18.5V16H21.5V20H2.5V16H4V18.5H6V4H18V18.5H20ZM16.5 5.5H7.5V18.5H16.5V5.5ZM12.7507 13.19L13.9707 11.97L15.0307 13.03L12.0007 16.06L8.9707 13.03L10.0307 11.97L11.2507 13.19V8H12.7507V13.19Z" />
+    </svg>
+  )
+}
+
+export default Deposit
