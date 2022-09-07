@@ -55,6 +55,7 @@ export { default as Receive } from "./Receive"
 export { default as To } from "./To"
 export { default as Withdraw } from "./Withdraw"
 export { default as Clock } from "./Clock"
+export { default as Play } from "./Play"
 
 // 16px
 export { default as Help } from "./Help"

@@ -67,7 +67,8 @@ export const IconKeyVariants = [
   "receive",
   "to",
   "withdraw",
-  "clock"
+  "clock",
+  "play"
 ] as const
 
 export type IconKeyVariant = typeof IconKeyVariants[number]
@@ -152,7 +153,8 @@ export const iconMap: Record<IconKeyVariant, ReactNode> = {
   receive: <I.Receive />,
   to: <I.To />,
   withdraw: <I.Withdraw />,
-  clock: <I.Clock />
+  clock: <I.Clock />,
+  play: <I.Play />
 }
 
 export const iconSizeMap: Record<IconSizeVariant, number> = {
