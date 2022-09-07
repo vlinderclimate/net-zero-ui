@@ -54,8 +54,6 @@ export { default as Send } from "./Send"
 export { default as Receive } from "./Receive"
 export { default as To } from "./To"
 export { default as Withdraw } from "./Withdraw"
-export { default as Show } from "./Show"
-export { default as Hide } from "./Hide"
 export { default as Clock } from "./Clock"
 
 // 16px

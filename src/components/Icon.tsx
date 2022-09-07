@@ -67,8 +67,6 @@ export const IconKeyVariants = [
   "receive",
   "to",
   "withdraw",
-  "show",
-  "hide",
   "clock"
 ] as const
 
@@ -154,8 +152,6 @@ export const iconMap: Record<IconKeyVariant, ReactNode> = {
   receive: <I.Receive />,
   to: <I.To />,
   withdraw: <I.Withdraw />,
-  show: <I.Show />,
-  hide: <I.Hide />,
   clock: <I.Clock />
 }
 
