@@ -96,7 +96,18 @@ const Select: React.FC<SelectProps> = forwardRef(
         onOpen={onOpen}
         onClose={onClose}
         inputRef={ref}
-        input={<Input {...{ size: "xs", variant: variant, color: "primary", endAdornment: endAdornment }} />}
+        error={error}
+        input={
+          <Input
+            {...{
+              size: "xs",
+              error: error,
+              variant: variant,
+              color: "primary",
+              endAdornment: endAdornment
+            }}
+          />
+        }
         MenuProps={{
           id: `menu-${id ?? "select"}`,
           anchorOrigin: {
@@ -110,7 +121,6 @@ const Select: React.FC<SelectProps> = forwardRef(
           hideBackdrop: true,
           onClick: onClose
         }}
-        error={error}
         {...props}
       />
     )

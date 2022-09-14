@@ -20,9 +20,7 @@ interface StyledProps {
   theme: Theme
 }
 
-const StyledFormControl = styled(FormControl)(({ theme }: StyledProps) => ({
-  minWidth: "300px"
-}))
+const StyledFormControl = styled(FormControl)(({ theme }: StyledProps) => ({}))
 
 const SelectField: React.FC<SelectFieldProps> = forwardRef(
   ({ id, label, helperText, error, selectProps, children, ...props }, ref) => {
@@ -42,6 +40,7 @@ const SelectField: React.FC<SelectFieldProps> = forwardRef(
           aria-describedby={`${id}-select`}
           endAdornment={
             <IconButton
+              onClick={() => setIsOpen(!isOpen)}
               iconProps={{
                 iconKey: "dropdown",
                 color: isOpen ? "primary" : "secondary",
