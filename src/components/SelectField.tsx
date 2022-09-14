@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactNode, useState } from "react"
 import { styled, Theme } from "@mui/material/styles"
 import FormControl, { FormControlProps as MuiFormControlProps } from "@mui/material/FormControl"
-import { ClickAwayListener, InputLabel } from "@mui/material"
+import { InputLabel } from "@mui/material"
 
 import IconButton from "./IconButton"
 import Select, { SelectProps } from "./Select"
@@ -35,30 +35,30 @@ const SelectField: React.FC<SelectFieldProps> = forwardRef(
     }
 
     return (
-      <ClickAwayListener onClickAway={() => setIsOpen(false)}>
-        <StyledFormControl error={!!error} {...formControlProps}>
-          {label && <InputLabel>{label}</InputLabel>}
-          <Select
-            id={id}
-            aria-describedby={`${id}-select`}
-            endAdornment={
-              <IconButton
-                iconProps={{
-                  iconKey: "dropdown",
-                  color: isOpen ? "primary" : "secondary",
-                  rotate: isOpen ? -180 : 0,
-                  size: "xs"
-                }}
-              />
-            }
-            onOpen={() => setIsOpen(true)}
-            onClose={() => setIsOpen(false)}
-            {...selectProps}
-          >
-            {children}
-          </Select>
-        </StyledFormControl>
-      </ClickAwayListener>
+      <StyledFormControl error={!!error} {...formControlProps}>
+        {label && <InputLabel>{label}</InputLabel>}
+        <Select
+          id={id}
+          aria-describedby={`${id}-select`}
+          endAdornment={
+            <IconButton
+              iconProps={{
+                iconKey: "dropdown",
+                color: isOpen ? "primary" : "secondary",
+                rotate: isOpen ? -180 : 0,
+                size: "xs"
+              }}
+            />
+          }
+          open={isOpen}
+          onOpen={() => setIsOpen(true)}
+          onClose={() => setIsOpen(false)}
+          error={error}
+          {...selectProps}
+        >
+          {children}
+        </Select>
+      </StyledFormControl>
     )
   }
 )
