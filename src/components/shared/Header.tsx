@@ -49,12 +49,20 @@ export const HeaderBox = styled("header")(({ theme }) => ({
   }
 }))
 
-const HeaderComponent: React.FC<HeaderProps> = ({ children, logo, links, cartHandler, menuHandler, isEmpty }) => {
+const HeaderComponent: React.FC<HeaderProps> = ({
+  children,
+  logo,
+  links,
+  cartHandler,
+  menuHandler,
+  isEmpty,
+  ...props
+}) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
-    <HeaderBox>
+    <HeaderBox {...props}>
       <Container>
         <GridContainer justifyContent="space-between" alignItems="middle" direction={{ xs: "row", md: "row" }}>
           <GridItem xs={6} sm={3}>

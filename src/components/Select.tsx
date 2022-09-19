@@ -11,6 +11,7 @@ const StyledMuiSelect = styled(MuiSelect)<SelectProps>(({ theme }: { theme: Them
   boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`,
   transition: theme.transitions.create(["box-shadow"]),
   backgroundColor: theme.palette.gray.white,
+  marginTop: "0 !important",
 
   "&.Mui-focused": {
     boxShadow: `inset 0 0 0 1px ${theme.palette.gray[500]}`
@@ -66,7 +67,21 @@ const StyledMuiSelect = styled(MuiSelect)<SelectProps>(({ theme }: { theme: Them
 
 const Select: React.FC<SelectProps> = forwardRef(
   (
-    { id, value, placeholder, disabled = false, onChange, onBlur, inputProps, variant, endAdornment, ...props },
+    {
+      id,
+      value,
+      placeholder,
+      disabled = false,
+      onChange,
+      onOpen,
+      onClose,
+      onBlur,
+      inputProps,
+      error,
+      variant,
+      endAdornment,
+      ...props
+    },
     ref
   ) => {
     return (
@@ -78,10 +93,23 @@ const Select: React.FC<SelectProps> = forwardRef(
         disabled={disabled}
         onChange={onChange}
         onBlur={onBlur}
+        onOpen={onOpen}
+        onClose={onClose}
         inputRef={ref}
-        input={<Input {...{ size: "xs", variant: variant, color: "primary", endAdornment: endAdornment }} />}
+        error={error}
+        input={
+          <Input
+            {...{
+              size: "xs",
+              error: error,
+              variant: variant,
+              color: "primary",
+              endAdornment: endAdornment
+            }}
+          />
+        }
         MenuProps={{
-          id: `menu-${id ?? ""}`,
+          id: `menu-${id ?? "select"}`,
           anchorOrigin: {
             vertical: "bottom",
             horizontal: "left"
@@ -90,7 +118,8 @@ const Select: React.FC<SelectProps> = forwardRef(
             vertical: "top",
             horizontal: "left"
           },
-          hideBackdrop: true
+          hideBackdrop: true,
+          onClick: onClose
         }}
         {...props}
       />

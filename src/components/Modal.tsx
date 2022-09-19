@@ -127,13 +127,14 @@ const BoxWrapper: React.FC<Partial<ModalProps>> = ({
   closeButton = false,
   scrollable = false,
   onClose,
-  children
+  children,
+  ...props
 }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
 
   const ModalContent = () => (
-    <Paper size={size}>
+    <Paper size={size} {...props}>
       {closeButton && (
         <CloseButton size={size}>
           <IconButton

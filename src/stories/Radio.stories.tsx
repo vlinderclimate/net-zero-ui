@@ -18,6 +18,12 @@ const argTypes = {
       defaultValue: { summary: false }
     }
   },
+  variant: {
+    name: "variant",
+    description: "Set variant prop",
+    options: ["default", "bordered"],
+    control: { type: "select" }
+  },
   size: { table: { disable: true } },
   ref: { table: { disable: true } },
   sx: { table: { disable: true } },
@@ -71,7 +77,7 @@ const Template: Story = (args) => {
     <>
       <Fieldset>
         <FormLabel id="demo-row-radio-buttons-group-label">{icon} Units of measurement</FormLabel>
-        <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label">
+        <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" sx={{ gap: 1.5 }}>
           <FormControlLabel value="metric" control={<Radio {...args} />} label="Metric system" />
           <FormControlLabel value="imperial" control={<Radio {...args} />} label="Imperial system" />
         </RadioGroup>

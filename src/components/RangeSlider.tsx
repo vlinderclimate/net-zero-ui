@@ -78,6 +78,9 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       width: 20,
       marginLeft: 0
     },
+    "&.Mui-focusVisible, &:hover": {
+      boxShadow: `0 0 0 2px ${theme.palette.gray.white}`
+    },
     "& .icon": {
       color: color === "primary" ? theme.palette.primary.main : theme.palette.text.primary
     }
@@ -93,7 +96,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
     borderRadius: 2,
     opacity: 1,
 
-    ".MuiFormControl-root &": {
+    ".MuiFormHelperText-root &": {
       backgroundColor: "transparent !important"
     }
   },
@@ -122,7 +125,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       top: "0",
       left: "50%",
       zIndex: 1,
-      transform: "translate(-2px, 0)",
+      transform: "translate(-1px, 0)",
       mixBlendMode: "overlay"
     },
     ".MuiSlider-rail, .MuiSlider-track": {
@@ -147,6 +150,7 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       boxShadow: "none !important",
       top: "0",
       marginTop: -12,
+      zIndex: 10,
       "&:after": {
         content: "''",
         width: 3,
@@ -162,6 +166,9 @@ const StyledSlider = styled(Slider)<RangeSliderProps>(({ theme, color }: StyledP
       "&.Mui-disabled": {
         height: 16,
         width: 16
+      },
+      "&.Mui-focusVisible, &:hover": {
+        boxShadow: "none !important"
       }
     },
     ".MuiSlider-markLabel": {

@@ -8,12 +8,10 @@ import GridItem from "../GridItem"
 import Typography from "../Typography"
 
 export interface InnerHeaderProps {
-  title?: string
-  image?: string
-  imageWidth?: string | number
+  title?: JSX.Element | JSX.Element[] | string
+  image?: JSX.Element | JSX.Element[] | string
   backButton?: JSX.Element | JSX.Element[] | string
   rightItem?: JSX.Element | JSX.Element[] | string
-  scrollButton?: JSX.Element | JSX.Element[] | string
   children?: JSX.Element | JSX.Element[] | string
   headerBg?: string
 }
@@ -43,26 +41,18 @@ export const Divider = styled(GridItem)(({ theme }) => ({
   left: theme.spacing(-2)
 }))
 
-export const Image = styled("img")(({ theme }) => ({
-  maxWidth: "100%",
-  display: "block",
-  backgroundColor: theme.palette.gray[400],
-  objectFit: "contain"
-}))
-
 const InnerHeader: React.FC<InnerHeaderProps> = ({
   title,
   image,
   rightItem,
   backButton,
-  scrollButton,
-  imageWidth = 120,
   children,
-  headerBg
+  headerBg,
+  ...props
 }) => {
   return (
     <HeaderBox $headerBg={headerBg}>
-      <Section topIndent>
+      <Section topIndent {...props}>
         <GridContainer alignItems="center" spacing={1} mt={{ xs: 1, md: rightItem ? -6 : 1 }}>
           {backButton && <GridItem xs={1}>{backButton}</GridItem>}
           <GridItem xs={rightItem ? 12 : 10} md={rightItem ? 7 : 11}>
@@ -76,18 +66,17 @@ const InnerHeader: React.FC<InnerHeaderProps> = ({
             >
               {image && (
                 <Item pr={{ xs: 0, md: 5 }} mb={{ xs: 3, sm: 4, md: 0 }}>
-                  <Image src={image} alt={title} width={imageWidth} height={imageWidth} />
+                  {image}
                 </Item>
               )}
               <Item sx={{ flexBasis: "78%", maxWidth: "78%", flexGrow: 1 }}>
-                <Typography variant="h1" component="div" marginBottom={{ xs: 1, md: 2 }}>
+                <Typography variant="h1" component="div" marginBottom={{ xs: children ? 0 : 1, md: children ? 0 : 2 }}>
                   {title}
                 </Typography>
                 {children}
               </Item>
             </MuiBox>
           </GridItem>
-          {scrollButton && <GridItem xs={1}>{scrollButton}</GridItem>}
           {rightItem && (
             <GridItem xs={12} md={5}>
               {rightItem}

@@ -30,15 +30,14 @@ export interface ButtonProps extends Omit<MuiButtonProps, "color" | "variant" | 
   size?: Exclude<MuiButtonProps["size"], "small" | "medium" | "large">
   linkProps?: Object
 }
-export interface ExtendedStyledButtonProps {
-  onlyIcon?: boolean
-  size?: string
-  theme: Theme
+
+export interface StyledButtonProps extends Omit<ButtonProps, "color"> {
+  icon?: boolean | number
+  $color?: ButtonColorVariant
+  theme?: Theme
 }
-interface StyledButtonProps extends Omit<ButtonProps, "color" | "onlyIcon" | "align"> {
-  $align: ButtonProps["align"]
-  $onlyIcon?: boolean
-  $color: ButtonProps["color"]
+export interface ExtendedStyledButtonProps extends Pick<ButtonProps, "align" | "size" | "color"> {
+  onlyIcon?: boolean
   theme?: Theme
 }
 
@@ -99,28 +98,28 @@ const colorMap: ColorMap = {
   }
 }
 
-const getFontSize = ({ size, theme }: ExtendedStyledButtonProps) => {
+const getFontSize = ({ size }: ExtendedStyledButtonProps) => {
   if (size === "xs") return fontSize.xs4
   if (size === "sm") return fontSize.xs2
   if (size === "lg") return fontSize.xs1
   return fontSize.xs2
 }
 
-const getFontSizeMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
+const getFontSizeMobile = ({ size }: ExtendedStyledButtonProps) => {
   if (size === "xs") return fontSize.xs4
   if (size === "sm") return fontSize.xs4
   if (size === "lg") return fontSize.xs2
   return fontSize.xs2
 }
 
-const getLineHeight = ({ size, theme }: ExtendedStyledButtonProps) => {
+const getLineHeight = ({ size }: ExtendedStyledButtonProps) => {
   if (size === "xs") return lineHeight.xs3
   if (size === "sm") return lineHeight.xs2
   if (size === "lg") return lineHeight.s
   return lineHeightMobile.s
 }
 
-const getLineHeightMobile = ({ size, theme }: ExtendedStyledButtonProps) => {
+const getLineHeightMobile = ({ size }: ExtendedStyledButtonProps) => {
   if (size === "xs") return lineHeight.xs3
   if (size === "sm") return lineHeight.xs3
   if (size === "lg") return lineHeightMobile.s
@@ -141,7 +140,7 @@ const getOutlinePadding = ({ size, onlyIcon }: ExtendedStyledButtonProps) => {
   return onlyIcon ? "7px" : "7px 20px 8px 20px"
 }
 
-const getPaddingMobile = ({ size, theme, onlyIcon }: ExtendedStyledButtonProps) => {
+const getPaddingMobile = ({ size, onlyIcon }: ExtendedStyledButtonProps) => {
   if (size === "xs") return onlyIcon ? "3px" : "3px 16px 5px 16px"
   if (size === "sm") return onlyIcon ? "3px" : "3px 16px 5px 16px"
   if (size === "lg") return onlyIcon ? "8px" : "7px 20px 8px 20px"
@@ -156,7 +155,7 @@ const classes = {
   underline: `${PREFIX}-underline`
 }
 
-const ButtonText = styled("span")(({ theme, ...props }) => {
+const ButtonText = styled("span")(({ theme }) => {
   return {
     transitionProperty: "transform",
     display: "block",
@@ -166,14 +165,15 @@ const ButtonText = styled("span")(({ theme, ...props }) => {
 })
 
 const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) => {
-  const { size, $align: align, $color, $onlyIcon: onlyIcon } = props
+  const { size, align, $color, icon } = props
   const color = $color ?? "primary"
+  const onlyIcon = icon === 1
 
   return {
-    fontSize: getFontSize({ size, theme }),
-    lineHeight: getLineHeight({ size, theme }),
+    fontSize: getFontSize({ size }),
+    lineHeight: getLineHeight({ size }),
     fontWeight: fontWeight.normal,
-    padding: getPadding({ size, theme, onlyIcon }),
+    padding: getPadding({ size, onlyIcon }),
     borderRadius: theme?.borders.radius.rounded,
     justifyContent: align === "left" ? "flex-start" : align === "right" ? "flex-end" : "center",
     transition: theme?.transitions.create(["box-shadow", "transform", "background", "color", "border"]),
@@ -183,9 +183,9 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
     willChange: "transform",
     fontFeatureSettings: "'pnum' on, 'lnum' on, 'liga' off",
     [theme.breakpoints.down("sm")]: {
-      fontSize: getFontSizeMobile({ size, theme }),
-      lineHeight: getLineHeightMobile({ size, theme }),
-      padding: getPaddingMobile({ size, theme, onlyIcon })
+      fontSize: getFontSizeMobile({ size }),
+      lineHeight: getLineHeightMobile({ size }),
+      padding: getPaddingMobile({ size, onlyIcon })
     },
     "&:active, &:hover, &:focus": {
       outline: "none"
@@ -252,7 +252,7 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       backgroundColor: "transparent",
       boxShadow: `inset 0 0 0 1px ${colorMap.outlined[color]}`,
       [theme.breakpoints.up("sm")]: {
-        padding: getOutlinePadding({ size, theme, onlyIcon })
+        padding: getOutlinePadding({ size, onlyIcon })
       },
       [`&.${PREFIX}-primary`]: {
         boxShadow: `inset 0 0 0 1px ${theme.palette.alpha[500]}`,
@@ -315,21 +315,21 @@ const StyledButton = styled(MuiButton)<StyledButtonProps>(({ theme, ...props }) 
       transform: "none !important"
     },
     "& .MuiButton-startIcon": {
-      marginLeft: onlyIcon ? 0 : theme?.spacing(-1),
-      marginRight: onlyIcon ? 0 : theme?.spacing(1),
-      marginTop: onlyIcon ? 0 : 1,
+      marginLeft: icon ? 0 : theme?.spacing(-1),
+      marginRight: icon ? 0 : theme?.spacing(1),
+      marginTop: icon ? 0 : 1,
       [theme.breakpoints.down("sm")]: {
-        marginRight: onlyIcon ? 0 : theme?.spacing(1),
-        marginLeft: onlyIcon ? 0 : theme?.spacing(-1)
+        marginRight: icon ? 0 : theme?.spacing(1),
+        marginLeft: icon ? 0 : theme?.spacing(-1)
       }
     },
     "& .MuiButton-endIcon": {
-      marginLeft: onlyIcon ? 0 : theme?.spacing(1),
-      marginRight: onlyIcon ? 0 : theme?.spacing(-1),
-      marginTop: onlyIcon ? 0 : 1,
+      marginLeft: icon ? 0 : theme?.spacing(1),
+      marginRight: icon ? 0 : theme?.spacing(-1),
+      marginTop: icon ? 0 : 1,
       [theme.breakpoints.down("sm")]: {
-        marginLeft: onlyIcon ? 0 : theme?.spacing(1),
-        marginRight: onlyIcon ? 0 : theme?.spacing(-1)
+        marginLeft: icon ? 0 : theme?.spacing(1),
+        marginRight: icon ? 0 : theme?.spacing(-1)
       }
     },
     [`&.${classes.underline}`]: {
@@ -381,7 +381,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   } = props
 
   const onlyIcon = Boolean(!children) && (Boolean(startIcon) ?? Boolean(endIcon))
-  const extendedProps = { $onlyIcon: onlyIcon, $color: color, size, $align: align }
+  const extendedProps = { $color: color, size, align }
   const className = clsx([
     classes.root,
     variant === "underline" && classes.underline,
@@ -398,6 +398,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       onClick={onClick}
       startIcon={startIcon}
       endIcon={endIcon}
+      icon={onlyIcon ? 1 : undefined}
       {...(href && { href, ...linkProps })}
       {...extendedProps}
       {...rest}

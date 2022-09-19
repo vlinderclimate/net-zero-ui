@@ -16,9 +16,8 @@ export interface FormControlLabelProps extends FormControlLabelGroupProps {}
 const StyledLabel = styled(FormControlLabelGroup)(({ theme }) => ({
   color: `${theme.palette.gray[700]} !important`,
   position: "relative",
-  padding: "6px 24px",
-  marginRight: "12px",
-  marginLeft: "0px",
+  marginRight: 0,
+  marginLeft: 0,
 
   ".MuiFormControlLabel-label": {
     ...typography.caption.main,
@@ -28,9 +27,7 @@ const StyledLabel = styled(FormControlLabelGroup)(({ theme }) => ({
       ...typography.caption.mobile
     }
   },
-  [theme.breakpoints.down("sm")]: {
-    padding: "8px 16px"
-  }
+  [theme.breakpoints.down("sm")]: {}
 }))
 
 /**

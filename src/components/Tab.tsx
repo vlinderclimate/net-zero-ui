@@ -25,7 +25,8 @@ const a11yProps = (index: number) => {
  */
 const StyledTab = styled(MuiTab)(({ theme }) => ({
   padding: 0,
-  textTransform: "none"
+  textTransform: "none",
+  opacity: 1
 }))
 
 /**

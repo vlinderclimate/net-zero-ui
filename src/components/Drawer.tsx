@@ -104,7 +104,7 @@ const Drawer: React.FC<DrawerProps> = ({
   const handleClose: DrawerProps["onClose"] = (event) => {
     if (onClose) onClose(event)
   }
-  const backdrop = { sx: { background: transparentBackdrop ? "transparent" : "rgba(235, 235, 235, 0.56)" } }
+  const backdrop = { sx: { background: transparentBackdrop ? "transparent" : "rgba(0, 0, 0, 0.3)" } }
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
 

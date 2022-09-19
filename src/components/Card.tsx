@@ -22,17 +22,10 @@ export enum CardColorVariants {
 
 export interface CardProps extends Omit<MuiCardProps, "color"> {
   color?: CardColorVariants
-  bordered?: boolean
+  bordered?: boolean | number
   rounded?: boolean | number
   disabled?: boolean
   size?: CardSizeVariants
-}
-
-interface StyledCardProps extends Omit<CardProps, "color" | "bordered" | "rounded" | "size"> {
-  $color?: CardColorVariants
-  $bordered?: boolean
-  $rounded?: boolean | number
-  $size?: CardSizeVariants
 }
 
 export const sizeMap = new Map<CardSizeVariants, { x: number; y: number }>([
@@ -67,26 +60,30 @@ export const backgroundMap = new Map<CardColorVariants, string>([
   [CardColorVariants.Negative, colors.red.light]
 ])
 
-const StyledCard = styled(MuiCard)<StyledCardProps>(
-  ({ $color = CardColorVariants.Initial, $size = CardSizeVariants.Medium, $bordered, $rounded, theme }) => {
-    const padding = sizeMap.get($size)
-    const paddingMobile = sizeMobileMap.get($size)
-    const bg = backgroundMap.get($color)
+const StyledCard = styled(MuiCard)<CardProps>(
+  ({ color = CardColorVariants.Initial, size = CardSizeVariants.Medium, bordered, rounded, theme }) => {
+    const padding = sizeMap.get(size)
+    const paddingMobile = sizeMobileMap.get(size)
+    const bg = backgroundMap.get(color)
 
     return {
       padding: padding ? theme.spacing(padding.y, padding.x) : "0",
       marginBottom: theme.spacing(0.8),
-      color: colorMap.get($color),
+      color: colorMap.get(color),
       backgroundColor: bg,
       position: "relative",
       overflow: "visible",
-      boxShadow: $bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]},  0px 2px 1px rgba(0, 0, 0, 0.04)` : "none",
-      borderRadius: $rounded ? theme.borders.radius.m : 0,
+      boxShadow: bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]}` : "none",
+      borderRadius: rounded ? theme.borders.radius.m : 0,
       zIndex: 1,
+
+      "a &": {
+        boxShadow: bordered ? `inset 0 0 0 1px ${theme.palette.gray[400]},  0px 2px 1px rgba(0, 0, 0, 0.04)` : "none"
+      },
 
       [theme.breakpoints.down("sm")]: {
         padding: paddingMobile ? theme.spacing(paddingMobile.y, paddingMobile.x) : "0",
-        borderRadius: $rounded ? theme.borders.radius.s : 0
+        borderRadius: rounded ? theme.borders.radius.s : 0
       }
     }
   }
@@ -107,11 +104,16 @@ const Overlay = styled("div")<CardProps>(({ color = CardColorVariants.Initial })
   }
 })
 
-const Card: React.FC<CardProps> = ({ children, color, size, bordered, disabled, rounded = false, ...props }) => {
-  const styleProps = { $color: color, $size: size, $bordered: bordered, disabled, $rounded: rounded ? 1 : 0 }
-
+const Card: React.FC<CardProps> = ({ children, color, size, rounded, bordered, disabled, ...props }) => {
   return (
-    <StyledCard {...styleProps} {...props}>
+    <StyledCard
+      disabled={disabled}
+      size={size ?? undefined}
+      color={color ?? undefined}
+      rounded={rounded ? 1 : undefined}
+      bordered={bordered ? 1 : undefined}
+      {...props}
+    >
       {children}
       {disabled && <Overlay color={color} />}
     </StyledCard>

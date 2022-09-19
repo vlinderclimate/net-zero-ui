@@ -1,10 +1,6 @@
 import { Story, Meta } from "@storybook/react"
 import React from "react"
-import Tab from "../components/Tab"
-import Tabs, { TabsProps } from "../components/Tabs"
-import TabPanel from "../components/TabPanel"
-import Card, { CardColorVariants, CardSizeVariants } from "../components/Card"
-import Container from "../components/Container"
+import ToggleButtonGroup, { ToggleButtonGroupProps } from "../components/ToggleButtonGroup"
 
 const argTypes = {
   onChange: { table: { disable: true } },
@@ -40,65 +36,30 @@ const argTypes = {
   TabIndicatorProps: { table: { disable: true } },
   textColor: { table: { disable: true } },
   TabScrollButtonProps: { table: { disable: true } },
-  visibleScrollbar: {
-    defaultValue: false,
-    control: { type: "boolean" }
-  },
-  disabled: {
-    defaultValue: false,
-    control: { type: "boolean" }
-  },
-  variant: {
-    defaultValue: "standard",
-    control: { type: "select" },
-    options: ["standard", "scrollable", "fullWidth"]
-  },
-  centered: {
-    defaultValue: false,
-    control: { type: "boolean" }
-  }
+  selectedValue: { table: { disable: true } }
 }
 
-const Template: Story<TabsProps> = (args) => {
-  const [value, setValue] = React.useState(0)
+const Template: Story<ToggleButtonGroupProps> = (args) => {
+  const [value, setValue] = React.useState("buy")
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
+  const handleChange = (event: React.MouseEvent<HTMLElement>, newValue: string) => {
+    if (newValue !== null) {
+      setValue(newValue)
+    }
   }
 
-  const list = ["General", "Fuel and energy", "Travel", "Shipping", "Materials & Inventory", "Services"]
+  const list: ToggleButtonGroupProps["list"] = [
+    { value: "buy", children: "Buy" },
+    { value: "sell", children: "Sell" }
+  ]
 
-  return (
-    <>
-      <Card color={CardColorVariants.Muted} size={CardSizeVariants.Initial}>
-        <Container>
-          <Tabs {...args} value={value} onChange={handleChange}>
-            {list.map((item, i) => (
-              <Tab label={item} index={i} key={i} />
-            ))}
-          </Tabs>
-        </Container>
-      </Card>
-
-      <Container>
-        <TabPanel value={value} index={0}>
-          Item One
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Item Three
-        </TabPanel>
-      </Container>
-    </>
-  )
+  return <ToggleButtonGroup {...args} selectedValue={value} list={list} onChange={handleChange} />
 }
 
 export const Default = Template.bind({})
 
 export default {
-  title: "Components/Tabs",
-  component: Tabs,
+  title: "Components/ToggleButtonGroup",
+  component: ToggleButtonGroup,
   argTypes
 } as Meta

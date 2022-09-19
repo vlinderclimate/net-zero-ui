@@ -90,7 +90,6 @@ const Template: Story<StoryRangeSliderProps> = (args) => {
       min={MIN}
       max={MAX}
       marks={marks}
-      valueLabelDisplay="auto"
       getAriaValueText={(val) => valueLabelFormat(val, args.valueFormat)}
       valueLabelFormat={(val) => valueLabelFormat(val, args.valueFormat)}
       color="primary"
